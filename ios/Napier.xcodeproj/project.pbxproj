@@ -1,0 +1,802 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		18F21CDD008BE8E6BCA58EC5 /* Pods_NapierUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C305A5C4A55514AF60C7EA17 /* Pods_NapierUITests.framework */; };
+		5E2D8E842927CB58BF2EA78D /* Pods_Napier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F04C58F0FFE9D1C0919C0A0 /* Pods_Napier.framework */; };
+		6B01F4827EA0ADC9B64F81D4 /* Pods_NapierTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E605E347538CB82FEE5793F8 /* Pods_NapierTests.framework */; };
+		7C20D0CF22147D5700A752BC /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20D0CE22147D5700A752BC /* main.framework */; };
+		7C20D0D022147D5700A752BC /* main.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20D0CE22147D5700A752BC /* main.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7C4D387122152BC1004168BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C4D387022152BC1004168BB /* GoogleService-Info.plist */; };
+		7CFB659A22013CF600BD05FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB659922013CF600BD05FC /* AppDelegate.swift */; };
+		7CFB659C22013CF600BD05FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB659B22013CF600BD05FC /* ViewController.swift */; };
+		7CFB659F22013CF600BD05FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CFB659D22013CF600BD05FC /* Main.storyboard */; };
+		7CFB65A122013CF900BD05FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CFB65A022013CF900BD05FC /* Assets.xcassets */; };
+		7CFB65A422013CF900BD05FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CFB65A222013CF900BD05FC /* LaunchScreen.storyboard */; };
+		7CFB65AF22013CF900BD05FC /* NapierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB65AE22013CF900BD05FC /* NapierTests.swift */; };
+		7CFB65BA22013CF900BD05FC /* NapierUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB65B922013CF900BD05FC /* NapierUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7CFB65AB22013CF900BD05FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CFB658E22013CF500BD05FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CFB659522013CF500BD05FC;
+			remoteInfo = Napier;
+		};
+		7CFB65B622013CF900BD05FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CFB658E22013CF500BD05FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CFB659522013CF500BD05FC;
+			remoteInfo = Napier;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7CFB65CA22013D5200BD05FC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7C20D0D022147D5700A752BC /* main.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1CC4C5FA7FC111D51F32FE7B /* Pods-NapierUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NapierUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NapierUITests/Pods-NapierUITests.release.xcconfig"; sourceTree = "<group>"; };
+		25B588FDCCF04338B7F69615 /* Pods-Napier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napier.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Napier/Pods-Napier.debug.xcconfig"; sourceTree = "<group>"; };
+		7C20D0CE22147D5700A752BC /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "../mpp-sample/build/xcode-frameworks/main.framework"; sourceTree = "<group>"; };
+		7C4D387022152BC1004168BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7CFB659622013CF500BD05FC /* Napier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Napier.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CFB659922013CF600BD05FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7CFB659B22013CF600BD05FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7CFB659E22013CF600BD05FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7CFB65A022013CF900BD05FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7CFB65A322013CF900BD05FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7CFB65A522013CF900BD05FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CFB65AA22013CF900BD05FC /* NapierTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NapierTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CFB65AE22013CF900BD05FC /* NapierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NapierTests.swift; sourceTree = "<group>"; };
+		7CFB65B022013CF900BD05FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CFB65B522013CF900BD05FC /* NapierUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NapierUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CFB65B922013CF900BD05FC /* NapierUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NapierUITests.swift; sourceTree = "<group>"; };
+		7CFB65BB22013CF900BD05FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F04C58F0FFE9D1C0919C0A0 /* Pods_Napier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Napier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87BFCA7FEC7DC1CFD8704750 /* Pods-NapierUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NapierUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NapierUITests/Pods-NapierUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8950A4230313AF67477F19C8 /* Pods-NapierTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NapierTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NapierTests/Pods-NapierTests.release.xcconfig"; sourceTree = "<group>"; };
+		94B939345CE5063FF6AABD92 /* Pods-NapierTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NapierTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NapierTests/Pods-NapierTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BDA7A1E9EE3D61660CF79CAC /* Pods-Napier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napier.release.xcconfig"; path = "Pods/Target Support Files/Pods-Napier/Pods-Napier.release.xcconfig"; sourceTree = "<group>"; };
+		C305A5C4A55514AF60C7EA17 /* Pods_NapierUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NapierUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E605E347538CB82FEE5793F8 /* Pods_NapierTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NapierTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7CFB659322013CF500BD05FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C20D0CF22147D5700A752BC /* main.framework in Frameworks */,
+				5E2D8E842927CB58BF2EA78D /* Pods_Napier.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CFB65A722013CF900BD05FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B01F4827EA0ADC9B64F81D4 /* Pods_NapierTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CFB65B222013CF900BD05FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18F21CDD008BE8E6BCA58EC5 /* Pods_NapierUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19180EB16BBCC417CE6AF105 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F04C58F0FFE9D1C0919C0A0 /* Pods_Napier.framework */,
+				E605E347538CB82FEE5793F8 /* Pods_NapierTests.framework */,
+				C305A5C4A55514AF60C7EA17 /* Pods_NapierUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7CFB658D22013CF500BD05FC = {
+			isa = PBXGroup;
+			children = (
+				7C20D0CE22147D5700A752BC /* main.framework */,
+				7CFB659822013CF500BD05FC /* Napier */,
+				7CFB65AD22013CF900BD05FC /* NapierTests */,
+				7CFB65B822013CF900BD05FC /* NapierUITests */,
+				7CFB659722013CF500BD05FC /* Products */,
+				A702DACF8B30A7D6F8998745 /* Pods */,
+				19180EB16BBCC417CE6AF105 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7CFB659722013CF500BD05FC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7CFB659622013CF500BD05FC /* Napier.app */,
+				7CFB65AA22013CF900BD05FC /* NapierTests.xctest */,
+				7CFB65B522013CF900BD05FC /* NapierUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7CFB659822013CF500BD05FC /* Napier */ = {
+			isa = PBXGroup;
+			children = (
+				7C4D387022152BC1004168BB /* GoogleService-Info.plist */,
+				7CFB659922013CF600BD05FC /* AppDelegate.swift */,
+				7CFB659B22013CF600BD05FC /* ViewController.swift */,
+				7CFB659D22013CF600BD05FC /* Main.storyboard */,
+				7CFB65A022013CF900BD05FC /* Assets.xcassets */,
+				7CFB65A222013CF900BD05FC /* LaunchScreen.storyboard */,
+				7CFB65A522013CF900BD05FC /* Info.plist */,
+			);
+			path = Napier;
+			sourceTree = "<group>";
+		};
+		7CFB65AD22013CF900BD05FC /* NapierTests */ = {
+			isa = PBXGroup;
+			children = (
+				7CFB65AE22013CF900BD05FC /* NapierTests.swift */,
+				7CFB65B022013CF900BD05FC /* Info.plist */,
+			);
+			path = NapierTests;
+			sourceTree = "<group>";
+		};
+		7CFB65B822013CF900BD05FC /* NapierUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7CFB65B922013CF900BD05FC /* NapierUITests.swift */,
+				7CFB65BB22013CF900BD05FC /* Info.plist */,
+			);
+			path = NapierUITests;
+			sourceTree = "<group>";
+		};
+		A702DACF8B30A7D6F8998745 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				25B588FDCCF04338B7F69615 /* Pods-Napier.debug.xcconfig */,
+				BDA7A1E9EE3D61660CF79CAC /* Pods-Napier.release.xcconfig */,
+				94B939345CE5063FF6AABD92 /* Pods-NapierTests.debug.xcconfig */,
+				8950A4230313AF67477F19C8 /* Pods-NapierTests.release.xcconfig */,
+				87BFCA7FEC7DC1CFD8704750 /* Pods-NapierUITests.debug.xcconfig */,
+				1CC4C5FA7FC111D51F32FE7B /* Pods-NapierUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7CFB659522013CF500BD05FC /* Napier */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CFB65BE22013CF900BD05FC /* Build configuration list for PBXNativeTarget "Napier" */;
+			buildPhases = (
+				C80556FC33414EE11D6BFA62 /* [CP] Check Pods Manifest.lock */,
+				7CFB65CB22013DC300BD05FC /* Run Script(Kotlin/Native) */,
+				7CFB659222013CF500BD05FC /* Sources */,
+				7CFB659322013CF500BD05FC /* Frameworks */,
+				7CFB659422013CF500BD05FC /* Resources */,
+				7CFB65CA22013D5200BD05FC /* Embed Frameworks */,
+				8A3A2104923D63393CBB4AEC /* [CP] Embed Pods Frameworks */,
+				7C44D7BC221548AD002EEF8F /* Run Script(Crashlytics) */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Napier;
+			productName = Napier;
+			productReference = 7CFB659622013CF500BD05FC /* Napier.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7CFB65A922013CF900BD05FC /* NapierTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CFB65C122013CF900BD05FC /* Build configuration list for PBXNativeTarget "NapierTests" */;
+			buildPhases = (
+				E35AAEBE86B983018A549154 /* [CP] Check Pods Manifest.lock */,
+				7CFB65A622013CF900BD05FC /* Sources */,
+				7CFB65A722013CF900BD05FC /* Frameworks */,
+				7CFB65A822013CF900BD05FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CFB65AC22013CF900BD05FC /* PBXTargetDependency */,
+			);
+			name = NapierTests;
+			productName = NapierTests;
+			productReference = 7CFB65AA22013CF900BD05FC /* NapierTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7CFB65B422013CF900BD05FC /* NapierUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CFB65C422013CF900BD05FC /* Build configuration list for PBXNativeTarget "NapierUITests" */;
+			buildPhases = (
+				684F2C03CCF8D112525B60FC /* [CP] Check Pods Manifest.lock */,
+				7CFB65B122013CF900BD05FC /* Sources */,
+				7CFB65B222013CF900BD05FC /* Frameworks */,
+				7CFB65B322013CF900BD05FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CFB65B722013CF900BD05FC /* PBXTargetDependency */,
+			);
+			name = NapierUITests;
+			productName = NapierUITests;
+			productReference = 7CFB65B522013CF900BD05FC /* NapierUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7CFB658E22013CF500BD05FC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = AAkira;
+				TargetAttributes = {
+					7CFB659522013CF500BD05FC = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					7CFB65A922013CF900BD05FC = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 7CFB659522013CF500BD05FC;
+					};
+					7CFB65B422013CF900BD05FC = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 7CFB659522013CF500BD05FC;
+					};
+				};
+			};
+			buildConfigurationList = 7CFB659122013CF500BD05FC /* Build configuration list for PBXProject "Napier" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7CFB658D22013CF500BD05FC;
+			productRefGroup = 7CFB659722013CF500BD05FC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7CFB659522013CF500BD05FC /* Napier */,
+				7CFB65A922013CF900BD05FC /* NapierTests */,
+				7CFB65B422013CF900BD05FC /* NapierUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7CFB659422013CF500BD05FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CFB65A422013CF900BD05FC /* LaunchScreen.storyboard in Resources */,
+				7C4D387122152BC1004168BB /* GoogleService-Info.plist in Resources */,
+				7CFB65A122013CF900BD05FC /* Assets.xcassets in Resources */,
+				7CFB659F22013CF600BD05FC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CFB65A822013CF900BD05FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CFB65B322013CF900BD05FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		684F2C03CCF8D112525B60FC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NapierUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C44D7BC221548AD002EEF8F /* Run Script(Crashlytics) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Run Script(Crashlytics)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+		};
+		7CFB65CB22013DC300BD05FC /* Run Script(Kotlin/Native) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script(Kotlin/Native)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd $SRCROOT/../mpp-sample/build/xcode-frameworks/\n./gradlew :mpp-sample:packForXcode -PXCODE_CONFIGURATION=${CONFIGURATION}\n";
+		};
+		8A3A2104923D63393CBB4AEC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Napier/Pods-Napier-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Napier/Pods-Napier-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C80556FC33414EE11D6BFA62 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Napier-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E35AAEBE86B983018A549154 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NapierTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7CFB659222013CF500BD05FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CFB659C22013CF600BD05FC /* ViewController.swift in Sources */,
+				7CFB659A22013CF600BD05FC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CFB65A622013CF900BD05FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CFB65AF22013CF900BD05FC /* NapierTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CFB65B122013CF900BD05FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CFB65BA22013CF900BD05FC /* NapierUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7CFB65AC22013CF900BD05FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CFB659522013CF500BD05FC /* Napier */;
+			targetProxy = 7CFB65AB22013CF900BD05FC /* PBXContainerItemProxy */;
+		};
+		7CFB65B722013CF900BD05FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CFB659522013CF500BD05FC /* Napier */;
+			targetProxy = 7CFB65B622013CF900BD05FC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7CFB659D22013CF600BD05FC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7CFB659E22013CF600BD05FC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7CFB65A222013CF900BD05FC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7CFB65A322013CF900BD05FC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7CFB65BC22013CF900BD05FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7CFB65BD22013CF900BD05FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7CFB65BF22013CF900BD05FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25B588FDCCF04338B7F69615 /* Pods-Napier.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$SRCROOT/../mpp-sample/build/xcode-frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Napier/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.aakira.Napier;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7CFB65C022013CF900BD05FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDA7A1E9EE3D61660CF79CAC /* Pods-Napier.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$SRCROOT/../mpp-sample/build/xcode-frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Napier/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.aakira.Napier;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7CFB65C222013CF900BD05FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94B939345CE5063FF6AABD92 /* Pods-NapierTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NapierTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.aakira.NapierTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Napier.app/Napier";
+			};
+			name = Debug;
+		};
+		7CFB65C322013CF900BD05FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8950A4230313AF67477F19C8 /* Pods-NapierTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NapierTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.aakira.NapierTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Napier.app/Napier";
+			};
+			name = Release;
+		};
+		7CFB65C522013CF900BD05FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87BFCA7FEC7DC1CFD8704750 /* Pods-NapierUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NapierUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.aakira.NapierUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Napier;
+			};
+			name = Debug;
+		};
+		7CFB65C622013CF900BD05FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CC4C5FA7FC111D51F32FE7B /* Pods-NapierUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = NapierUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.aakira.NapierUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Napier;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7CFB659122013CF500BD05FC /* Build configuration list for PBXProject "Napier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CFB65BC22013CF900BD05FC /* Debug */,
+				7CFB65BD22013CF900BD05FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CFB65BE22013CF900BD05FC /* Build configuration list for PBXNativeTarget "Napier" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CFB65BF22013CF900BD05FC /* Debug */,
+				7CFB65C022013CF900BD05FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CFB65C122013CF900BD05FC /* Build configuration list for PBXNativeTarget "NapierTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CFB65C222013CF900BD05FC /* Debug */,
+				7CFB65C322013CF900BD05FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CFB65C422013CF900BD05FC /* Build configuration list for PBXNativeTarget "NapierUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CFB65C522013CF900BD05FC /* Debug */,
+				7CFB65C622013CF900BD05FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7CFB658E22013CF500BD05FC /* Project object */;
+}

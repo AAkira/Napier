@@ -1,0 +1,87 @@
+apply plugin: 'kotlin-multiplatform'
+apply from: 'android.gradle'
+
+kotlin {
+    android()
+    // ios
+    if (project.findProperty("device")?.toBoolean() ?: false) {
+        iosArm64('ios') {
+            compilations.main.outputKinds('FRAMEWORK')
+        }
+    } else {
+        iosX64('ios') {
+            compilations.main.outputKinds('FRAMEWORK')
+        }
+    }
+    js()
+    jvm()
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation rootProject.ext.kotlinCommon
+                implementation rootProject.ext.coroutineCommon
+
+                implementation project(':napier')
+            }
+        }
+        iosMain {
+            dependencies {
+                implementation rootProject.ext.coroutineNative
+            }
+        }
+        jsMain {
+            dependencies {
+                implementation rootProject.ext.kotlinJs
+                implementation rootProject.ext.coroutineJs
+            }
+        }
+        jvmMain {
+            dependencies {
+                implementation rootProject.ext.kotlinJvm
+                implementation rootProject.ext.coroutine
+            }
+        }
+    }
+}
+
+// ios task
+task packForXcode(type: Sync) {
+    final File frameworkDir = new File(buildDir, "xcode-frameworks")
+    final String mode = project.findProperty("XCODE_CONFIGURATION")?.toUpperCase() ?: 'DEBUG'
+
+    inputs.property "mode", mode
+    dependsOn kotlin.targets.ios.compilations.main.linkTaskName("FRAMEWORK", mode)
+
+    from { kotlin.targets.ios.compilations.main.getBinary("FRAMEWORK", mode).parentFile }
+    into frameworkDir
+
+    doLast {
+        new File(frameworkDir, 'gradlew').with {
+            text = "#!/bin/bash\nexport 'JAVA_HOME=${System.getProperty("java.home")}'\ncd '${rootProject.rootDir}'\n./gradlew \$@\n"
+            setExecutable(true)
+        }
+    }
+}
+
+tasks.build.dependsOn packForXcode
+
+// js task
+[compileKotlinJs, compileTestKotlinJs]*.configure {
+    kotlinOptions {
+        moduleKind = "commonjs"
+    }
+}
+
+task packForJs(type: Copy, dependsOn: compileKotlinJs) {
+    from compileKotlinJs.destinationDir
+
+    into "${buildDir}/js_modules"
+}
+
+tasks.build.dependsOn packForJs
+
+// workaround for https://youtrack.jetbrains.com/issue/KT-27170
+configurations {
+    compileClasspath
+}

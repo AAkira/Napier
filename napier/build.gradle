@@ -1,0 +1,80 @@
+apply plugin: 'kotlin-multiplatform'
+apply from: 'android.gradle'
+
+apply from: rootProject.file('gradle/publish.gradle')
+
+kotlin {
+    android {
+        publishLibraryVariants("release")
+    }
+    iosX64('ios')
+    iosArm32('iosArm32')
+    iosArm64('iosArm64')
+    js()
+    jvm()
+
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation rootProject.ext.kotlinCommon
+            }
+        }
+        commonTest {
+            dependencies {
+                implementation rootProject.ext.coroutineCommon
+
+                implementation rootProject.ext.kotlinTest
+                implementation rootProject.ext.kotlinTestAnnotation
+            }
+        }
+        androidMain {
+            dependencies {
+            }
+        }
+        androidTest {
+            dependencies {
+                implementation rootProject.ext.kotlinTestJvm
+            }
+        }
+        iosMain {
+            dependencies {
+            }
+        }
+        iosTest {
+            dependencies {
+                implementation rootProject.ext.coroutineNative
+            }
+        }
+        iosArm32Main.dependsOn iosMain
+        iosArm32Test.dependsOn iosTest
+        iosArm64Main.dependsOn iosMain
+        iosArm64Test.dependsOn iosTest
+        jsMain {
+            dependencies {
+                implementation rootProject.ext.kotlinJs
+            }
+        }
+        jsTest {
+            dependencies {
+                implementation rootProject.ext.coroutineJs
+            }
+        }
+        jvmMain {
+            dependencies {
+                implementation rootProject.ext.kotlinJvm
+            }
+        }
+        jvmTest {
+            dependencies {
+                implementation rootProject.ext.coroutine
+
+                implementation rootProject.ext.kotlinTestJvm
+            }
+        }
+    }
+}
+
+// workaround for https://youtrack.jetbrains.com/issue/KT-27170
+configurations {
+    compileClasspath
+}

@@ -1,0 +1,27 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.mobileVersionCode as int
+        versionName rootProject.ext.mobileVersionName
+    }
+
+    sourceSets.each {
+        it.manifest.srcFile "src/androidMain/AndroidManifest.xml"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation rootProject.ext.kotlinJvm
+    implementation rootProject.ext.coroutine
+}

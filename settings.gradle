@@ -1,0 +1,3 @@
+include ':napier', ':android', ':mpp-sample'
+
+enableFeaturePreview('GRADLE_METADATA')

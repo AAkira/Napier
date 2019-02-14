@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'io.fabric'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.mobileVersionCode as int
+        versionName rootProject.ext.mobileVersionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+dependencies {
+    implementation project(':napier')
+    implementation project(':mpp-sample')
+    // write the below in your project, instead of above
+    // implementation "com.github.aakira:napier-android:[version name]"
+
+    implementation rootProject.ext.kotlinJvm
+    implementation rootProject.ext.coroutineAndroid
+
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+
+    // for crashlytics sample
+    implementation 'com.google.firebase:firebase-core:16.0.7'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
+}

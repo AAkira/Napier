@@ -1,0 +1,35 @@
+ext {
+    // This library version
+    LIBRARY_VERSION_CODE = 1
+    LIBRARY_VERSION_NAME = "0.0.1"
+
+    // android
+    mobileVersionCode = 1
+    mobileVersionName = "1.0.0"
+    compileSdkVersion = 28
+    buildToolsVersion = "28.0.3"
+    minSdkVersion = 21
+    instantAppMinSdkVersion = 23
+    targetSdkVersion = 28
+
+    // dependencies
+
+    // kotlin
+    kotlinJvm = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    kotlinCommon = "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlin_version"
+    kotlinJs = "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+
+    // test
+    kotlinTest = "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+    kotlinTestAnnotation = "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlin_version"
+    kotlinTestJvm = "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    kotlinTestJs = "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version"
+
+    // coroutine
+    coroutine_version = "1.1.1"
+    coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
+    coroutineCommon = "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$coroutine_version"
+    coroutineNative = "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutine_version"
+    coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+    coroutineJs = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js:$coroutine_version"
+}

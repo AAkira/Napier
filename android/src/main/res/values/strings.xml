@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Napier Sample</string>
+    <string name="com.crashlytics.useFirebaseAppId">true</string>
+</resources>
