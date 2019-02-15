@@ -1,11 +1,15 @@
 import UIKit
 import main
 
-class ViewController: UIViewController {
-
+final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configure()
+    }
+}
+
+private extension ViewController {
+    func configure() {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 24))
         label.center = CGPoint(x: 180, y: 300)
         label.textAlignment = .center
