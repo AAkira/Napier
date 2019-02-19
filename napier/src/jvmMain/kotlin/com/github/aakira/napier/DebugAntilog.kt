@@ -2,16 +2,38 @@ package com.github.aakira.napier
 
 import java.io.PrintWriter
 import java.io.StringWriter
+import java.util.logging.ConsoleHandler
+import java.util.logging.Handler
+import java.util.logging.Level
 import java.util.logging.Logger
+import java.util.logging.SimpleFormatter
 import java.util.regex.Pattern
 
-class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
+class DebugAntilog(
+    private val defaultTag: String = "app",
+    private val handler: List<Handler> = listOf()
+) : Antilog() {
 
     companion object {
-        private const val CALL_STACK_INDEX = 9
+        private const val CALL_STACK_INDEX = 8
     }
 
-    private val logger = Logger.getLogger(DebugAntilog::class.java.name)
+    val consoleHandler: ConsoleHandler = ConsoleHandler().apply {
+        level = Level.ALL
+        formatter = SimpleFormatter()
+    }
+
+    private val logger: Logger = Logger.getLogger(DebugAntilog::class.java.name).apply {
+        level = Level.ALL
+
+        if (handler.isEmpty()) {
+            addHandler(consoleHandler)
+            return@apply
+        }
+        handler.forEach {
+            addHandler(it)
+        }
+    }
 
     private val anonymousClass = Pattern.compile("(\\$\\d+)+$")
 
@@ -38,7 +60,7 @@ class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
 
         when (priority) {
             Napier.Level.VERBOSE -> logger.finest(buildLog(priority, debugTag, fullMessage))
-            Napier.Level.DEBUG -> logger.finest(buildLog(priority, debugTag, fullMessage))
+            Napier.Level.DEBUG -> logger.fine(buildLog(priority, debugTag, fullMessage))
             Napier.Level.INFO -> logger.info(buildLog(priority, debugTag, fullMessage))
             Napier.Level.WARNING -> logger.warning(buildLog(priority, debugTag, fullMessage))
             Napier.Level.ERROR -> logger.severe(buildLog(priority, debugTag, fullMessage))
