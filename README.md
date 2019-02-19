@@ -41,7 +41,7 @@ class Sample {
         return "Suspend Hello Napier"
     }
 
-    suspend fun handleError() {
+    fun handleError() {
         try {
             throw Exception("throw error")
         } catch(e: Exception) {
@@ -198,6 +198,12 @@ So, you should change Antilogs in debug build or release build.
 
 Crashlytics AntiLog samples
 
+Sample projects use the Firebase Crashlytics.  
+You must set authentication files to `android/google-services.json` and `ios/Napier/GoogleService-Info.plist`.
+
+Check the firebase document. [[Android](https://firebase.google.com/docs/android/setup),
+[iOS](https://firebase.google.com/docs/ios/setup)]
+
 * [Android](https://github.com/AAkira/Napier/blob/master/android/src/main/java/com/github/aakira/napier/sample/CrashlyticsAntilog.kt)
 
 Write this in your application class.
@@ -272,6 +278,9 @@ limitations under the License.
 
 This library is inspired by [Timber](https://github.com/JakeWharton/timber).  
 I recommend use it if it supports kotlin multiplatform project.😜
+
+Thanks for the advice.
+[@horita-yuya](https://github.com/horita-yuya)
 
 [logo]: /arts/logo.jpg
 [preview-android]: /arts/screenshot-android.jpg
