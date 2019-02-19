@@ -23,7 +23,7 @@ class Sample {
         return "Suspend Hello Napier"
     }
 
-    suspend fun handleError() {
+    fun handleError() {
         try {
             throw Exception("throw error")
         } catch(e: Exception) {
