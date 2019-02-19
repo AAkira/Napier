@@ -17,7 +17,8 @@ class MainActivity : AppCompatActivity() {
 
         GlobalScope.launch {
             Sample().suspendHello()
-            Sample().handleError()
         }
+
+        Sample().handleError()
     }
 }

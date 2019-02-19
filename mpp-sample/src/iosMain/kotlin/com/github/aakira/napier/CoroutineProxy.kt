@@ -7,9 +7,3 @@ fun Sample.suspendHelloKt() {
         suspendHello()
     }
 }
-
-fun Sample.handleErrorKt() {
-    NativeScope().launch {
-        handleError()
-    }
-}

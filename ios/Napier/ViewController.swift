@@ -21,6 +21,6 @@ private extension ViewController {
         
         Sample().suspendHelloKt()
         
-        Sample().handleErrorKt()
+        Sample().handleError()
     }
 }
