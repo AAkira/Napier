@@ -78,3 +78,9 @@ kotlin {
 configurations {
     compileClasspath
 }
+
+[compileKotlinJs, compileTestKotlinJs]*.configure {
+    kotlinOptions {
+        moduleKind = "umd"
+    }
+}

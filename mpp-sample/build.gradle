@@ -69,7 +69,7 @@ tasks.build.dependsOn packForXcode
 // js task
 [compileKotlinJs, compileTestKotlinJs]*.configure {
     kotlinOptions {
-        moduleKind = "commonjs"
+        moduleKind = "umd"
     }
 }
 

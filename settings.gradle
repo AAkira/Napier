@@ -1,3 +1,3 @@
-include ':napier', ':mpp-sample', ':android', ':jvm'
+include ':napier', ':mpp-sample', ':android', ':jvm', ':js'
 
 enableFeaturePreview('GRADLE_METADATA')
