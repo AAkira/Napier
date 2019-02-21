@@ -16,6 +16,14 @@ format: `[Date time][Symbol][Log level][Class name].[Method name] - [Your log]`
 
 ![preview-ios][preview-ios]
 
+* js
+
+![preview-js][preview-js]
+
+* jvm
+
+![preview-jvm][preview-jvm]
+
 * common sample code
 
 ```kotlin
@@ -281,7 +289,10 @@ I recommend use it if it supports kotlin multiplatform project.😜
 
 Thanks for the advice.
 [@horita-yuya](https://github.com/horita-yuya)
+[@terachanple](https://github.com/terachanple)
 
 [logo]: /arts/logo.jpg
 [preview-android]: /arts/screenshot-android.jpg
 [preview-ios]: /arts/screenshot-ios.jpg
+[preview-js]: /arts/screenshot-js.jpg
+[preview-jvm]: /arts/screenshot-jvm.jpg
