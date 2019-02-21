@@ -234,7 +234,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Napier/Pods-Napier-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Napier/Pods-Napier-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -247,7 +247,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Napier/Pods-Napier-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Napier/Pods-Napier-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C80556FC33414EE11D6BFA62 /* [CP] Check Pods Manifest.lock */ = {
