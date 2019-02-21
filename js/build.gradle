@@ -1,0 +1,40 @@
+apply plugin: 'kotlin2js'
+apply plugin: 'org.jetbrains.kotlin.frontend'
+
+dependencies {
+    compile project(':napier')
+    compile project(':mpp-sample')
+
+    implementation rootProject.ext.kotlinJs
+    implementation rootProject.ext.coroutineJs
+}
+
+def outputDir = "${projectDir}/web"
+
+compileKotlin2Js {
+    kotlinOptions.metaInfo = true
+    kotlinOptions.sourceMap = true
+    kotlinOptions.suppressWarnings = true
+    kotlinOptions.verbose = true
+    kotlinOptions.main = "call"
+    kotlinOptions.moduleKind = "umd"
+}
+
+
+kotlinFrontend {
+    downloadNodeJsVersion = "latest"
+
+    webpackBundle {
+        bundleName = "main"
+        sourceMapEnabled = true
+        contentPath = file('src/main/web')
+        publicPath = "/"
+        port = 8090
+        proxyUrl = ""
+        stats = "errors-only" // log level
+    }
+}
+
+clean.doFirst() {
+    delete "$outputDir"
+}
