@@ -287,8 +287,8 @@ limitations under the License.
 This library is inspired by [Timber](https://github.com/JakeWharton/timber).  
 I recommend use it if it supports kotlin multiplatform project.😜
 
-Thanks for the advice.
-[@horita-yuya](https://github.com/horita-yuya)
+Thanks for advice.  
+[@horita-yuya](https://github.com/horita-yuya), 
 [@terachanple](https://github.com/terachanple)
 
 [logo]: /arts/logo.jpg
