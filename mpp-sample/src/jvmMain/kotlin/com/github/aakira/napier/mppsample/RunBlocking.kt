@@ -1,4 +1,4 @@
-package com.github.aakira.napier
+package com.github.aakira.napier.mppsample
 
 import kotlinx.coroutines.runBlocking
 

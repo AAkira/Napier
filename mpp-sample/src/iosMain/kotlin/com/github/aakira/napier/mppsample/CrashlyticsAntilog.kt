@@ -1,4 +1,7 @@
-package com.github.aakira.napier
+package com.github.aakira.napier.mppsample
+
+import com.github.aakira.napier.Antilog
+import com.github.aakira.napier.Napier
 
 class CrashlyticsAntilog(
     private val crashlyticsAddLog: (priority: Int, tag: String?, message: String?) -> Unit,

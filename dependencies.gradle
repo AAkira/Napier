@@ -8,7 +8,7 @@ ext {
     mobileVersionName = "1.0.0"
     compileSdkVersion = 28
     buildToolsVersion = "28.0.3"
-    minSdkVersion = 21
+    minSdkVersion = 14
     instantAppMinSdkVersion = 23
     targetSdkVersion = 28
 
