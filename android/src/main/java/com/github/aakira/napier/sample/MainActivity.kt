@@ -2,7 +2,7 @@ package com.github.aakira.napier.sample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.github.aakira.napier.Sample
+import com.github.aakira.napier.mppsample.Sample
 import kotlinx.android.synthetic.main.activity_main.textView
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

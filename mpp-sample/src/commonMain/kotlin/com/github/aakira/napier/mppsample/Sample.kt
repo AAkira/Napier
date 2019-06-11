@@ -1,5 +1,6 @@
-package com.github.aakira.napier
+package com.github.aakira.napier.mppsample
 
+import com.github.aakira.napier.Napier
 import kotlinx.coroutines.delay
 
 class Sample {
