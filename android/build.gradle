@@ -21,6 +21,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        pickFirst 'META-INF/kotlinx-coroutines-core.kotlin_module'
+    }
 }
 
 repositories {
