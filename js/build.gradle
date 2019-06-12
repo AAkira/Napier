@@ -2,8 +2,8 @@ apply plugin: 'kotlin2js'
 apply plugin: 'org.jetbrains.kotlin.frontend'
 
 dependencies {
-    compile project(':napier')
-    compile project(':mpp-sample')
+    implementation project(':napier')
+    implementation project(':mpp-sample')
 
     implementation rootProject.ext.kotlinJs
     implementation rootProject.ext.coroutineJs
