@@ -6,11 +6,15 @@ kotlin {
     // ios
     if (project.findProperty("device")?.toBoolean() ?: false) {
         iosArm64('ios') {
-            compilations.main.outputKinds('FRAMEWORK')
+            binaries {
+                framework()
+            }
         }
     } else {
         iosX64('ios') {
-            compilations.main.outputKinds('FRAMEWORK')
+            binaries {
+                framework()
+            }
         }
     }
     js()
@@ -46,20 +50,19 @@ kotlin {
 }
 
 // ios task
-task packForXcode(type: Sync) {
-    final File frameworkDir = new File(buildDir, "xcode-frameworks")
-    final String mode = project.findProperty("XCODE_CONFIGURATION")?.toUpperCase() ?: 'DEBUG'
+task packForXcode {
+    def buildType = project.findProperty("kotlin.build.type") ?: "DEBUG"
+    def target = project.findProperty("kotlin.target") ?: "ios"
+    def framework = kotlin.targets."$target".compilations.main.target.binaries.findFramework("", buildType)
 
-    inputs.property "mode", mode
-    dependsOn kotlin.targets.ios.compilations.main.linkTaskName("FRAMEWORK", mode)
-
-    from { kotlin.targets.ios.compilations.main.getBinary("FRAMEWORK", mode).parentFile }
-    into frameworkDir
+    dependsOn framework.linkTask
 
     doLast {
-        new File(frameworkDir, 'gradlew').with {
-            text = "#!/bin/bash\nexport 'JAVA_HOME=${System.getProperty("java.home")}'\ncd '${rootProject.rootDir}'\n./gradlew \$@\n"
-            setExecutable(true)
+        copy {
+            from framework.outputFile.parent
+            into framework.outputFile.parentFile
+            include 'data.framework/**'
+            include 'data.framework.dSYM'
         }
     }
 }

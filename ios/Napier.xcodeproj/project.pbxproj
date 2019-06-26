@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DD4DF7722C36B2900A54D8C /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD4DF7622C36B2900A54D8C /* main.framework */; };
+		3DD4DF7822C36B2900A54D8C /* main.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD4DF7622C36B2900A54D8C /* main.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5E2D8E842927CB58BF2EA78D /* Pods_Napier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F04C58F0FFE9D1C0919C0A0 /* Pods_Napier.framework */; };
-		7C20D0CF22147D5700A752BC /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20D0CE22147D5700A752BC /* main.framework */; };
-		7C20D0D022147D5700A752BC /* main.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7C20D0CE22147D5700A752BC /* main.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7CFB659A22013CF600BD05FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB659922013CF600BD05FC /* AppDelegate.swift */; };
 		7CFB659C22013CF600BD05FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB659B22013CF600BD05FC /* ViewController.swift */; };
 		7CFB659F22013CF600BD05FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CFB659D22013CF600BD05FC /* Main.storyboard */; };
@@ -24,7 +24,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7C20D0D022147D5700A752BC /* main.framework in Embed Frameworks */,
+				3DD4DF7822C36B2900A54D8C /* main.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -33,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		25B588FDCCF04338B7F69615 /* Pods-Napier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napier.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Napier/Pods-Napier.debug.xcconfig"; sourceTree = "<group>"; };
+		3DD4DF7622C36B2900A54D8C /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "../mpp-sample/build/bin/ios/mainDebugFramework/main.framework"; sourceTree = "<group>"; };
 		7C20D0CE22147D5700A752BC /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "../mpp-sample/build/xcode-frameworks/main.framework"; sourceTree = "<group>"; };
 		7C4D387022152BC1004168BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7CFB659622013CF500BD05FC /* Napier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Napier.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C20D0CF22147D5700A752BC /* main.framework in Frameworks */,
+				3DD4DF7722C36B2900A54D8C /* main.framework in Frameworks */,
 				5E2D8E842927CB58BF2EA78D /* Pods_Napier.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				7C20D0CE22147D5700A752BC /* main.framework */,
+				3DD4DF7622C36B2900A54D8C /* main.framework */,
 				7CFB659822013CF500BD05FC /* Napier */,
 				7CFB659722013CF500BD05FC /* Products */,
 				A702DACF8B30A7D6F8998745 /* Pods */,
