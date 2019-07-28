@@ -190,7 +190,7 @@ NapierProxyKt.debugBuild()
 ### Clear antilog
 
 ```kotlin
-Napier.takeLogalitm()
+Napier.takeLogarithm()
 ```
 
 ## Log level
