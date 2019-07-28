@@ -90,14 +90,14 @@ object Napier {
     /**
      * Remove antilog from the base array.
      */
-    fun takeLogalitm(antilog: Antilog) {
+    fun takeLogarithm(antilog: Antilog) {
         baseArray.remove(antilog)
     }
 
     /**
      * Clear all antilogs from the base array.
      */
-    fun takeLogalitm() {
+    fun takeLogarithm() {
         baseArray.clear()
     }
 }
