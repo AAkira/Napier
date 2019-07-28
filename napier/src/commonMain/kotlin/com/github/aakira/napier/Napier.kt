@@ -20,7 +20,7 @@ object Napier {
         baseArray.add(antilog)
     }
 
-    fun isEnable(priority: Napier.Level, tag: String?) = baseArray.any { it.isEnable(priority, tag) }
+    fun isEnable(priority: Level, tag: String?) = baseArray.any { it.isEnable(priority, tag) }
 
     @PublishedApi
     internal fun rawLog(priority: Level, tag: String?, throwable: Throwable?, message: String?) {
@@ -31,7 +31,7 @@ object Napier {
         log(Level.VERBOSE, tag, throwable, message)
     }
 
-    fun v(message: ()->String, throwable: Throwable? = null, tag: String? = null) {
+    fun v(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
         log(Level.VERBOSE, tag, throwable, message)
     }
 
@@ -39,7 +39,7 @@ object Napier {
         log(Level.INFO, tag, throwable, message)
     }
 
-    fun i(message: ()->String, throwable: Throwable? = null, tag: String? = null) {
+    fun i(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
         log(Level.INFO, tag, throwable, message)
     }
 
@@ -47,7 +47,7 @@ object Napier {
         log(Level.DEBUG, tag, throwable, message)
     }
 
-    fun d(message: ()->String, throwable: Throwable? = null, tag: String? = null) {
+    fun d(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
         log(Level.DEBUG, tag, throwable, message)
     }
 
@@ -55,7 +55,7 @@ object Napier {
         log(Level.WARNING, tag, throwable, message)
     }
 
-    fun w(message: ()->String, throwable: Throwable? = null, tag: String? = null) {
+    fun w(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
         log(Level.WARNING, tag, throwable, message)
     }
 
@@ -63,7 +63,7 @@ object Napier {
         log(Level.ERROR, tag, throwable, message)
     }
 
-    fun e(message: ()->String, throwable: Throwable? = null, tag: String? = null) {
+    fun e(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
         log(Level.ERROR, tag, throwable, message)
     }
 
@@ -71,7 +71,7 @@ object Napier {
         log(Level.ASSERT, tag, throwable, message)
     }
 
-    fun wtf(message: ()->String, throwable: Throwable? = null, tag: String? = null) {
+    fun wtf(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
         log(Level.ASSERT, tag, throwable, message)
     }
 
@@ -81,10 +81,23 @@ object Napier {
         }
     }
 
-    fun log(priority: Level, tag: String? = null, throwable: Throwable? = null, message: ()->String) {
+    fun log(priority: Level, tag: String? = null, throwable: Throwable? = null, message: () -> String) {
         if (isEnable(priority, tag)) {
             rawLog(priority, tag, throwable, message())
         }
     }
-}
 
+    /**
+     * Remove antilog from the base array.
+     */
+    fun takeLogalitm(antilog: Antilog) {
+        baseArray.remove(antilog)
+    }
+
+    /**
+     * Clear all antilogs from the base array.
+     */
+    fun takeLogalitm() {
+        baseArray.clear()
+    }
+}

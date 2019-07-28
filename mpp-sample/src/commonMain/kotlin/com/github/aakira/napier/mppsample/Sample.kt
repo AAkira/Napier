@@ -15,9 +15,7 @@ class Sample {
     suspend fun suspendHello(): String {
         Napier.i("Hello")
 
-        runBlocking {
-            delay(3000L)
-        }
+        delay(3000L)
 
         Napier.w("Napier!")
 
@@ -27,7 +25,7 @@ class Sample {
     fun handleError() {
         try {
             throw Exception("throw error")
-        } catch(e: Exception) {
+        } catch (e: Exception) {
             Napier.e("Napier Error", e)
         }
     }
