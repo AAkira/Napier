@@ -40,9 +40,7 @@ class Sample {
     suspend fun suspendHello(): String {
         Napier.i("Hello")
 
-        runBlocking {
-            delay(3000L)
-        }
+        delay(3000L)
 
         Napier.w("Napier!")
 
@@ -104,6 +102,9 @@ uses the `print`
 ```gradle
 dependencies {
     implementation "com.github.aakira:napier-ios:$napierVersion"
+    // arm
+    implementation 'com.github.aakira:napier-iosArm32:$napierVersion'
+    implementation 'com.github.aakira:napier-iosArm64:$napierVersion'
 }
 ```
 
@@ -184,6 +185,12 @@ fun debugBuild() {
 
 ```swift
 NapierProxyKt.debugBuild()
+```
+
+### Clear antilog
+
+```kotlin
+Napier.takeLogalitm()
 ```
 
 ## Log level
