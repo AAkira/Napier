@@ -15,12 +15,13 @@ private extension ViewController {
         label.textAlignment = .center
         label.font = label.font.withSize(25)
         
-        label.text = Sample().hello()
+        let sample = Sample()
+        label.text = sample.hello()
         
         view.addSubview(label)
         
-        Sample().suspendHelloKt()
+        sample.suspendHelloKt()
         
-        Sample().handleError()
+        sample.handleError()
     }
 }
