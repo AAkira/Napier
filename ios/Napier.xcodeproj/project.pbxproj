@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3DD4DF7722C36B2900A54D8C /* main.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD4DF7622C36B2900A54D8C /* main.framework */; };
-		3DD4DF7822C36B2900A54D8C /* main.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD4DF7622C36B2900A54D8C /* main.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5E2D8E842927CB58BF2EA78D /* Pods_Napier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F04C58F0FFE9D1C0919C0A0 /* Pods_Napier.framework */; };
+		3DCFA34A231D677B00C2CB83 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DCFA349231D677B00C2CB83 /* Common.framework */; };
+		3DCFA34B231D677B00C2CB83 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3DCFA349231D677B00C2CB83 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7CFB659A22013CF600BD05FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB659922013CF600BD05FC /* AppDelegate.swift */; };
 		7CFB659C22013CF600BD05FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB659B22013CF600BD05FC /* ViewController.swift */; };
 		7CFB659F22013CF600BD05FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CFB659D22013CF600BD05FC /* Main.storyboard */; };
 		7CFB65A122013CF900BD05FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CFB65A022013CF900BD05FC /* Assets.xcassets */; };
 		7CFB65A422013CF900BD05FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CFB65A222013CF900BD05FC /* LaunchScreen.storyboard */; };
+		BF2AD91FBE5AAB2210C29E3F /* Pods_Napier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58AED1592EB97D23885C7094 /* Pods_Napier.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3DD4DF7822C36B2900A54D8C /* main.framework in Embed Frameworks */,
+				3DCFA34B231D677B00C2CB83 /* Common.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -32,9 +32,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		25B588FDCCF04338B7F69615 /* Pods-Napier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napier.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Napier/Pods-Napier.debug.xcconfig"; sourceTree = "<group>"; };
-		3DD4DF7622C36B2900A54D8C /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "../mpp-sample/build/bin/ios/mainDebugFramework/main.framework"; sourceTree = "<group>"; };
-		7C20D0CE22147D5700A752BC /* main.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = main.framework; path = "../mpp-sample/build/xcode-frameworks/main.framework"; sourceTree = "<group>"; };
+		3DCFA349231D677B00C2CB83 /* Common.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Common.framework; path = "../mpp-sample/build/bin/ios/CommonDebugFramework/Common.framework"; sourceTree = "<group>"; };
+		58AED1592EB97D23885C7094 /* Pods_Napier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Napier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C4D387022152BC1004168BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7CFB659622013CF500BD05FC /* Napier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Napier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CFB659922013CF600BD05FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,12 +42,8 @@
 		7CFB65A022013CF900BD05FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CFB65A322013CF900BD05FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CFB65A522013CF900BD05FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F04C58F0FFE9D1C0919C0A0 /* Pods_Napier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Napier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8950A4230313AF67477F19C8 /* Pods-NapierTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NapierTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NapierTests/Pods-NapierTests.release.xcconfig"; sourceTree = "<group>"; };
-		94B939345CE5063FF6AABD92 /* Pods-NapierTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NapierTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NapierTests/Pods-NapierTests.debug.xcconfig"; sourceTree = "<group>"; };
-		BDA7A1E9EE3D61660CF79CAC /* Pods-Napier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napier.release.xcconfig"; path = "Pods/Target Support Files/Pods-Napier/Pods-Napier.release.xcconfig"; sourceTree = "<group>"; };
-		C305A5C4A55514AF60C7EA17 /* Pods_NapierUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NapierUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E605E347538CB82FEE5793F8 /* Pods_NapierTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NapierTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D61A7F9770E1448993A16742 /* Pods-Napier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napier.release.xcconfig"; path = "Target Support Files/Pods-Napier/Pods-Napier.release.xcconfig"; sourceTree = "<group>"; };
+		F981658ED982148E55B756CD /* Pods-Napier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napier.debug.xcconfig"; path = "Target Support Files/Pods-Napier/Pods-Napier.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,33 +51,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DD4DF7722C36B2900A54D8C /* main.framework in Frameworks */,
-				5E2D8E842927CB58BF2EA78D /* Pods_Napier.framework in Frameworks */,
+				BF2AD91FBE5AAB2210C29E3F /* Pods_Napier.framework in Frameworks */,
+				3DCFA34A231D677B00C2CB83 /* Common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		19180EB16BBCC417CE6AF105 /* Frameworks */ = {
+		022CFAFC3CF1BE7D2DE9C3FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7F04C58F0FFE9D1C0919C0A0 /* Pods_Napier.framework */,
-				E605E347538CB82FEE5793F8 /* Pods_NapierTests.framework */,
-				C305A5C4A55514AF60C7EA17 /* Pods_NapierUITests.framework */,
+				58AED1592EB97D23885C7094 /* Pods_Napier.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		10E92F91406E001698737DB9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F981658ED982148E55B756CD /* Pods-Napier.debug.xcconfig */,
+				D61A7F9770E1448993A16742 /* Pods-Napier.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		7CFB658D22013CF500BD05FC = {
 			isa = PBXGroup;
 			children = (
-				7C20D0CE22147D5700A752BC /* main.framework */,
-				3DD4DF7622C36B2900A54D8C /* main.framework */,
+				3DCFA349231D677B00C2CB83 /* Common.framework */,
 				7CFB659822013CF500BD05FC /* Napier */,
 				7CFB659722013CF500BD05FC /* Products */,
-				A702DACF8B30A7D6F8998745 /* Pods */,
-				19180EB16BBCC417CE6AF105 /* Frameworks */,
+				10E92F91406E001698737DB9 /* Pods */,
+				022CFAFC3CF1BE7D2DE9C3FB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,17 +109,6 @@
 			path = Napier;
 			sourceTree = "<group>";
 		};
-		A702DACF8B30A7D6F8998745 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				25B588FDCCF04338B7F69615 /* Pods-Napier.debug.xcconfig */,
-				BDA7A1E9EE3D61660CF79CAC /* Pods-Napier.release.xcconfig */,
-				94B939345CE5063FF6AABD92 /* Pods-NapierTests.debug.xcconfig */,
-				8950A4230313AF67477F19C8 /* Pods-NapierTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,14 +116,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CFB65BE22013CF900BD05FC /* Build configuration list for PBXNativeTarget "Napier" */;
 			buildPhases = (
-				C80556FC33414EE11D6BFA62 /* [CP] Check Pods Manifest.lock */,
+				CEA005C3CA48429622CB1649 /* [CP] Check Pods Manifest.lock */,
 				7CFB65CB22013DC300BD05FC /* Kotlin/Native */,
 				7CFB659222013CF500BD05FC /* Sources */,
 				7CFB659322013CF500BD05FC /* Frameworks */,
 				7CFB659422013CF500BD05FC /* Resources */,
 				7CFB65CA22013D5200BD05FC /* Embed Frameworks */,
-				8A3A2104923D63393CBB4AEC /* [CP] Embed Pods Frameworks */,
 				7C44D7BC221548AD002EEF8F /* Crashlytics */,
+				7196B5FCD8247707AAB55298 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -191,6 +181,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7196B5FCD8247707AAB55298 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Napier/Pods-Napier-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Napier/Pods-Napier-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7C44D7BC221548AD002EEF8F /* Crashlytics */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -228,31 +242,7 @@
 			shellPath = /bin/sh;
 			shellScript = "cd $SRCROOT/..\n./gradlew :mpp-sample:packForXcode -PXCODE_CONFIGURATION=${CONFIGURATION}\n";
 		};
-		8A3A2104923D63393CBB4AEC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Napier/Pods-Napier-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Napier/Pods-Napier-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C80556FC33414EE11D6BFA62 /* [CP] Check Pods Manifest.lock */ = {
+		CEA005C3CA48429622CB1649 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -426,14 +416,14 @@
 		};
 		7CFB65BF22013CF900BD05FC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 25B588FDCCF04338B7F69615 /* Pods-Napier.debug.xcconfig */;
+			baseConfigurationReference = F981658ED982148E55B756CD /* Pods-Napier.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$SRCROOT/../mpp-sample/build/xcode-frameworks",
+					"$SRCROOT/../mpp-sample/build/bin/ios/CommonDebugFramework",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Napier/Info.plist;
@@ -450,13 +440,13 @@
 		};
 		7CFB65C022013CF900BD05FC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BDA7A1E9EE3D61660CF79CAC /* Pods-Napier.release.xcconfig */;
+			baseConfigurationReference = D61A7F9770E1448993A16742 /* Pods-Napier.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$SRCROOT/../mpp-sample/build/xcode-frameworks",
+					"$SRCROOT/../mpp-sample/build/bin/ios/CommonReleaseFramework",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Napier/Info.plist;

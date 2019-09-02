@@ -4,7 +4,7 @@ import platform.Foundation.NSDate
 import platform.Foundation.NSDateFormatter
 import platform.Foundation.NSThread
 
-private const val CALL_STACK_INDEX = 11
+private const val CALL_STACK_INDEX = 8
 
 class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
 
@@ -61,6 +61,8 @@ class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
         tag = tag.substringBeforeLast('$')
         tag = tag.substringBeforeLast('(')
         tag = tag.substring(tag.lastIndexOf(".", tag.lastIndexOf(".") - 1) + 1)
+        tag = tag.replace("$", "")
+        tag = tag.replace("COROUTINE", "")
         return tag
     }
 }

@@ -2,7 +2,7 @@ import UIKit
 import Crashlytics
 import Fabric
 import Firebase
-import main
+import Common
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

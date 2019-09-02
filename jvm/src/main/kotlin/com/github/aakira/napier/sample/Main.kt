@@ -2,20 +2,21 @@ package com.github.aakira.napier.sample
 
 import com.github.aakira.napier.DebugAntilog
 import com.github.aakira.napier.Napier
-import com.github.aakira.napier.Sample
+import com.github.aakira.napier.mppsample.Sample
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 fun main() {
     Napier.base(DebugAntilog())
 
-    Sample().hello()
+    val sample = Sample()
+    sample.hello()
 
     GlobalScope.launch {
-        Sample().suspendHello()
+        sample.suspendHello()
     }
 
-    Sample().handleError()
+    sample.handleError()
 
     Thread.sleep(5000)
 }
