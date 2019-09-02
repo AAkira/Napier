@@ -1,5 +1,5 @@
 import UIKit
-import main
+import Common
 
 final class ViewController: UIViewController {
     override func viewDidLoad() {
