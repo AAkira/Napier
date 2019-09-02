@@ -9,13 +9,14 @@ import kotlinx.coroutines.launch
 fun main() {
     Napier.base(DebugAntilog())
 
-    Sample().hello()
+    val sample = Sample()
+    sample.hello()
 
     GlobalScope.launch {
-        Sample().suspendHello()
+        sample.suspendHello()
     }
 
-    Sample().handleError()
+    sample.handleError()
 
     Thread.sleep(5000)
 }
