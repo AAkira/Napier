@@ -1,5 +1,6 @@
-apply plugin: 'kotlin2js'
-apply plugin: 'org.jetbrains.kotlin.frontend'
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
+
+apply plugin: 'org.jetbrains.kotlin.js'
 
 dependencies {
     implementation project(':napier')
@@ -9,32 +10,23 @@ dependencies {
     implementation rootProject.ext.coroutineJs
 }
 
-def outputDir = "${projectDir}/web"
-
-compileKotlin2Js {
-    kotlinOptions.metaInfo = true
-    kotlinOptions.sourceMap = true
-    kotlinOptions.suppressWarnings = true
-    kotlinOptions.verbose = true
-    kotlinOptions.main = "call"
-    kotlinOptions.moduleKind = "umd"
-}
-
-
-kotlinFrontend {
-    downloadNodeJsVersion = "latest"
-
-    webpackBundle {
-        bundleName = "main"
-        sourceMapEnabled = true
-        contentPath = file('src/main/web')
-        publicPath = "/"
-        port = 8090
-        proxyUrl = ""
-        stats = "errors-only" // log level
+kotlin {
+    target {
+        browser {
+            // execute :js:browserRun to launch dev server
+            runTask {
+                devServer = new KotlinWebpackConfig.DevServer(
+                        true, false, true, true, false,
+                        8080,
+                        null,
+                        ["${projectDir}/src/main/resources".toString()]
+                )
+                archiveFileName = 'main.js'
+            }
+            // execute :js:browserWebpack to build webpack bundle in `./build/distributions`
+            webpackTask {
+                archiveFileName = 'main.js'
+            }
+        }
     }
-}
-
-clean.doFirst() {
-    delete "$outputDir"
 }

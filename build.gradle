@@ -19,9 +19,6 @@ buildscript {
         // for crashlytics sample
         classpath 'io.fabric.tools:gradle:1.27.1'
         classpath 'com.google.gms:google-services:4.2.0'
-
-        // for js
-        classpath "org.jetbrains.kotlin:kotlin-frontend-plugin:0.0.45"
     }
 }
 
