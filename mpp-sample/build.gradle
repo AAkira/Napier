@@ -83,13 +83,6 @@ task packForXcode {
 
 tasks.build.dependsOn packForXcode
 
-// js task
-[compileKotlinJs, compileTestKotlinJs].each { config ->
-    config.kotlinOptions {
-        moduleKind = "umd"
-    }
-}
-
 task packForJs(type: Copy, dependsOn: compileKotlinJs) {
     from compileKotlinJs.destinationDir
 
