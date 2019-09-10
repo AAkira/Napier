@@ -14,7 +14,8 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // for upload bintray plugin
-        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4"
+        // There is a bug which is not included module files.
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4-jetbrains-5"
 
         // for crashlytics sample
         classpath 'io.fabric.tools:gradle:1.27.1'

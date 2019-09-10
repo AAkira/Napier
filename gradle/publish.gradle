@@ -56,31 +56,60 @@ bintray {
     }
 }
 
-afterEvaluate {
-    project.publishing.publications.all {
-        pom.withXml {
-            def root = asNode()
-            root.appendNode('name', project.name)
-            root.appendNode('description', POM_DESCRIPTION)
-            root.appendNode('url', SITE_URL)
-            root.children().last() + pomConfig
-        }
+def isMultiplatform = project.name == "napier"
 
-        // rename artifacts
-        groupId = BINTRAY_PACKAGE
-        if (it.name.contains('metadata')) {
-            artifactId = "${project.name}" // metadata is common module. ignore suffix
+afterEvaluate {
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        if (isMultiplatform) {
+            from kotlin.sourceSets.commonMain.kotlin
         } else {
-            artifactId = "${project.name}-$name"
+            from sourceSets.main.allSource
+        }
+    }
+}
+
+task javadocJar(type: Jar) {
+    archiveClassifier = 'javadoc'
+}
+
+afterEvaluate {
+    publishing {
+        def projectName = project.name
+
+        publications.all {
+            artifactId projectName
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('name', projectName)
+                root.appendNode('description', POM_DESCRIPTION)
+                root.appendNode('url', SITE_URL)
+                root.children().last() + pomConfig
+            }
+
+            // rename artifacts
+            groupId = BINTRAY_PACKAGE
+            if (name == 'kotlinMultiplatform') {
+                // native includes all artifacts info
+                artifactId = "$projectName-ios"
+                artifact sourcesJar
+            } else if (name == 'metadata') {
+                // common module
+                artifactId = "$projectName"
+            } else {
+                artifactId = "$projectName-$name"
+            }
+            // disable metadata everywhere, but in ios modules
+            if (!it.name.contains('ios')) {
+                moduleDescriptorGenerator = null
+            }
         }
     }
 }
 
 bintrayUpload.doFirst {
-    publications = publishing.publications.collect {
+    publications = project.publishing.publications.findAll { !it.name.contains('-test') }.collect {
         it.name
-    }.findAll {
-        it != "kotlinMultiplatform"
     }
 }
 
