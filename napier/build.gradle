@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
+
 apply plugin: 'kotlin-multiplatform'
 apply from: 'android.gradle'
 
@@ -22,7 +24,17 @@ kotlin {
             framework()
         }
     }
-    js()
+    js() {
+        browser()
+        nodejs()
+        compilations.all {
+            tasks.withType(Kotlin2JsCompile) {
+                kotlinOptions {
+                    moduleKind = 'umd'
+                }
+            }
+        }
+    }
     jvm()
 
     sourceSets {
@@ -91,10 +103,4 @@ kotlin {
 // workaround for https://youtrack.jetbrains.com/issue/KT-27170
 configurations {
     compileClasspath
-}
-
-[compileKotlinJs, compileTestKotlinJs]*.configure {
-    kotlinOptions {
-        moduleKind = "umd"
-    }
 }
