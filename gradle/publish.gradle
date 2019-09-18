@@ -100,7 +100,7 @@ afterEvaluate {
                 artifactId = "$projectName-$name"
             }
             // disable metadata everywhere, but in ios modules
-            if (!it.name.contains('ios')) {
+            if (!it.name.contains('ios') && it.name != 'kotlinMultiplatform') {
                 moduleDescriptorGenerator = null
             }
         }
