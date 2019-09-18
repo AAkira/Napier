@@ -101,7 +101,11 @@ uses the `print`
 
 ```gradle
 dependencies {
+    // include x64, arm64, arm32
     implementation "com.github.aakira:napier-ios:$napierVersion"
+    
+    // x64
+    implementation 'com.github.aakira:napier-iosX64:$napierVersion'
     // arm
     implementation 'com.github.aakira:napier-iosArm32:$napierVersion'
     implementation 'com.github.aakira:napier-iosArm64:$napierVersion'

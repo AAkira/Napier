@@ -1,7 +1,7 @@
 ext {
     // This library version
-    LIBRARY_VERSION_CODE = 8
-    LIBRARY_VERSION_NAME = "0.0.8"
+    LIBRARY_VERSION_CODE = 9
+    LIBRARY_VERSION_NAME = "1.0.0"
 
     // android
     mobileVersionCode = 1

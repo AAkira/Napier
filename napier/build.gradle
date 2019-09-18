@@ -9,9 +9,21 @@ kotlin {
     android {
         publishLibraryVariants("release")
     }
-    iosX64('ios')
-    iosArm32('iosArm32')
-    iosArm64('iosArm64')
+    iosX64 {
+        binaries {
+            framework()
+        }
+    }
+    iosArm32 {
+        binaries {
+            framework()
+        }
+    }
+    iosArm64 {
+        binaries {
+            framework()
+        }
+    }
     js() {
         browser()
         nodejs()
@@ -57,10 +69,12 @@ kotlin {
                 implementation rootProject.ext.coroutineNative
             }
         }
-        iosArm32Main.dependsOn iosMain
-        iosArm32Test.dependsOn iosTest
-        iosArm64Main.dependsOn iosMain
-        iosArm64Test.dependsOn iosTest
+        configure([iosX64Main, iosArm64Main, iosArm32Main]) {
+            dependsOn iosMain
+        }
+        configure([iosX64Test, iosArm64Test, iosArm32Test]) {
+            dependsOn iosTest
+        }
         jsMain {
             dependencies {
                 implementation rootProject.ext.kotlinJs
