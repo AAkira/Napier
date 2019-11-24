@@ -21,11 +21,11 @@ kotlin {
                         null,
                         ["${projectDir}/src/main/resources".toString()]
                 )
-                archiveFileName = 'main.js'
+                outputFileName = 'main.js'
             }
             // execute :js:browserWebpack to build webpack bundle in `./build/distributions`
             webpackTask {
-                archiveFileName = 'main.js'
+                outputFileName = 'main.js'
             }
         }
     }
