@@ -1,3 +1,6 @@
+import dependencies.Dep
+import dependencies.Versions
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -6,14 +9,14 @@ apply plugin: 'io.fabric'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion Versions.compileSdkVersion
+    buildToolsVersion Versions.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.mobileVersionCode as int
-        versionName rootProject.ext.mobileVersionName
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode Versions.androidVersionCode
+        versionName Versions.androidVersionName
     }
     buildTypes {
         release {
@@ -36,13 +39,13 @@ dependencies {
     // write the below in your project, instead of above
     // implementation "com.github.aakira:napier-android:[version name]"
 
-    implementation rootProject.ext.kotlinJvm
-    implementation rootProject.ext.coroutineAndroid
+    implementation Dep.Kotlin.jvm
+    implementation Dep.Coroutines.android
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
+    implementation Dep.Android.appCompat
+    implementation Dep.Android.constraintLayout
 
     // for crashlytics sample
-    implementation 'com.google.firebase:firebase-core:17.2.3'
-    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
+    implementation Dep.Firebase.core
+    implementation Dep.Firebase.crashlytics
 }

@@ -1,15 +1,18 @@
+import dependencies.Dep
+import dependencies.Versions
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion Versions.compileSdkVersion
+    buildToolsVersion Versions.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.mobileVersionCode as int
-        versionName rootProject.ext.mobileVersionName
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdkVersion
+        versionCode Versions.androidVersionCode
+        versionName Versions.androidVersionName
     }
 
     sourceSets.each {
@@ -22,6 +25,6 @@ android {
 }
 
 dependencies {
-    implementation rootProject.ext.kotlinJvm
-    implementation rootProject.ext.coroutine
+    implementation Dep.Kotlin.jvm
+    implementation Dep.Coroutines.core
 }

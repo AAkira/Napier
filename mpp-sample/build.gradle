@@ -1,3 +1,4 @@
+import dependencies.Dep
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 apply plugin: 'kotlin-multiplatform'
@@ -36,27 +37,27 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation rootProject.ext.kotlinCommon
-                implementation rootProject.ext.coroutineCommon
+                implementation Dep.Kotlin.common
+                implementation Dep.Coroutines.common
 
                 implementation project(':napier')
             }
         }
         iosMain {
             dependencies {
-                implementation rootProject.ext.coroutineNative
+                implementation Dep.Coroutines.native
             }
         }
         jsMain {
             dependencies {
-                implementation rootProject.ext.kotlinJs
-                implementation rootProject.ext.coroutineJs
+                implementation Dep.Kotlin.js
+                implementation Dep.Coroutines.js
             }
         }
         jvmMain {
             dependencies {
-                implementation rootProject.ext.kotlinJvm
-                implementation rootProject.ext.coroutine
+                implementation Dep.Kotlin.jvm
+                implementation Dep.Coroutines.core
             }
         }
     }

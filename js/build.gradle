@@ -1,3 +1,4 @@
+import dependencies.Dep
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 apply plugin: 'org.jetbrains.kotlin.js'
@@ -6,8 +7,8 @@ dependencies {
     implementation project(':napier')
     implementation project(':mpp-sample')
 
-    implementation rootProject.ext.kotlinJs
-    implementation rootProject.ext.coroutineJs
+    implementation Dep.Kotlin.js
+    implementation Dep.Coroutines.js
 }
 
 kotlin {

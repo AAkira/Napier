@@ -1,3 +1,4 @@
+import dependencies.Dep
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
 apply plugin: 'kotlin-multiplatform'
@@ -40,15 +41,15 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation rootProject.ext.kotlinCommon
+                implementation Dep.Kotlin.common
             }
         }
         commonTest {
             dependencies {
-                implementation rootProject.ext.coroutineCommon
+                implementation Dep.Coroutines.common
 
-                implementation rootProject.ext.kotlinTest
-                implementation rootProject.ext.kotlinTestAnnotation
+                implementation Dep.Test.common
+                implementation Dep.Test.annotation
             }
         }
         androidMain {
@@ -57,7 +58,7 @@ kotlin {
         }
         androidTest {
             dependencies {
-                implementation rootProject.ext.kotlinTestJvm
+                implementation Dep.Test.jvm
             }
         }
         iosMain {
@@ -66,7 +67,7 @@ kotlin {
         }
         iosTest {
             dependencies {
-                implementation rootProject.ext.coroutineNative
+                implementation Dep.Coroutines.native
             }
         }
         configure([iosX64Main, iosArm64Main, iosArm32Main]) {
@@ -77,24 +78,24 @@ kotlin {
         }
         jsMain {
             dependencies {
-                implementation rootProject.ext.kotlinJs
+                implementation Dep.Kotlin.js
             }
         }
         jsTest {
             dependencies {
-                implementation rootProject.ext.coroutineJs
+                implementation Dep.Coroutines.js
             }
         }
         jvmMain {
             dependencies {
-                implementation rootProject.ext.kotlinJvm
+                implementation Dep.Kotlin.jvm
             }
         }
         jvmTest {
             dependencies {
-                implementation rootProject.ext.coroutine
+                implementation Dep.Coroutines.core
 
-                implementation rootProject.ext.kotlinTestJvm
+                implementation Dep.Test.jvm
             }
         }
     }
