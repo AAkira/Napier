@@ -71,7 +71,7 @@ class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
         }
     }
 
-    private fun createStackElementTag(className: String): String {
+    internal fun createStackElementTag(className: String): String {
         var tag = className
         val m = anonymousClass.matcher(tag)
         if (m.find()) {
@@ -96,11 +96,11 @@ class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
         }
 
     private fun Napier.Level.toValue() = when (this) {
-        Napier.Level.VERBOSE -> android.util.Log.VERBOSE
-        Napier.Level.DEBUG -> android.util.Log.DEBUG
-        Napier.Level.INFO -> android.util.Log.INFO
-        Napier.Level.WARNING -> android.util.Log.WARN
-        Napier.Level.ERROR -> android.util.Log.ERROR
-        Napier.Level.ASSERT -> android.util.Log.ASSERT
+        Napier.Level.VERBOSE -> Log.VERBOSE
+        Napier.Level.DEBUG -> Log.DEBUG
+        Napier.Level.INFO -> Log.INFO
+        Napier.Level.WARNING -> Log.WARN
+        Napier.Level.ERROR -> Log.ERROR
+        Napier.Level.ASSERT -> Log.ASSERT
     }
 }

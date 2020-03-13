@@ -1,28 +1,18 @@
 package com.github.aakira.napier
 
-import org.junit.Before
 import org.junit.Test
-import java.lang.reflect.Method
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 
-
-class NapierTest {
-
-    val debugAntilog = DebugAntilog()
-
-    @Before
-    fun init() {
-        Napier.base(debugAntilog)
-    }
+class NapierAndroidTest {
 
     @Test
-    fun createStackElementTag() {
-        val method: Method = debugAntilog.javaClass.getDeclaredMethod("createStackElementTag", String::class.java)
-        method.isAccessible = true
+    fun `Check createStackElementTag`() {
+        val debugAntilog = DebugAntilog()
 
-        assertEquals("Hoge", method.invoke(debugAntilog, "com.github.aakira.napier.Hoge") as String)
-        assertEquals("Hoge2", method.invoke(debugAntilog, "AA\$com.github.aakira.napier.Hoge2") as String)
-        assertNotEquals("default", method.invoke(debugAntilog, "com.github.aakira.napier.Hoge3\$default") as String)
+        assertEquals("Hoge", debugAntilog.createStackElementTag("com.github.aakira.napier.Hoge"))
+        assertEquals("Hoge2", debugAntilog.createStackElementTag("AA\$com.github.aakira.napier.Hoge2"))
+        assertEquals("Hoge3\$default", debugAntilog.createStackElementTag("com.github.aakira.napier.Hoge3\$default"))
+        assertNotEquals("default", debugAntilog.createStackElementTag("com.github.aakira.napier.Hoge3\$default"))
     }
 }
