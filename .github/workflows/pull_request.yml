@@ -15,11 +15,6 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-      - name: Cache intellij download
-        uses: actions/cache@v1
-        with:
-          path: lib/download
-          key: intellij-${{ hashFiles('gradle/dependencies.gradle') }}
       - name: "Setup Java"
         uses: actions/setup-java@v1
         with:
