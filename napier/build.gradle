@@ -84,6 +84,7 @@ kotlin {
         jsTest {
             dependencies {
                 implementation Dep.Coroutines.js
+                implementation Dep.Test.js
             }
         }
         jvmMain {

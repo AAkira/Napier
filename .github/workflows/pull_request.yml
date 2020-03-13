@@ -1,0 +1,40 @@
+name: CI
+
+on: [pull_request]
+ 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+      - name: Cache gradle
+        uses: actions/cache@v1
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: "Setup Java"
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+         
+      - name: Run common tests
+        run: ./gradlew :napier:test --stacktrace
+      - name: Run android tests
+        run: ./gradlew :napier:testReleaseUnitTest --stacktrace
+      - name: Run ios tests
+        run: ./gradlew :napier:iosX64Test --stacktrace
+      - name: Run jvm tests
+        run: ./gradlew :napier:jvmTest --stacktrace
+
+      - name: Bundle the build report
+        if: failure()
+        run: find . -type d -name 'reports' | zip -@ -r build-reports.zip
+      - name: Upload the build report
+        if: failure()
+        uses: actions/upload-artifact@master
+        with:
+          name: error-report
+          path: build-reports.zip

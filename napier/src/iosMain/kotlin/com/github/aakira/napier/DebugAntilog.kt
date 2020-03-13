@@ -56,7 +56,7 @@ class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
         }
     }
 
-    private fun createStackElementTag(string: String): String {
+    internal fun createStackElementTag(string: String): String {
         var tag = string
         tag = tag.substringBeforeLast('$')
         tag = tag.substringBeforeLast('(')
