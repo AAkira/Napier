@@ -10,22 +10,21 @@ kotlin {
     android {
         publishLibraryVariants("release")
     }
-    iosX64("ios")
-//    iosX64 {
-//        binaries {
-//            framework()
-//        }
-//    }
-//    iosArm32 {
-//        binaries {
-//            framework()
-//        }
-//    }
-//    iosArm64 {
-//        binaries {
-//            framework()
-//        }
-//    }
+    iosX64 {
+        binaries {
+            framework()
+        }
+    }
+    iosArm32 {
+        binaries {
+            framework()
+        }
+    }
+    iosArm64 {
+        binaries {
+            framework()
+        }
+    }
     js() {
         browser()
         nodejs()
@@ -85,6 +84,7 @@ kotlin {
         jsTest {
             dependencies {
                 implementation Dep.Coroutines.js
+                implementation Dep.Test.js
             }
         }
         jvmMain {

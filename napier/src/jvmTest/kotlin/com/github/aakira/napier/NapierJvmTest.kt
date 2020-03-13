@@ -10,7 +10,6 @@ class NapierJvmTest {
 
     @Test
     fun `Check createStackElementTag`() {
-
         assertEquals("Hoge", debugAntilog.createStackElementTag("com.github.aakira.napier.Hoge"))
         assertEquals("Hoge2", debugAntilog.createStackElementTag("AA\$com.github.aakira.napier.Hoge2"))
         assertNotEquals("default", debugAntilog.createStackElementTag("com.github.aakira.napier.Hoge3\$default"))
