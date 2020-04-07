@@ -68,7 +68,7 @@ class DebugAntilog(
         }
     }
 
-    private fun buildLog(priority: Napier.Level, tag: String?, message: String?): String {
+    internal fun buildLog(priority: Napier.Level, tag: String?, message: String?): String {
         return "${tagMap[priority]} ${tag ?: performTag(defaultTag)} - $message"
     }
 
@@ -84,7 +84,7 @@ class DebugAntilog(
         }
     }
 
-    private fun createStackElementTag(className: String): String {
+    internal fun createStackElementTag(className: String): String {
         var tag = className
         val m = anonymousClass.matcher(tag)
         if (m.find()) {

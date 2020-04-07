@@ -1,8 +1,10 @@
+import dependencies.Versions
+
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 
 group = ARTIFACT_ID
-version = rootProject.ext.LIBRARY_VERSION_NAME
+version = Versions.versionName
 
 def pomConfig = {
     licenses {
@@ -49,8 +51,8 @@ bintray {
         issueTrackerUrl = ISSUE_URL
 
         version {
-            name = rootProject.ext.LIBRARY_VERSION_NAME
-            vcsTag = rootProject.ext.LIBRARY_VERSION_NAME
+            name = Versions.versionName
+            vcsTag = Versions.versionName
             released = new Date()
         }
     }
