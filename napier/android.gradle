@@ -1,9 +1,6 @@
 import dependencies.Dep
 import dependencies.Versions
 
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android-extensions'
-
 android {
     compileSdkVersion Versions.compileSdkVersion
     buildToolsVersion Versions.buildToolsVersion

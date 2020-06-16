@@ -1,7 +1,11 @@
 import dependencies.Dep
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
+//ordering is matter
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-multiplatform'
+apply plugin: 'kotlin-android-extensions'
+
 apply from: 'android.gradle'
 
 apply from: rootProject.file('gradle/publish.gradle')
@@ -62,10 +66,12 @@ kotlin {
             }
         }
         iosMain {
+            dependsOn commonMain
             dependencies {
             }
         }
         iosTest {
+            dependsOn commonTest
             dependencies {
                 implementation Dep.Coroutines.native
             }
