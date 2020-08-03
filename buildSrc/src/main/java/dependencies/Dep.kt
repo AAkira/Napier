@@ -2,7 +2,7 @@ package dependencies
 
 object Dep {
 
-    private const val kotlin = "1.4-M2"
+    private const val kotlin = "1.4.0-rc"
 
     object GradlePlugin {
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Dep.kotlin}"

@@ -56,25 +56,11 @@ kotlin {
                 implementation Dep.Test.annotation
             }
         }
-        androidMain {
-            dependencies {
-            }
-        }
-        androidTest {
-            dependencies {
-                implementation Dep.Test.jvm
-            }
-        }
         iosMain {
             dependsOn commonMain
-            dependencies {
-            }
         }
         iosTest {
             dependsOn commonTest
-            dependencies {
-                implementation Dep.Coroutines.native
-            }
         }
         configure([iosX64Main, iosArm64Main, iosArm32Main]) {
             dependsOn iosMain
@@ -82,33 +68,5 @@ kotlin {
         configure([iosX64Test, iosArm64Test, iosArm32Test]) {
             dependsOn iosTest
         }
-        jsMain {
-            dependencies {
-                implementation Dep.Kotlin.js
-            }
-        }
-        jsTest {
-            dependencies {
-                implementation Dep.Coroutines.js
-                implementation Dep.Test.js
-            }
-        }
-        jvmMain {
-            dependencies {
-                implementation Dep.Kotlin.jvm
-            }
-        }
-        jvmTest {
-            dependencies {
-                implementation Dep.Coroutines.core
-
-                implementation Dep.Test.jvm
-            }
-        }
     }
-}
-
-// workaround for https://youtrack.jetbrains.com/issue/KT-27170
-configurations {
-    compileClasspath
 }
