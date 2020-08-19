@@ -46,7 +46,7 @@ kotlin {
         }
         commonTest {
             dependencies {
-                implementation Dep.Coroutines.common
+                implementation Dep.Coroutines.core
 
                 implementation Dep.Test.common
                 implementation Dep.Test.annotation
@@ -67,7 +67,6 @@ kotlin {
         }
         iosTest {
             dependencies {
-                implementation Dep.Coroutines.native
             }
         }
         configure([iosX64Main, iosArm64Main, iosArm32Main]) {
@@ -83,7 +82,6 @@ kotlin {
         }
         jsTest {
             dependencies {
-                implementation Dep.Coroutines.js
                 implementation Dep.Test.js
             }
         }

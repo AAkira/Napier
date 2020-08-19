@@ -38,26 +38,23 @@ kotlin {
         commonMain {
             dependencies {
                 implementation Dep.Kotlin.common
-                implementation Dep.Coroutines.common
+                implementation Dep.Coroutines.core
 
                 implementation project(':napier')
             }
         }
         iosMain {
             dependencies {
-                implementation Dep.Coroutines.native
             }
         }
         jsMain {
             dependencies {
                 implementation Dep.Kotlin.js
-                implementation Dep.Coroutines.js
             }
         }
         jvmMain {
             dependencies {
                 implementation Dep.Kotlin.jvm
-                implementation Dep.Coroutines.core
             }
         }
     }
