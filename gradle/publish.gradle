@@ -1,29 +1,34 @@
 import dependencies.Versions
+import org.gradle.api.publish.maven.internal.artifact.FileBasedMavenArtifact
 
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 
-group = ARTIFACT_ID
+group = BINTRAY_PACKAGE
 version = Versions.versionName
 
-def pomConfig = {
-    licenses {
-        license {
-            name POM_LICENSE_NAME
-            url POM_LICENSE_URL
-            distribution POM_LICENSE_DIST
+publishing.publications.all {
+    pom {
+        description = POM_DESCRIPTION
+        url = SITE_URL
+        licenses {
+            license {
+                name = POM_LICENSE_NAME
+                url = POM_LICENSE_URL
+                distribution = POM_LICENSE_DIST
+            }
         }
-    }
-    developers {
-        developer {
-            id POM_DEVELOPER_ID
-            name POM_DEVELOPER_NAME
-            organization POM_ORGANIZATION_NAME
-            organizationUrl POM_ORGANIZATION_URL
+        developers {
+            developer {
+                id = POM_DEVELOPER_ID
+                name = POM_DEVELOPER_NAME
+                organization = POM_ORGANIZATION_NAME
+                organizationUrl = POM_ORGANIZATION_URL
+            }
         }
-    }
-    scm {
-        url SITE_URL
+        scm {
+            url = SITE_URL
+        }
     }
 }
 
@@ -80,26 +85,15 @@ afterEvaluate {
         def projectName = project.name
 
         publications.all {
-            artifactId projectName
-            pom.withXml {
-                def root = asNode()
-                root.appendNode('name', projectName)
-                root.appendNode('description', POM_DESCRIPTION)
-                root.appendNode('url', SITE_URL)
-                root.children().last() + pomConfig
-            }
-
             // rename artifacts
             groupId = BINTRAY_PACKAGE
-            if (name == 'kotlinMultiplatform') {
-                // native includes all artifacts info
-                artifactId = "$projectName-ios"
-                artifact sourcesJar
-            } else if (name == 'metadata') {
-                // common module
-                artifactId = "$projectName"
+
+            if (it.name == 'kotlinMultiplatform') {
+                // this includes all artifacts info
+                it.artifactId = projectName
+                it.artifact sourcesJar
             } else {
-                artifactId = "$projectName-$name"
+                artifactId = "$projectName-${it.name}"
             }
             // disable metadata everywhere, but in ios modules
             if (!it.name.contains('ios') && it.name != 'kotlinMultiplatform') {
@@ -113,6 +107,19 @@ bintrayUpload.doFirst {
     publications = project.publishing.publications.findAll { !it.name.contains('-test') }.collect {
         it.name
     }
+
+    // https://github.com/bintray/gradle-bintray-plugin/issues/229
+    project.publishing.publications.withType(MavenPublication).forEach({ publication ->
+        File moduleFile = new File(project.buildDir, "publications/${publication.name}/module.json")
+
+        if (moduleFile.exists() && publication.name != 'metadata') {
+            publication.artifact(new FileBasedMavenArtifact(moduleFile) {
+                protected String getDefaultExtension() {
+                    return 'module';
+                }
+            })
+        }
+    })
 }
 
 bintrayUpload.dependsOn publishToMavenLocal
