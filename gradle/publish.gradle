@@ -2,6 +2,8 @@ import dependencies.Versions
 import org.gradle.api.publish.maven.internal.artifact.FileBasedMavenArtifact
 
 apply plugin: 'maven-publish'
+// todo replace
+// https://kotlinlang.org/docs/reference/migrating-multiplatform-project-to-14.html#check-uploading-to-bintray
 apply plugin: 'com.jfrog.bintray'
 
 group = BINTRAY_PACKAGE
@@ -65,17 +67,6 @@ bintray {
 
 def isMultiplatform = project.name == "napier"
 
-afterEvaluate {
-    task sourcesJar(type: Jar) {
-        classifier = 'sources'
-        if (isMultiplatform) {
-            from kotlin.sourceSets.commonMain.kotlin
-        } else {
-            from sourceSets.main.allSource
-        }
-    }
-}
-
 task javadocJar(type: Jar) {
     archiveClassifier = 'javadoc'
 }
@@ -91,7 +82,6 @@ afterEvaluate {
             if (it.name == 'kotlinMultiplatform') {
                 // this includes all artifacts info
                 it.artifactId = projectName
-                it.artifact sourcesJar
             } else {
                 artifactId = "$projectName-${it.name}"
             }

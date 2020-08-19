@@ -9,7 +9,6 @@ object Dep {
 
         const val android = "com.android.tools.build:gradle:3.6.1"
 
-        // There is a bug which is not included module files.
         const val bintray = "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5"
 
         const val crashlytics = "io.fabric.tools:gradle:1.31.2"
