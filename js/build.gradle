@@ -8,7 +8,7 @@ dependencies {
     implementation project(':mpp-sample')
 
     implementation Dep.Kotlin.js
-    implementation Dep.Coroutines.js
+    implementation Dep.Coroutines.core
 }
 
 kotlin {

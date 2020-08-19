@@ -2,15 +2,14 @@ package dependencies
 
 object Dep {
 
-    private const val kotlin = "1.3.71"
+    private const val kotlin = "1.4.0"
 
     object GradlePlugin {
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Dep.kotlin}"
 
         const val android = "com.android.tools.build:gradle:3.6.1"
 
-        // There is a bug which is not included module files.
-        const val bintray = "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4-jetbrains-5"
+        const val bintray = "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5"
 
         const val crashlytics = "io.fabric.tools:gradle:1.31.2"
         const val googleService = "com.google.gms:google-services:4.3.3"
@@ -23,13 +22,9 @@ object Dep {
     }
 
     object Coroutines {
-        private const val version = "1.3.4"
+        private const val version = "1.3.9"
 
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
-        const val common = "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$version"
-        const val native = "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$version"
-        const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
-        const val js = "org.jetbrains.kotlinx:kotlinx-coroutines-core-js:$version"
     }
 
     object Test {

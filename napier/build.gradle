@@ -1,6 +1,7 @@
 import dependencies.Dep
 import org.jetbrains.kotlin.gradle.tasks.Kotlin2JsCompile
 
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-multiplatform'
 apply from: 'android.gradle'
 
@@ -10,17 +11,7 @@ kotlin {
     android {
         publishLibraryVariants("release")
     }
-    iosX64 {
-        binaries {
-            framework()
-        }
-    }
-    iosArm32 {
-        binaries {
-            framework()
-        }
-    }
-    iosArm64 {
+    ios() {
         binaries {
             framework()
         }
@@ -46,7 +37,7 @@ kotlin {
         }
         commonTest {
             dependencies {
-                implementation Dep.Coroutines.common
+                implementation Dep.Coroutines.core
 
                 implementation Dep.Test.common
                 implementation Dep.Test.annotation
@@ -67,14 +58,7 @@ kotlin {
         }
         iosTest {
             dependencies {
-                implementation Dep.Coroutines.native
             }
-        }
-        configure([iosX64Main, iosArm64Main, iosArm32Main]) {
-            dependsOn iosMain
-        }
-        configure([iosX64Test, iosArm64Test, iosArm32Test]) {
-            dependsOn iosTest
         }
         jsMain {
             dependencies {
@@ -83,7 +67,6 @@ kotlin {
         }
         jsTest {
             dependencies {
-                implementation Dep.Coroutines.js
                 implementation Dep.Test.js
             }
         }
@@ -100,9 +83,4 @@ kotlin {
             }
         }
     }
-}
-
-// workaround for https://youtrack.jetbrains.com/issue/KT-27170
-configurations {
-    compileClasspath
 }

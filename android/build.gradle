@@ -37,10 +37,10 @@ dependencies {
     implementation project(':napier')
     implementation project(':mpp-sample')
     // write the below in your project, instead of above
-    // implementation "com.github.aakira:napier-android:[version name]"
+//    implementation "com.github.aakira:napier-android:[version name]"
 
     implementation Dep.Kotlin.jvm
-    implementation Dep.Coroutines.android
+    implementation Dep.Coroutines.core
 
     implementation Dep.Android.appCompat
     implementation Dep.Android.constraintLayout

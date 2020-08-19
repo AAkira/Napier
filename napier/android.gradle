@@ -1,7 +1,8 @@
 import dependencies.Dep
 import dependencies.Versions
 
-apply plugin: 'com.android.library'
+// Write below line into napier/build.gradle because enableGranularSourceSetsMetadata is added.
+//apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 
 android {
