@@ -9,7 +9,7 @@ apply from: rootProject.file('gradle/publish.gradle')
 
 kotlin {
     android {
-        publishLibraryVariants("release")
+        publishAllLibraryVariants()
     }
     ios() {
         binaries {
