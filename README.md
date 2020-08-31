@@ -8,19 +8,27 @@ Logs written in common module are displayed on logger viewer of each platform.
 
 format: `[Class name]$[Method name]: [Your log]`
 
+uses the `android.util.Log`(Logcat)
+
 ![preview-android][preview-android]
 
 * ios
 
 format: `[Date time][Symbol][Log level][Class name].[Method name] - [Your log]`
 
+uses the `print`
+
 ![preview-ios][preview-ios]
 
 * js
 
+uses the `console.log`
+
 ![preview-js][preview-js]
 
 * jvm
+
+uses the `java.util.logging.Logger`
 
 ![preview-jvm][preview-jvm]
 
@@ -89,56 +97,14 @@ Set the version name in your build.gradle
 
 ### Common
 
-```gradle
-dependencies {
-    implementation "com.github.aakira:napier:$napierVersion"
-}
-```
-
-### ios
-
-uses the `print`
+Add the dependency to your commonMain dependencies
 
 ```gradle
-dependencies {
-    // include x64, arm64, arm32
-    implementation "com.github.aakira:napier-ios:$napierVersion"
-    
-    // x64
-    implementation 'com.github.aakira:napier-iosX64:$napierVersion'
-    // arm
-    implementation 'com.github.aakira:napier-iosArm32:$napierVersion'
-    implementation 'com.github.aakira:napier-iosArm64:$napierVersion'
-}
-```
-
-### android
-
-uses the `android.util.Log`(Logcat)
-
-```gradle
-dependencies {
-    implementation "com.github.aakira:napier-android:$napierVersion"
-}
-```
-
-### js
-
-uses the `console.log`
-
-```gradle
-dependencies {
-    implementation "com.github.aakira:napier-js:$napierVersion"
-}
-```
-
-### jvm
-
-uses the `java.util.logging.Logger`
-
-```jvm
-dependencies {
-    implementation "com.github.aakira:napier-jvm:$napierVersion"
+commonMain {
+    dependencies {
+        // ...
+        implementation "com.github.aakira:napier:$napierVersion"
+    }
 }
 ```
 
