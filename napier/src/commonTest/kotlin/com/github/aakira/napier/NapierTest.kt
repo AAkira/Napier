@@ -12,7 +12,7 @@ class NapierTest {
     )
 
     private data class Expected(
-        val priority: Napier.Level,
+        val priority: LogLevel,
         val tag: String?,
         val throwable: Throwable?,
         val message: String?
@@ -24,7 +24,7 @@ class NapierTest {
     fun `Check output log`() {
         val output = ArrayList<Expected>()
         Napier.base(object : Antilog() {
-            override fun performLog(priority: Napier.Level, tag: String?, throwable: Throwable?, message: String?) {
+            override fun performLog(priority: LogLevel, tag: String?, throwable: Throwable?, message: String?) {
                 output.add(Expected(priority, tag, throwable, message))
             }
         })
@@ -34,7 +34,7 @@ class NapierTest {
                 "verbose",
                 { Napier.v("hello") },
                 Expected(
-                    Napier.Level.VERBOSE,
+                    LogLevel.VERBOSE,
                     null,
                     null,
                     "hello"
@@ -44,7 +44,7 @@ class NapierTest {
                 "debug",
                 { Napier.d("hello") },
                 Expected(
-                    Napier.Level.DEBUG,
+                    LogLevel.DEBUG,
                     null,
                     null,
                     "hello"
@@ -54,7 +54,7 @@ class NapierTest {
                 "info",
                 { Napier.i("hello") },
                 Expected(
-                    Napier.Level.INFO,
+                    LogLevel.INFO,
                     null,
                     null,
                     "hello"
@@ -64,7 +64,7 @@ class NapierTest {
                 "warning",
                 { Napier.w("hello") },
                 Expected(
-                    Napier.Level.WARNING,
+                    LogLevel.WARNING,
                     null,
                     null,
                     "hello"
@@ -74,7 +74,7 @@ class NapierTest {
                 "error",
                 { Napier.e("hello") },
                 Expected(
-                    Napier.Level.ERROR,
+                    LogLevel.ERROR,
                     null,
                     null,
                     "hello"
@@ -84,7 +84,7 @@ class NapierTest {
                 "assert",
                 { Napier.wtf("hello") },
                 Expected(
-                    Napier.Level.ASSERT,
+                    LogLevel.ASSERT,
                     null,
                     null,
                     "hello"
@@ -95,7 +95,7 @@ class NapierTest {
                 "tag verbose",
                 { Napier.v("hello", null, "tag") },
                 Expected(
-                    Napier.Level.VERBOSE,
+                    LogLevel.VERBOSE,
                     "tag",
                     null,
                     "hello"
@@ -105,7 +105,7 @@ class NapierTest {
                 "tag debug",
                 { Napier.d("hello", null, "tag") },
                 Expected(
-                    Napier.Level.DEBUG,
+                    LogLevel.DEBUG,
                     "tag",
                     null,
                     "hello"
@@ -115,7 +115,7 @@ class NapierTest {
                 "tag info",
                 { Napier.i("hello", null, "tag") },
                 Expected(
-                    Napier.Level.INFO,
+                    LogLevel.INFO,
                     "tag",
                     null,
                     "hello"
@@ -125,7 +125,7 @@ class NapierTest {
                 "tag warning",
                 { Napier.w("hello", null, "tag") },
                 Expected(
-                    Napier.Level.WARNING,
+                    LogLevel.WARNING,
                     "tag",
                     null,
                     "hello"
@@ -135,7 +135,7 @@ class NapierTest {
                 "tag error",
                 { Napier.e("hello", null, "tag") },
                 Expected(
-                    Napier.Level.ERROR,
+                    LogLevel.ERROR,
                     "tag",
                     null,
                     "hello"
@@ -145,7 +145,7 @@ class NapierTest {
                 "tag assert",
                 { Napier.wtf("hello", null, "tag") },
                 Expected(
-                    Napier.Level.ASSERT,
+                    LogLevel.ASSERT,
                     "tag",
                     null,
                     "hello"
@@ -156,7 +156,7 @@ class NapierTest {
                 "throwable verbose",
                 { Napier.v("hello", CustomThrowable("error"), "tag") },
                 Expected(
-                    Napier.Level.VERBOSE,
+                    LogLevel.VERBOSE,
                     "tag",
                     CustomThrowable("error"),
                     "hello"
@@ -166,7 +166,7 @@ class NapierTest {
                 "throwable debug",
                 { Napier.d("hello", CustomThrowable("error"), "tag") },
                 Expected(
-                    Napier.Level.DEBUG,
+                    LogLevel.DEBUG,
                     "tag",
                     CustomThrowable("error"),
                     "hello"
@@ -176,7 +176,7 @@ class NapierTest {
                 "throwable info",
                 { Napier.i("hello", CustomThrowable("error"), "tag") },
                 Expected(
-                    Napier.Level.INFO,
+                    LogLevel.INFO,
                     "tag",
                     CustomThrowable("error"),
                     "hello"
@@ -186,7 +186,7 @@ class NapierTest {
                 "throwable warning",
                 { Napier.w("hello", CustomThrowable("error"), "tag") },
                 Expected(
-                    Napier.Level.WARNING,
+                    LogLevel.WARNING,
                     "tag",
                     CustomThrowable("error"),
                     "hello"
@@ -196,7 +196,7 @@ class NapierTest {
                 "throwable error",
                 { Napier.e("hello", CustomThrowable("error"), "tag") },
                 Expected(
-                    Napier.Level.ERROR,
+                    LogLevel.ERROR,
                     "tag",
                     CustomThrowable("error"),
                     "hello"
@@ -206,7 +206,7 @@ class NapierTest {
                 "throwable assert",
                 { Napier.wtf("hello", CustomThrowable("error"), "tag") },
                 Expected(
-                    Napier.Level.ASSERT,
+                    LogLevel.ASSERT,
                     "tag",
                     CustomThrowable("error"),
                     "hello"
