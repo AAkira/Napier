@@ -3,13 +3,13 @@ package com.github.aakira.napier.sample
 import android.content.Context
 import com.crashlytics.android.Crashlytics
 import com.github.aakira.napier.Antilog
-import com.github.aakira.napier.Napier
+import com.github.aakira.napier.LogLevel
 
 class CrashlyticsAntilog(private val context: Context) : Antilog() {
 
-    override fun performLog(priority: Napier.Level, tag: String?, throwable: Throwable?, message: String?) {
+    override fun performLog(priority: LogLevel, tag: String?, throwable: Throwable?, message: String?) {
         // send only error log
-        if (priority < Napier.Level.ERROR) return
+        if (priority < LogLevel.ERROR) return
         Crashlytics.getInstance().core.log(priority.ordinal, tag, message)
 
         throwable?.let {

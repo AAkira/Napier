@@ -37,16 +37,16 @@ class DebugAntilog(
 
     private val anonymousClass = Pattern.compile("(\\$\\d+)+$")
 
-    private val tagMap: HashMap<Napier.Level, String> = hashMapOf(
-        Napier.Level.VERBOSE to "[VERBOSE]",
-        Napier.Level.DEBUG to "[DEBUG]",
-        Napier.Level.INFO to "[INFO]",
-        Napier.Level.WARNING to "[WARN]",
-        Napier.Level.ERROR to "[ERROR]",
-        Napier.Level.ASSERT to "[ASSERT]"
+    private val tagMap: HashMap<LogLevel, String> = hashMapOf(
+        LogLevel.VERBOSE to "[VERBOSE]",
+        LogLevel.DEBUG to "[DEBUG]",
+        LogLevel.INFO to "[INFO]",
+        LogLevel.WARNING to "[WARN]",
+        LogLevel.ERROR to "[ERROR]",
+        LogLevel.ASSERT to "[ASSERT]"
     )
 
-    override fun performLog(priority: Napier.Level, tag: String?, throwable: Throwable?, message: String?) {
+    override fun performLog(priority: LogLevel, tag: String?, throwable: Throwable?, message: String?) {
 
         val debugTag = tag ?: performTag(defaultTag)
 
@@ -59,16 +59,16 @@ class DebugAntilog(
         } else throwable?.stackTraceString ?: return
 
         when (priority) {
-            Napier.Level.VERBOSE -> logger.finest(buildLog(priority, debugTag, fullMessage))
-            Napier.Level.DEBUG -> logger.fine(buildLog(priority, debugTag, fullMessage))
-            Napier.Level.INFO -> logger.info(buildLog(priority, debugTag, fullMessage))
-            Napier.Level.WARNING -> logger.warning(buildLog(priority, debugTag, fullMessage))
-            Napier.Level.ERROR -> logger.severe(buildLog(priority, debugTag, fullMessage))
-            Napier.Level.ASSERT -> logger.severe(buildLog(priority, debugTag, fullMessage))
+            LogLevel.VERBOSE -> logger.finest(buildLog(priority, debugTag, fullMessage))
+            LogLevel.DEBUG -> logger.fine(buildLog(priority, debugTag, fullMessage))
+            LogLevel.INFO -> logger.info(buildLog(priority, debugTag, fullMessage))
+            LogLevel.WARNING -> logger.warning(buildLog(priority, debugTag, fullMessage))
+            LogLevel.ERROR -> logger.severe(buildLog(priority, debugTag, fullMessage))
+            LogLevel.ASSERT -> logger.severe(buildLog(priority, debugTag, fullMessage))
         }
     }
 
-    internal fun buildLog(priority: Napier.Level, tag: String?, message: String?): String {
+    internal fun buildLog(priority: LogLevel, tag: String?, message: String?): String {
         return "${tagMap[priority]} ${tag ?: performTag(defaultTag)} - $message"
     }
 
