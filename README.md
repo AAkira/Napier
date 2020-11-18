@@ -108,6 +108,12 @@ commonMain {
 }
 ```
 
+### [kscript](https://github.com/holgerbrandl/kscript)
+```kotlin
+@file:MavenRepository("bintray/aakira", "https://dl.bintray.com/aakira/maven")
+@file:DependsOn("com.github.aakira:napier-jvm:$napierVersion")
+```
+
 ## Usage
 
 ### How to use
