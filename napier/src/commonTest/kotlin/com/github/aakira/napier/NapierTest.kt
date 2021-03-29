@@ -1,5 +1,6 @@
 package com.github.aakira.napier
 
+import com.github.aakira.napier.atomic.AtomicMutableList
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -22,7 +23,7 @@ class NapierTest {
 
     @Test
     fun `Check output log`() {
-        val output = ArrayList<Expected>()
+        val output = AtomicMutableList<Expected>()
         Napier.base(object : Antilog() {
             override fun performLog(priority: Napier.Level, tag: String?, throwable: Throwable?, message: String?) {
                 output.add(Expected(priority, tag, throwable, message))
