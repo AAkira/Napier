@@ -4,7 +4,7 @@ apply plugin: 'kotlin'
 
 jar {
     manifest {
-        attributes 'Main-Class': 'com.github.aakira.napier.sample.MainKt'
+        attributes 'Main-Class': 'io.github.aakira.napier.sample.MainKt'
     }
 
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }

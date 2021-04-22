@@ -37,7 +37,7 @@ dependencies {
     implementation project(':napier')
     implementation project(':mpp-sample')
     // write the below in your project, instead of above
-//    implementation "com.github.aakira:napier:[version name]"
+//    implementation "io.github.aakira:napier:[version name]"
 
     implementation Dep.Kotlin.jvm
     implementation Dep.Coroutines.core

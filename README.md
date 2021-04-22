@@ -103,7 +103,7 @@ Add the dependency to your commonMain dependencies
 commonMain {
     dependencies {
         // ...
-        implementation "com.github.aakira:napier:$napierVersion"
+        implementation "io.github.aakira:napier:$napierVersion"
     }
 }
 ```
