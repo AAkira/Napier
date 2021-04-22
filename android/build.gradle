@@ -5,8 +5,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-apply plugin: 'io.fabric'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion Versions.compileSdkVersion
@@ -26,6 +26,10 @@ android {
     }
     packagingOptions {
         pickFirst 'META-INF/kotlinx-coroutines-core.kotlin_module'
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 }
 
