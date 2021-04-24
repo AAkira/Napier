@@ -1,20 +1,15 @@
+// Can't read dependencies.Dep when using kts
 import dependencies.Dep
 
 buildscript {
     repositories {
         google()
-        jcenter()
-        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
-        maven { url 'https://dl.bintray.com/jetbrains/kotlin-native-dependencies' }
-        maven { url 'https://maven.fabric.io/public' }
+        mavenCentral()
     }
 
     dependencies {
         classpath Dep.GradlePlugin.kotlin
         classpath Dep.GradlePlugin.android
-
-        // for upload bintray plugin
-        classpath Dep.GradlePlugin.bintray
 
         // for crashlytics sample
         classpath Dep.GradlePlugin.crashlytics
@@ -25,9 +20,6 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
-
-        maven { url "http://dl.bintray.com/kotlin/kotlin-eap" }
-        maven { url "https://kotlin.bintray.com/kotlinx" }
+        mavenCentral()
     }
 }

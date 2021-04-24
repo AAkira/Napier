@@ -9,8 +9,6 @@ object Dep {
 
         const val android = "com.android.tools.build:gradle:4.1.0"
 
-        const val bintray = "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5"
-
         const val crashlytics = "com.google.firebase:firebase-crashlytics-gradle:2.5.2"
         const val googleService = "com.google.gms:google-services:4.3.5"
     }
