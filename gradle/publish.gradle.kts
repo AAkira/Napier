@@ -3,55 +3,53 @@ import dependencies.Versions
 apply(plugin = "maven-publish")
 apply(plugin = "signing")
 
-val BINTRAY_PACKAGE: String by project
-val POM_DESCRIPTION: String by project
-val SITE_URL: String by project
-val POM_LICENSE_NAME: String by project
-val POM_LICENSE_URL: String by project
-val POM_LICENSE_DIST: String by project
-val POM_DEVELOPER_ID: String by project
-val POM_DEVELOPER_NAME: String by project
-val POM_ORGANIZATION_NAME: String by project
-val POM_ORGANIZATION_URL: String by project
+// read values from gradle.properties
+val mavenGroup: String by project
+val projectName: String by project
+val pomDescription: String by project
+val siteUrl: String by project
+val pomLicenseName: String by project
+val pomLicenseUrl: String by project
+val pomLicenseDist: String by project
+val pomDeveloperId: String by project
+val pomDeveloperName: String by project
+val pomOrganizationName: String by project
+val pomOrganizationUrl: String by project
 
 configure<PublishingExtension> {
-//publishing {
     publications.all {
-        group = BINTRAY_PACKAGE
+        group = mavenGroup
         version = Versions.versionName
     }
 
     publications.withType<MavenPublication> {
         pom {
-
-            name.set("napier")
-            description.set(POM_DESCRIPTION)
-            url.set(SITE_URL)
+            name.set(projectName)
+            description.set(pomDescription)
+            url.set(siteUrl)
             licenses {
                 license {
-                    name.set(POM_LICENSE_NAME)
-                    url.set(POM_LICENSE_URL)
-                    distribution.set(POM_LICENSE_DIST)
+                    name.set(pomLicenseName)
+                    url.set(pomLicenseUrl)
+                    distribution.set(pomLicenseDist)
                 }
             }
             developers {
                 developer {
-                    id.set(POM_DEVELOPER_ID)
-                    name.set(POM_DEVELOPER_NAME)
-                    organization.set(POM_ORGANIZATION_NAME)
-                    organizationUrl.set(POM_ORGANIZATION_URL)
+                    id.set(pomDeveloperId)
+                    name.set(pomDeveloperName)
+                    organization.set(pomOrganizationName)
+                    organizationUrl.set(pomOrganizationUrl)
                 }
             }
             scm {
-                url.set(SITE_URL)
+                url.set(siteUrl)
             }
         }
     }
 
     repositories {
         maven {
-//            user = 'aakira'
-//            repo = 'maven'
             name = "napier"
             url = uri(
                 if (version.toString().endsWith("SNAPSHOT")) {
@@ -62,17 +60,13 @@ configure<PublishingExtension> {
             )
 
             credentials {
-                username = bintrayUserProperty
-                password = bintrayApiKeyProperty
+                username = project.properties["sonatypeUser"] as String
+                password = project.properties["sonatypePassword"] as String
             }
         }
     }
+
+    configure<SigningExtension> {
+        sign(publications)
+    }
 }
-
-val bintrayUserProperty: String? =
-    if (hasProperty("bintrayUser")) project.property("bintrayUser") as String else System.getenv("BINTRAY_USER")
-
-val bintrayApiKeyProperty: String? =
-    if (hasProperty("bintrayApiKey")) project.property("bintrayApiKey") as String else System.getenv(
-        "BINTRAY_API_KEY"
-    )

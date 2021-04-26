@@ -1,2 +1,0 @@
-./gradlew clean
-./gradlew publish
