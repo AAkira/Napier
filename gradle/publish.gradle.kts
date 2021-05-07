@@ -3,6 +3,15 @@ import dependencies.Versions
 apply(plugin = "maven-publish")
 apply(plugin = "signing")
 
+fun Project.publishing(action: PublishingExtension.() -> Unit) =
+    configure(action)
+
+fun Project.signing(configure: SigningExtension.() -> Unit): Unit =
+    configure(configure)
+
+val publications: PublicationContainer =
+    (extensions.getByName("publishing") as PublishingExtension).publications
+
 // read values from gradle.properties
 val mavenGroup: String by project
 val projectName: String by project
@@ -16,7 +25,7 @@ val pomDeveloperName: String by project
 val pomOrganizationName: String by project
 val pomOrganizationUrl: String by project
 
-configure<PublishingExtension> {
+publishing {
     publications.all {
         group = mavenGroup
         version = Versions.versionName
@@ -65,8 +74,8 @@ configure<PublishingExtension> {
             }
         }
     }
+}
 
-    configure<SigningExtension> {
-        sign(publications)
-    }
+signing {
+    sign(publications)
 }
