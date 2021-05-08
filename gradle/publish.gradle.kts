@@ -31,7 +31,7 @@ publishing {
         version = Versions.versionName
     }
 
-    publications.withType<MavenPublication> {
+    publications.withType<MavenPublication>().all {
         pom {
             name.set(projectName)
             description.set(pomDescription)
@@ -59,12 +59,12 @@ publishing {
 
     repositories {
         maven {
-            name = "napier"
+            name = "Sonatype"
             url = uri(
                 if (version.toString().endsWith("SNAPSHOT")) {
-                    "https://oss.sonatype.org/content/repositories/snapshots"
+                    "https://s01.oss.sonatype.org/content/repositories/snapshots"
                 } else {
-                    "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+                    "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2"
                 }
             )
 
