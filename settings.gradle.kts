@@ -1,0 +1,5 @@
+include(":napier")
+include(":mpp-sample")
+include(":android")
+include(":jvm")
+include(":js")
