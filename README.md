@@ -125,7 +125,7 @@ sourceSets {
 sourceSets {
     val commonMain by getting {
         dependencies {
-            implementation(napierVersion)
+            implementation("io.github.aakira:napier:$napierVersion")
         }
     }
 }
