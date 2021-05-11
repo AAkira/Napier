@@ -1,6 +1,4 @@
 import UIKit
-import Crashlytics
-import Fabric
 import Firebase
 import Common
 
@@ -22,18 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // init firebase crashlytics
         FirebaseApp.configure()
-        Fabric.with([Crashlytics.self])
         
         // init napier
         NapierProxyKt.releaseBuild(antilog: CrashlyticsAntilog(
             crashlyticsAddLog: { priority, tag, message in
-                let args = [tag, message].compactMap { $0 }
-                CLSLogv("%@", getVaList(args))
-                return .init()
+                Crashlytics.crashlytics().log("\(String(describing: tag)): \(String(describing: message))")
         },
             crashlyticsSendLog: { throwable in
-                Crashlytics.sharedInstance().recordError(throwable)
-                return .init()
+                Crashlytics.crashlytics().record(error: throwable)
         }))
         #endif
 

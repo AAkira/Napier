@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B3988B1264ADA500055407D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3988B0264ADA500055407D /* GoogleService-Info.plist */; };
 		3B3988B3264AE4F50055407D /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3988B2264AE4F40055407D /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		74AC91897E121EEADF59069F /* Pods_Napier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236CB35798B6FF37795E2A6A /* Pods_Napier.framework */; };
 		7CFB659A22013CF600BD05FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB659922013CF600BD05FC /* AppDelegate.swift */; };
@@ -33,9 +34,9 @@
 /* Begin PBXFileReference section */
 		14D73DDEDA418BBBD3C23B9B /* Pods-Napier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napier.release.xcconfig"; path = "Target Support Files/Pods-Napier/Pods-Napier.release.xcconfig"; sourceTree = "<group>"; };
 		236CB35798B6FF37795E2A6A /* Pods_Napier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Napier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B3988B0264ADA500055407D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B3988B2264AE4F40055407D /* Common.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Common.framework; path = "../mpp-sample/build/xcode-frameworks/Common.framework"; sourceTree = "<group>"; };
 		6F88F8388EB37A3B9C7069DF /* Pods-Napier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napier.debug.xcconfig"; path = "Target Support Files/Pods-Napier/Pods-Napier.debug.xcconfig"; sourceTree = "<group>"; };
-		7C4D387022152BC1004168BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7CFB659622013CF500BD05FC /* Napier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Napier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CFB659922013CF600BD05FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CFB659B22013CF600BD05FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,7 +97,7 @@
 		7CFB659822013CF500BD05FC /* Napier */ = {
 			isa = PBXGroup;
 			children = (
-				7C4D387022152BC1004168BB /* GoogleService-Info.plist */,
+				3B3988B0264ADA500055407D /* GoogleService-Info.plist */,
 				7CFB659922013CF600BD05FC /* AppDelegate.swift */,
 				7CFB659B22013CF600BD05FC /* ViewController.swift */,
 				7CFB659D22013CF600BD05FC /* Main.storyboard */,
@@ -171,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CFB65A422013CF900BD05FC /* LaunchScreen.storyboard in Resources */,
+				3B3988B1264ADA500055407D /* GoogleService-Info.plist in Resources */,
 				7CFB65A122013CF900BD05FC /* Assets.xcassets in Resources */,
 				7CFB659F22013CF600BD05FC /* Main.storyboard in Resources */,
 			);
@@ -218,7 +220,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		7CFB65CB22013DC300BD05FC /* Kotlin/Native */ = {
 			isa = PBXShellScriptBuildPhase;
