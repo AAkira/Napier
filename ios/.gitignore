@@ -18,5 +18,4 @@ xcuserdata/
 *.dSYM
 
 Pods/
-GoogleService-info.plist
 vendor/

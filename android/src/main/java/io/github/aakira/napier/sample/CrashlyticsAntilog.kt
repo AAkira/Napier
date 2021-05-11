@@ -1,7 +1,7 @@
 package io.github.aakira.napier.sample
 
 import android.content.Context
-import com.crashlytics.android.Crashlytics
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import io.github.aakira.napier.Antilog
 import io.github.aakira.napier.Napier
 
@@ -15,16 +15,16 @@ class CrashlyticsAntilog(private val context: Context) : Antilog() {
     ) {
         // send only error log
         if (priority < Napier.Level.ERROR) return
-        Crashlytics.getInstance().core.log(priority.ordinal, tag, message)
 
         throwable?.let {
-            when {
+            when (it) {
                 // e.g. http exception, add a customized your exception message
-//                it is KtorException -> {
-//                    Crashlytics.getInstance().core.log(priority.ordinal, "HTTP Exception", it.response?.errorBody.toString())
+//                is KtorException -> {
+//                    FirebaseCrashlytics.getInstance()
+//                        .log("${priority.ordinal}, HTTP Exception, ${it.response?.errorBody}")
 //                }
+                else -> FirebaseCrashlytics.getInstance().recordException(it)
             }
-            Crashlytics.getInstance().core.logException(it)
         }
     }
 }

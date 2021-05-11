@@ -2,12 +2,12 @@ package dependencies
 
 object Dep {
 
-    private const val kotlin = "1.4.32"
+    private const val kotlin = "1.5.0"
 
     object GradlePlugin {
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Dep.kotlin}"
 
-        const val android = "com.android.tools.build:gradle:4.1.0"
+        const val android = "com.android.tools.build:gradle:4.1.3"
 
         const val crashlytics = "com.google.firebase:firebase-crashlytics-gradle:2.5.2"
         const val googleService = "com.google.gms:google-services:4.3.5"
@@ -20,7 +20,7 @@ object Dep {
     }
 
     object Coroutines {
-        private const val version = "1.4.3"
+        private const val version = "1.5.0-RC"
 
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
     }
@@ -33,12 +33,12 @@ object Dep {
     }
 
     object Android {
-        const val appCompat = "androidx.appcompat:appcompat:1.1.0"
-        const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
+        const val appCompat = "androidx.appcompat:appcompat:1.2.0"
+        const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.4"
     }
 
     object Firebase {
-        const val core = "com.google.firebase:firebase-core:17.2.3"
-        const val crashlytics = "com.crashlytics.sdk.android:crashlytics:2.10.1"
+        const val platform = "com.google.firebase:firebase-bom:27.1.0"
+        const val crashlytics = "com.google.firebase:firebase-crashlytics-ktx"
     }
 }

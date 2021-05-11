@@ -1,8 +1,7 @@
 package io.github.aakira.napier.sample
 
 import android.app.Application
-import com.crashlytics.android.Crashlytics
-import io.fabric.sdk.android.Fabric
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.Napier
 
@@ -13,14 +12,14 @@ class NapierApp : Application() {
 
         if (BuildConfig.DEBUG) {
             // Debug build
+            FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(false)
 
             // init napier
             Napier.base(DebugAntilog())
         } else {
             // Others(Release build)
+            FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
 
-            // init firebase crashlytics
-            Fabric.with(this, Crashlytics())
             // init napier
             Napier.base(CrashlyticsAntilog(this))
         }
