@@ -73,7 +73,8 @@ You can download this library from MavenCentral or jCenter repository.
 
 * Maven central
 
-You can download this from `1.4.1`.
+You can download this from `1.4.1`.  
+Package name is `io.github.aakira`
 
 ```groovy
 repositories {
@@ -83,7 +84,8 @@ repositories {
 
 * jCenter
 
-You can download this until `1.4.1`.
+You can download this until `1.4.1`.  
+Package name is `com.github.aakira`
 
 ```groovy
 repositories {
