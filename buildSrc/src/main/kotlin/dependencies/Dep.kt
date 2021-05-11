@@ -33,12 +33,12 @@ object Dep {
     }
 
     object Android {
-        const val appCompat = "androidx.appcompat:appcompat:1.1.0"
-        const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
+        const val appCompat = "androidx.appcompat:appcompat:1.2.0"
+        const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.4"
     }
 
     object Firebase {
-        const val core = "com.google.firebase:firebase-core:17.2.3"
-        const val crashlytics = "com.crashlytics.sdk.android:crashlytics:2.10.1"
+        const val platform = "com.google.firebase:firebase-bom:27.1.0"
+        const val crashlytics = "com.google.firebase:firebase-crashlytics-ktx"
     }
 }

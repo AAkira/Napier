@@ -52,6 +52,6 @@ dependencies {
     implementation(Dep.Android.constraintLayout)
 
     // for crashlytics sample
-    implementation(Dep.Firebase.core)
+    implementation(platform(Dep.Firebase.platform))
     implementation(Dep.Firebase.crashlytics)
 }
