@@ -12,6 +12,10 @@ fun Project.signing(configure: SigningExtension.() -> Unit): Unit =
 val publications: PublicationContainer =
     (extensions.getByName("publishing") as PublishingExtension).publications
 
+val javadocJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("javadoc")
+}
+
 // read values from gradle.properties
 val mavenGroup: String by project
 val projectName: String by project
@@ -32,6 +36,8 @@ publishing {
     }
 
     publications.withType<MavenPublication>().all {
+        artifact(javadocJar.get())
+
         pom {
             name.set(projectName)
             description.set(pomDescription)
