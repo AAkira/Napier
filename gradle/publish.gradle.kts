@@ -29,6 +29,11 @@ val pomDeveloperName: String by project
 val pomOrganizationName: String by project
 val pomOrganizationUrl: String by project
 
+val sonatypeUser: String? by project
+val sonatypePassword: String? by project
+val sonatypePasswordEnv: String? = System.getenv()["SONATYPE_PASSWORD"]
+val sonatypeUsernameEnv: String? = System.getenv()["SONATYPE_USERNAME"]
+
 publishing {
     publications.all {
         group = mavenGroup
@@ -75,8 +80,8 @@ publishing {
             )
 
             credentials {
-                username = project.properties["sonatypeUser"] as String
-                password = project.properties["sonatypePassword"] as String
+                username = sonatypeUser ?: sonatypeUsernameEnv ?: ""
+                password = sonatypePassword ?: sonatypePasswordEnv ?: ""
             }
         }
     }
