@@ -7,7 +7,7 @@ object Dep {
     object GradlePlugin {
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Dep.kotlin}"
 
-        const val android = "com.android.tools.build:gradle:4.1.0"
+        const val android = "com.android.tools.build:gradle:4.1.3"
 
         const val crashlytics = "com.google.firebase:firebase-crashlytics-gradle:2.5.2"
         const val googleService = "com.google.gms:google-services:4.3.5"
