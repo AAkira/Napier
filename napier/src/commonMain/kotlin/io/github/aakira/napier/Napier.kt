@@ -1,8 +1,7 @@
 package io.github.aakira.napier
 
-import kotlin.native.concurrent.ThreadLocal
+import com.github.aakira.napier.atomic.AtomicMutableList
 
-@ThreadLocal
 object Napier {
 
     enum class Level {
@@ -14,7 +13,7 @@ object Napier {
         ASSERT,
     }
 
-    private val baseArray = mutableListOf<Antilog>()
+    private val baseArray = AtomicMutableList<Antilog>()
 
     fun base(antilog: Antilog) {
         baseArray.add(antilog)
