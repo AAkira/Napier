@@ -2,7 +2,7 @@ package dependencies
 
 object Dep {
 
-    private const val kotlin = "1.5.0"
+    private const val kotlin = "1.5.21"
 
     object GradlePlugin {
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Dep.kotlin}"
@@ -20,7 +20,7 @@ object Dep {
     }
 
     object Coroutines {
-        private const val version = "1.5.0-RC"
+        private const val version = "1.5.1-native-mt"
 
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
     }
