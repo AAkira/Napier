@@ -1,9 +1,7 @@
 package io.github.aakira.napier
 
 import com.github.aakira.napier.atomic.AtomicMutableList
-import kotlin.native.concurrent.ThreadLocal
 
-@ThreadLocal
 object Napier {
 
     enum class Level {
