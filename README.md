@@ -73,7 +73,7 @@ You can download this library from MavenCentral or jCenter repository.
 
 * Maven central
 
-You can download this from `1.4.1`.  
+You can download this from `2.0.0`.  
 Package name is `io.github.aakira`
 
 ```groovy
@@ -197,6 +197,36 @@ Napier.takeLogarithm()
 | WARNING       | Napier.w()  |
 | ERROR         | Napier.e()  |
 | ASSERT        | Napier.wtf()|
+
+## Run background thread
+
+You can use this library on the background thread on iOS using [Kotlin.coroutines](https://github.com/Kotlin/kotlinx.coroutines) as native-mt.
+
+* Define scope 
+
+```kotlin
+internal val mainScope = SharedScope(Dispatchers.Main)
+
+internal val backgroundScope = SharedScope(Dispatchers.Default)
+
+internal class SharedScope(private val context: CoroutineContext) : CoroutineScope {
+    private val job = Job()
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        println("[Coroutine Exception] $throwable")
+    }
+
+    override val coroutineContext: CoroutineContext
+        get() = context + job + exceptionHandler
+}
+```
+
+* Usage
+
+```kotlin
+backgroundScope.launch {
+    suspendFunction()
+}
+```
 
 ## Advancement
 
