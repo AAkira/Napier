@@ -1,22 +1,21 @@
 package io.github.aakira.napier.mppsample
 
-import kotlinx.coroutines.*
-import platform.darwin.dispatch_async
-import platform.darwin.dispatch_get_main_queue
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlin.coroutines.CoroutineContext
 
-internal class NativeScope : CoroutineScope {
-    private val context = MainDispatcher()
+internal val mainScope = SharedScope(Dispatchers.Main)
+
+internal val backgroundScope = SharedScope(Dispatchers.Default)
+
+internal class SharedScope(private val context: CoroutineContext) : CoroutineScope {
     private val job = Job()
-    private val exceptionHandler = CoroutineExceptionHandler { _, _ -> }
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        println("[Coroutine Exception] $throwable")
+    }
 
     override val coroutineContext: CoroutineContext
         get() = context + job + exceptionHandler
-}
-
-private class MainDispatcher : CoroutineDispatcher() {
-
-    override fun dispatch(context: CoroutineContext, block: Runnable) {
-        dispatch_async(dispatch_get_main_queue()) { block.run() }
-    }
 }
