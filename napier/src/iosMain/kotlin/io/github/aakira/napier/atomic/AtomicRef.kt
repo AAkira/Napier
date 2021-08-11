@@ -1,4 +1,4 @@
-package com.github.aakira.napier.atomic
+package io.github.aakira.napier.atomic
 
 import kotlin.native.concurrent.AtomicReference
 import kotlin.native.concurrent.freeze

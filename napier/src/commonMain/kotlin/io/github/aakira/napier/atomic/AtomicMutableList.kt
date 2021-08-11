@@ -1,7 +1,8 @@
-package com.github.aakira.napier.atomic
+package io.github.aakira.napier.atomic
 
-internal class AtomicMutableList<T>(value: List<T>): AbstractList<T>() {
+internal class AtomicMutableList<T>(value: List<T>) : AbstractList<T>() {
     constructor() : this(listOf())
+
     private val atomicReference = AtomicRef(value)
 
     fun add(element: T, index: Int = count()) =
