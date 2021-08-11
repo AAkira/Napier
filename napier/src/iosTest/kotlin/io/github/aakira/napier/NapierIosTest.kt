@@ -1,6 +1,5 @@
 package io.github.aakira.napier
 
-import io.github.aakira.napier.DebugAntilog
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
