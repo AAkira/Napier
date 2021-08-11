@@ -1,6 +1,6 @@
 package io.github.aakira.napier
 
-import com.github.aakira.napier.atomic.AtomicMutableList
+import io.github.aakira.napier.atomic.AtomicMutableList
 
 object Napier {
 
@@ -80,7 +80,12 @@ object Napier {
         }
     }
 
-    fun log(priority: Level, tag: String? = null, throwable: Throwable? = null, message: () -> String) {
+    fun log(
+        priority: Level,
+        tag: String? = null,
+        throwable: Throwable? = null,
+        message: () -> String
+    ) {
         if (isEnable(priority, tag)) {
             rawLog(priority, tag, throwable, message())
         }
