@@ -1,42 +1,77 @@
 {
-  "//": "This is fake file, you need to set a google-services.json if you want to use firebase.",
   "project_info": {
-    "project_number": "111111111",
-    "firebase_url": "https://napier-111111.firebaseio.com",
-    "project_id": "napier-111111",
-    "storage_bucket": "napier-111111.appspot.com"
+    "project_number": "1072620373207",
+    "firebase_url": "https://napier-82786.firebaseio.com",
+    "project_id": "napier-82786",
+    "storage_bucket": "napier-82786.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1111111111111111:android:1111111111111",
+        "mobilesdk_app_id": "1:1072620373207:android:ab90809f391c88a6",
         "android_client_info": {
           "package_name": "com.github.aakira.napier.sample"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1111111111-1111111111111111111.apps.googleusercontent.com",
+          "client_id": "1072620373207-fvt7g7gejodn5902pcqk3pnu3rarcn2m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "111111111111111111"
+          "current_key": "AIzaSyB2FOeVHSdlKZFYEQSfjG1dVBOUhLCnh5o"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1111111111-1111111111111111111.apps.googleusercontent.com",
+              "client_id": "1072620373207-fvt7g7gejodn5902pcqk3pnu3rarcn2m.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "1111111111-1111111111111111111.apps.googleusercontent.com",
+              "client_id": "1072620373207-89solc0vol23brafmaho0nnbc9bvucdr.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.github.aakira.Napier"
+                "bundle_id": "io.github.aakira.napier.sample"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072620373207:android:d95a2b4bcb9bd045481c92",
+        "android_client_info": {
+          "package_name": "io.github.aakira.napier.sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1072620373207-fvt7g7gejodn5902pcqk3pnu3rarcn2m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2FOeVHSdlKZFYEQSfjG1dVBOUhLCnh5o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1072620373207-fvt7g7gejodn5902pcqk3pnu3rarcn2m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1072620373207-89solc0vol23brafmaho0nnbc9bvucdr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.github.aakira.napier.sample"
               }
             }
           ]

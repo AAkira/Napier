@@ -69,29 +69,36 @@ class Sample {
 
 ### Repository
 
-You can download this library from jCenter or maven repository.
+You can download this library from MavenCentral or jCenter repository.
+
+* Maven central
+
+You can download this from `1.4.1`.  
+Package name is `io.github.aakira`
+
+```groovy
+repositories {
+    mavenCentral() 
+}
+```
 
 * jCenter
 
-```gradle
+You can download this until `1.4.1`.  
+Package name is `com.github.aakira`
+
+```groovy
 repositories {
     jCenter()
 }
 ```
 
-* maven
-
-```gradle
-repositories {
-    maven { url "https://dl.bintray.com/aakira/maven" }
-}
-```
 
 ### Version
 
 Set the version name in your build.gradle
 
-[![Download Napier](https://api.bintray.com/packages/aakira/maven/napier/images/download.svg)](https://bintray.com/aakira/maven/napier/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.aakira/napier/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.aakira/napier)
 
 `def napierVersion = "[latest version]"`
 
@@ -99,14 +106,31 @@ Set the version name in your build.gradle
 
 Add the dependency to your commonMain dependencies
 
-```gradle
-commonMain {
-    dependencies {
-        // ...
-        implementation "com.github.aakira:napier:$napierVersion"
+* groovy
+
+```groovy
+sourceSets {
+    commonMain {
+        dependencies {
+            // ...
+            implementation "io.github.aakira:napier:$napierVersion"
+        }
     }
 }
 ```
+
+* kts
+
+```kotlin
+sourceSets {
+    val commonMain by getting {
+        dependencies {
+            implementation("io.github.aakira:napier:$napierVersion")
+        }
+    }
+}
+```
+
 
 ## Usage
 
@@ -197,13 +221,15 @@ Write this in your application class.
 if (BuildConfig.DEBUG) {
     // Debug build
 
+    // disable firebase crashlytics
+    FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(false)
     // init napier
     Napier.base(DebugAntilog())
 } else {
     // Others(Release build)
 
-    // init firebase crashlytics
-    Fabric.with(this, Crashlytics())
+    // enable firebase crashlytics
+    FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
     // init napier
     Napier.base(CrashlyticsAntilog(this))
 }
@@ -225,18 +251,14 @@ NapierProxyKt.debugBuild()
 
 // init firebase crashlytics
 FirebaseApp.configure()
-Fabric.with([Crashlytics.self])
 
 // init napier
 NapierProxyKt.releaseBuild(antilog: CrashlyticsAntilog(
     crashlyticsAddLog: { priority, tag, message in
-        let args = [tag, message].compactMap { $0 }
-        CLSLogv("%@", getVaList(args))
-        return .init()
+        Crashlytics.crashlytics().log("\(String(describing: tag)): \(String(describing: message))")
 },
     crashlyticsSendLog: { throwable in
-        Crashlytics.sharedInstance().recordError(throwable)
-        return .init()
+        Crashlytics.crashlytics().record(error: throwable)
 }))
 #endif
 ```
