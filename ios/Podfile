@@ -4,4 +4,5 @@ target 'Napier' do
   use_frameworks!
 
   pod 'Firebase/Crashlytics'
+  pod 'mpp_sample', :path => '../mpp-sample'
 end

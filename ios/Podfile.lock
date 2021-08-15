@@ -34,6 +34,7 @@ PODS:
     - GoogleUtilities/Environment
   - GoogleUtilities/UserDefaults (7.3.1):
     - GoogleUtilities/Logger
+  - mpp_sample (1.0.0)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -43,6 +44,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Crashlytics
+  - mpp_sample (from `../mpp-sample`)
 
 SPEC REPOS:
   trunk:
@@ -56,6 +58,10 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
 
+EXTERNAL SOURCES:
+  mpp_sample:
+    :path: "../mpp-sample"
+
 SPEC CHECKSUMS:
   Firebase: fffddd0bab8677d07376538365faa93ff3889b39
   FirebaseCore: ec566d917b2195fc2610aeb148dae99f57a788f9
@@ -64,9 +70,10 @@ SPEC CHECKSUMS:
   FirebaseInstallations: bf2ec8dbf36ff4c91af6b9a003d15855757680c1
   GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
   GoogleUtilities: e1d9ed4e544fc32a93e00e721400cbc3f377200d
+  mpp_sample: 07fdbc60934b60a9bbfb833df6298899fe345026
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 
-PODFILE CHECKSUM: 2822d85bb609b66f886d949716d5f863dc426322
+PODFILE CHECKSUM: 441ae05d1695723ea9a68d3223ef8b6460bbec0f
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1
