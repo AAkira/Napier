@@ -1,5 +1,5 @@
 import UIKit
-import Common
+import mpp_sample
 
 final class ViewController: UIViewController {
     override func viewDidLoad() {

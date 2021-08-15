@@ -8,20 +8,28 @@ plugins {
 
 apply(from = rootProject.file("./gradle/publish.gradle.kts"))
 
+val ideaActive = System.getProperty("idea.active") == "true"
+
 kotlin {
     android {
         publishAllLibraryVariants()
-    }
-    ios {
-        binaries {
-            framework()
-        }
     }
     js {
         browser()
         nodejs()
     }
     jvm()
+
+    ios {
+        binaries {
+            framework()
+        }
+    }
+    macosX64 {
+        binaries {
+            framework()
+        }
+    }
 
     sourceSets {
         val commonMain by getting {
@@ -45,14 +53,7 @@ kotlin {
                 implementation(Dep.Test.jvm)
             }
         }
-        val iosMain by getting {
-            dependencies {
-            }
-        }
-        val iosTest by getting {
-            dependencies {
-            }
-        }
+
         val jsMain by getting {
             dependencies {
                 implementation(Dep.Kotlin.js)
@@ -73,6 +74,45 @@ kotlin {
                 implementation(Dep.Coroutines.core)
                 implementation(Dep.Test.jvm)
             }
+        }
+
+        val nativeMain = if (ideaActive) {
+            val nativeMain by getting {
+                dependsOn(commonMain)
+            }
+            nativeMain
+        } else {
+            val nativeMain by creating {
+                dependsOn(commonMain)
+            }
+            nativeMain
+        }
+        val nativeTest = if (ideaActive) {
+            val nativeTest by getting {
+                dependsOn(commonTest)
+            }
+            nativeTest
+        } else {
+            val nativeTest by creating {
+                dependsOn(commonTest)
+            }
+            nativeTest
+        }
+
+        val iosMain by getting {
+            dependencies {
+            }
+        }
+        val iosTest by getting {
+            dependencies {
+            }
+        }
+
+        val macosX64Main by getting {
+            dependsOn(nativeMain)
+        }
+        val macosX64Test by getting {
+            dependsOn(nativeTest)
         }
     }
 }

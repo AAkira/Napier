@@ -1,6 +1,6 @@
 import UIKit
 import Firebase
-import Common
+import mpp_sample
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
