@@ -43,17 +43,17 @@ kotlin {
                 implementation(Dep.Kotlin.jvm)
             }
         }
-        val nativeMain by creating {
+        val appleMain by creating {
             dependsOn(commonMain)
         }
         val iosMain by getting {
-            dependsOn(nativeMain)
+            dependsOn(appleMain)
         }
         val macosX64Main by getting {
-            dependsOn(nativeMain)
+            dependsOn(appleMain)
         }
         val watchosX64Main by getting {
-            dependsOn(nativeMain)
+            dependsOn(appleMain)
         }
     }
 
