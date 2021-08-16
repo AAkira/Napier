@@ -111,10 +111,10 @@ kotlin {
             dependsOn(appleTest)
         }
         val tvosMain by getting {
-            dependsOn(nativeMain)
+            dependsOn(appleMain)
         }
         val tvosTest by getting {
-            dependsOn(nativeTest)
+            dependsOn(appleTest)
         }
     }
 }
