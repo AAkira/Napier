@@ -86,38 +86,35 @@ kotlin {
             }
         }
 
-        val iosMain by getting {
-            dependencies { }
-        }
-        val iosTest by getting {
-            dependencies { }
-        }
-
-        val nativeMain by creating {
+        val appleMain by creating {
             dependsOn(commonMain)
         }
-        val nativeTest by creating {
+        val appleTest by creating {
             dependsOn(commonTest)
         }
-
+        val iosMain by getting {
+            dependsOn(appleMain)
+        }
+        val iosTest by getting {
+            dependsOn(appleTest)
+        }
         val macosX64Main by getting {
-            dependsOn(nativeMain)
+            dependsOn(appleMain)
         }
         val macosX64Test by getting {
-            dependsOn(nativeTest)
+            dependsOn(appleTest)
         }
-
         val watchosMain by getting {
-            dependsOn(nativeMain)
+            dependsOn(appleMain)
         }
         val watchosTest by getting {
-            dependsOn(nativeTest)
+            dependsOn(appleTest)
         }
         val tvosMain by getting {
-            dependsOn(nativeMain)
+            dependsOn(appleMain)
         }
         val tvosTest by getting {
-            dependsOn(nativeTest)
+            dependsOn(appleTest)
         }
     }
 }
