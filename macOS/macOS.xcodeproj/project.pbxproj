@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B773B1126C8DF80008123DC /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B773B1026C8DF80008123DC /* Tests_iOS.swift */; };
-		3B773B1C26C8DF80008123DC /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B773B1B26C8DF80008123DC /* Tests_macOS.swift */; };
 		3B773B1E26C8DF80008123DC /* macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B773AF526C8DF7E008123DC /* macOSApp.swift */; };
 		3B773B1F26C8DF80008123DC /* macOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B773AF526C8DF7E008123DC /* macOSApp.swift */; };
 		3B773B2026C8DF80008123DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B773AF626C8DF7E008123DC /* ContentView.swift */; };
@@ -41,16 +39,11 @@
 		3B773AF626C8DF7E008123DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3B773AF726C8DF7F008123DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B773AFC26C8DF7F008123DC /* macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B773AFF26C8DF7F008123DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B773B0426C8DF7F008123DC /* macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B773B0626C8DF7F008123DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B773B0726C8DF80008123DC /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		3B773B0C26C8DF80008123DC /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B773B1026C8DF80008123DC /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
-		3B773B1226C8DF80008123DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B773B1726C8DF80008123DC /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B773B1B26C8DF80008123DC /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
-		3B773B1D26C8DF80008123DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D10652CC9753C8B4B72C2429 /* Pods-macOS (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-macOS (macOS).release.xcconfig"; path = "Target Support Files/Pods-macOS (macOS)/Pods-macOS (macOS).release.xcconfig"; sourceTree = "<group>"; };
 		F33B47CA8A29ADCBD3710DDB /* Pods_macOS__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_macOS__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -101,10 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				3B773AF426C8DF7E008123DC /* Shared */,
-				3B773AFE26C8DF7F008123DC /* iOS */,
 				3B773B0526C8DF7F008123DC /* macOS */,
-				3B773B0F26C8DF80008123DC /* Tests iOS */,
-				3B773B1A26C8DF80008123DC /* Tests macOS */,
 				3B773AFD26C8DF7F008123DC /* Products */,
 				36D1861B74BDC2E58FF7D139 /* Pods */,
 				ECD003D332C404557D385849 /* Frameworks */,
@@ -132,14 +122,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3B773AFE26C8DF7F008123DC /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				3B773AFF26C8DF7F008123DC /* Info.plist */,
-			);
-			path = iOS;
-			sourceTree = "<group>";
-		};
 		3B773B0526C8DF7F008123DC /* macOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,24 +129,6 @@
 				3B773B0726C8DF80008123DC /* macOS.entitlements */,
 			);
 			path = macOS;
-			sourceTree = "<group>";
-		};
-		3B773B0F26C8DF80008123DC /* Tests iOS */ = {
-			isa = PBXGroup;
-			children = (
-				3B773B1026C8DF80008123DC /* Tests_iOS.swift */,
-				3B773B1226C8DF80008123DC /* Info.plist */,
-			);
-			path = "Tests iOS";
-			sourceTree = "<group>";
-		};
-		3B773B1A26C8DF80008123DC /* Tests macOS */ = {
-			isa = PBXGroup;
-			children = (
-				3B773B1B26C8DF80008123DC /* Tests_macOS.swift */,
-				3B773B1D26C8DF80008123DC /* Info.plist */,
-			);
-			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
 		ECD003D332C404557D385849 /* Frameworks */ = {
@@ -376,7 +340,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B773B1126C8DF80008123DC /* Tests_iOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,7 +347,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B773B1C26C8DF80008123DC /* Tests_macOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
