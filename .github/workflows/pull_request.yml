@@ -32,6 +32,8 @@ jobs:
         run: ./gradlew :napier:macosX64Test --stacktrace
       - name: Run watchos tests
         run: ./gradlew :napier:watchosX64Test --stacktrace
+      - name: Run tvos tests
+        run: ./gradlew :napier:tvosX64Test --stacktrace
 
       - name: Bundle the build report
         if: failure()
