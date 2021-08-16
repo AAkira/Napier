@@ -35,6 +35,11 @@ kotlin {
             framework()
         }
     }
+    tvos {
+        binaries {
+            framework()
+        }
+    }
 
     sourceSets {
         val commonMain by getting {
@@ -106,6 +111,12 @@ kotlin {
             dependsOn(nativeMain)
         }
         val watchosTest by getting {
+            dependsOn(nativeTest)
+        }
+        val tvosMain by getting {
+            dependsOn(nativeMain)
+        }
+        val tvosTest by getting {
             dependsOn(nativeTest)
         }
     }
