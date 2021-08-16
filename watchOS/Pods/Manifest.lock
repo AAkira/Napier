@@ -1,0 +1,16 @@
+PODS:
+  - mpp_sample (1.0.0)
+
+DEPENDENCIES:
+  - mpp_sample (from `../mpp-sample`)
+
+EXTERNAL SOURCES:
+  mpp_sample:
+    :path: "../mpp-sample"
+
+SPEC CHECKSUMS:
+  mpp_sample: 07fdbc60934b60a9bbfb833df6298899fe345026
+
+PODFILE CHECKSUM: b3436ce517ca1a0cce102f45d61571a87947fefe
+
+COCOAPODS: 1.10.1

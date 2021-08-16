@@ -30,6 +30,11 @@ kotlin {
             framework()
         }
     }
+    watchos {
+        binaries {
+            framework()
+        }
+    }
 
     sourceSets {
         val commonMain by getting {
@@ -76,42 +81,31 @@ kotlin {
             }
         }
 
-        val nativeMain = if (ideaActive) {
-            val nativeMain by getting {
-                dependsOn(commonMain)
-            }
-            nativeMain
-        } else {
-            val nativeMain by creating {
-                dependsOn(commonMain)
-            }
-            nativeMain
-        }
-        val nativeTest = if (ideaActive) {
-            val nativeTest by getting {
-                dependsOn(commonTest)
-            }
-            nativeTest
-        } else {
-            val nativeTest by creating {
-                dependsOn(commonTest)
-            }
-            nativeTest
-        }
-
         val iosMain by getting {
-            dependencies {
-            }
+            dependencies { }
         }
         val iosTest by getting {
-            dependencies {
-            }
+            dependencies { }
+        }
+
+        val nativeMain by creating {
+            dependsOn(commonMain)
+        }
+        val nativeTest by creating {
+            dependsOn(commonTest)
         }
 
         val macosX64Main by getting {
             dependsOn(nativeMain)
         }
         val macosX64Test by getting {
+            dependsOn(nativeTest)
+        }
+
+        val watchosMain by getting {
+            dependsOn(nativeMain)
+        }
+        val watchosTest by getting {
             dependsOn(nativeTest)
         }
     }
