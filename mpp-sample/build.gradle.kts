@@ -1,6 +1,5 @@
 import dependencies.Dep
 import dependencies.Versions
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
     kotlin("multiplatform")
@@ -18,6 +17,7 @@ kotlin {
     jvm()
     ios()
     macosX64()
+    watchosX64()
 
     sourceSets {
         val commonMain by getting {
@@ -50,6 +50,9 @@ kotlin {
             dependsOn(nativeMain)
         }
         val macosX64Main by getting {
+            dependsOn(nativeMain)
+        }
+        val watchosX64Main by getting {
             dependsOn(nativeMain)
         }
     }

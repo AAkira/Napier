@@ -1,0 +1,6 @@
+framework module Pods_watchOSTests {
+  umbrella header "Pods-watchOSTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

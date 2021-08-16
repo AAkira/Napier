@@ -1,10 +1,15 @@
 import SwiftUI
+import mpp_sample
 
 @main
 struct watchOSApp: App {
     
     init() {
-        print("hoge")
+        NapierProxyKt.debugBuild()
+        let sample = Sample()
+        sample.hello()
+        sample.suspendHelloKt()
+        sample.handleError()
     }
     
     @SceneBuilder var body: some Scene {
