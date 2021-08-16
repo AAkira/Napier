@@ -28,6 +28,10 @@ jobs:
         run: ./gradlew :napier:iosX64Test --stacktrace
       - name: Run jvm tests
         run: ./gradlew :napier:jvmTest --stacktrace
+      - name: Run macos tests
+        run: ./gradlew :napier:macosX64Test --stacktrace
+      - name: Run watchos tests
+        run: ./gradlew :napier:watchosX64Test --stacktrace
 
       - name: Bundle the build report
         if: failure()
