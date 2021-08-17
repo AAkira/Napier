@@ -79,6 +79,7 @@ typedef struct {
           struct {
             struct {
               struct {
+                void (*debugBuild)();
                 struct {
                   libnative_KType* (*_type)(void);
                   libnative_kref_io_github_aakira_napier_mppsample_Sample (*Sample)();
