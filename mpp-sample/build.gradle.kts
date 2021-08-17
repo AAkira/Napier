@@ -18,6 +18,13 @@ kotlin {
     ios()
     macosX64()
     watchosX64()
+    linuxX64 {
+        binaries {
+            sharedLib {
+                baseName = "native"
+            }
+        }
+    }
 
     sourceSets {
         val commonMain by getting {
@@ -54,6 +61,13 @@ kotlin {
         }
         val watchosX64Main by getting {
             dependsOn(appleMain)
+        }
+
+        val nativeMain by creating {
+            dependsOn(commonMain)
+        }
+        val linuxX64Main by getting {
+            dependsOn(nativeMain)
         }
     }
 

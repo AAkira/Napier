@@ -41,6 +41,22 @@ kotlin {
         }
     }
 
+    linuxX64 {
+        binaries {
+            staticLib()
+        }
+    }
+    linuxArm32Hfp {
+        binaries {
+            staticLib()
+        }
+    }
+    linuxArm64 {
+        binaries {
+            staticLib()
+        }
+    }
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -115,6 +131,31 @@ kotlin {
         }
         val tvosTest by getting {
             dependsOn(appleTest)
+        }
+
+        val nativeMain by creating {
+            dependsOn(commonMain)
+        }
+        val nativeTest by creating {
+            dependsOn(commonTest)
+        }
+        val linuxX64Main by getting {
+            dependsOn(nativeMain)
+        }
+        val linuxX64Test by getting {
+            dependsOn(nativeTest)
+        }
+        val linuxArm32HfpMain by getting {
+            dependsOn(nativeMain)
+        }
+        val linuxArm32HfpTest by getting {
+            dependsOn(nativeTest)
+        }
+        val linuxArm64Main by getting {
+            dependsOn(nativeMain)
+        }
+        val linuxArm64Test by getting {
+            dependsOn(nativeTest)
         }
     }
 }
