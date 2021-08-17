@@ -1,0 +1,10 @@
+FROM ubuntu:latest
+
+RUN apt-get update && \
+    apt-get -y install gcc mono-mcs && \
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir work
+
+COPY /work /work
+
+CMD /work/build.sh
