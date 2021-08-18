@@ -5,7 +5,7 @@ import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.Napier
 
 fun debugBuild() {
-    Napier.base(DebugAntilog(coroutinesSuffix = false))
+    Napier.base(DebugAntilog())
 }
 
 fun releaseBuild(antilog: Antilog) {
