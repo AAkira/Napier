@@ -3,18 +3,18 @@ package io.github.aakira.napier.sample
 import android.content.Context
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import io.github.aakira.napier.Antilog
-import io.github.aakira.napier.Napier
+import io.github.aakira.napier.LogLevel
 
 class CrashlyticsAntilog(private val context: Context) : Antilog() {
 
     override fun performLog(
-        priority: Napier.Level,
+        priority: LogLevel,
         tag: String?,
         throwable: Throwable?,
         message: String?
     ) {
         // send only error log
-        if (priority < Napier.Level.ERROR) return
+        if (priority < LogLevel.ERROR) return
 
         throwable?.let {
             when (it) {
