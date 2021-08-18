@@ -15,7 +15,7 @@ kotlin {
         browser()
     }
     jvm()
-    ios()
+    iosX64()
     macosX64()
     watchosX64()
     linuxX64 {
@@ -53,7 +53,7 @@ kotlin {
         val appleMain by creating {
             dependsOn(commonMain)
         }
-        val iosMain by getting {
+        val iosX64Main by getting {
             dependsOn(appleMain)
         }
         val macosX64Main by getting {
