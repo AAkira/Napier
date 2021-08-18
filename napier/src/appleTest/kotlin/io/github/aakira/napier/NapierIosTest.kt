@@ -10,18 +10,18 @@ class NapierIosTest {
         val debugAntilog = DebugAntilog()
 
         val sampleHello = debugAntilog.createStackElementTag(
-            "::: 8   Common   0x000000010db38cb3 kfun:io.github.aakira.napier.mppsample.Sample.hello()kotlin.String + 211"
+            "8   Napier                              0x0000000100f0eb3d kfun:io.github.aakira.napier.mppsample.Sample#hello(){}kotlin.String + 205"
         )
         assertEquals("Sample.hello", sampleHello)
 
         val handleError = debugAntilog.createStackElementTag(
-            "::: 8   Common     0x000000010db396c0 kfun:io.github.aakira.napier.mppsample.Sample.handleError() + 432"
+            "8   Napier                              0x0000000100f0f57c kfun:io.github.aakira.napier.mppsample.Sample#handleError(){} + 412"
         )
         assertEquals("Sample.handleError", handleError)
 
         val coroutine = debugAntilog.createStackElementTag(
-            "::: 8   Common     0x000000010db39132 kfun:io.github.aakira.napier.mppsample.Sample.\$suspendHelloCOROUTINE\$0.invokeSuspend(kotlin.Result<kotlin.Any?>)kotlin.Any? + 626"
+            "8   Napier                              0x0000000100f0f0e2 kfun:io.github.aakira.napier.mppsample.Sample.\$suspendHelloCOROUTINE\$2#invokeSuspend(kotlin.Result<kotlin.Any?>){}kotlin.Any? + 930"
         )
-        assertEquals("Sample.suspendHello", coroutine)
+        assertEquals("Sample.suspendHello[async]", coroutine)
     }
 }

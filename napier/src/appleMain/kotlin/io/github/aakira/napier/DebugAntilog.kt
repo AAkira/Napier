@@ -60,9 +60,16 @@ class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
         var tag = string
         tag = tag.substringBeforeLast('$')
         tag = tag.substringBeforeLast('(')
-        tag = tag.substring(tag.lastIndexOf(".", tag.lastIndexOf(".") - 1) + 1)
-        tag = tag.replace("$", "")
-        tag = tag.replace("COROUTINE", "")
+        if(tag.contains("$")) {
+            // coroutines
+            tag = tag.substring(tag.lastIndexOf(".", tag.lastIndexOf(".") - 1) + 1)
+            tag = tag.replace("$", "")
+            tag = tag.replace("COROUTINE", "")
+        } else {
+            // others
+            tag = tag.substringAfterLast(".")
+            tag = tag.replace("#", ".")
+        }
         return tag
     }
 }
