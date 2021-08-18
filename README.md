@@ -1,10 +1,12 @@
 ![logo][logo]
 
 Napier is a logger library for Kotlin Multiplatform.  
-It supports for the android, ios, jvm, js.  
+It supports for the Android, Darwin(iOS, macOS, watchOS, tvOS), JVM, JavaScript.  
 Logs written in common module are displayed on logger viewer of each platform.
 
-* Android
+## Preview
+
+### Android
 
 format: `[Class name]$[Method name]: [Your log]`
 
@@ -12,21 +14,23 @@ uses the `android.util.Log`(Logcat)
 
 ![preview-android][preview-android]
 
-* ios
+### Darwin(iOS, macOS, watchOS, tvOS)
 
 format: `[Date time][Symbol][Log level][Class name].[Method name] - [Your log]`
+
+Added `[async]` label at the end, if it is called from suspend functions.
 
 uses the `print`
 
 ![preview-ios][preview-ios]
 
-* js
+### JavaScript
 
 uses the `console.log`
 
 ![preview-js][preview-js]
 
-* jvm
+### JVM
 
 uses the `java.util.logging.Logger`
 
@@ -174,6 +178,10 @@ fun debugBuild() {
     Napier.base(DebugAntilog())
 }
 ```
+
+|argument|type|description|
+|-|-|
+|coroutinesSuffix|Boolean|Added `[async]` label at the end, if it is called from suspend functions|
 
 * Call initialize code from ios project.
 
