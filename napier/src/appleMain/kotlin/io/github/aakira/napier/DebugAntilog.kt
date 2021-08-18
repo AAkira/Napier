@@ -6,7 +6,10 @@ import platform.Foundation.NSThread
 
 private const val CALL_STACK_INDEX = 8
 
-class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
+class DebugAntilog(
+    private val defaultTag: String = "app",
+    private val coroutinesSuffix: Boolean = true,
+) : Antilog() {
 
     var crashAssert = false
 
@@ -23,7 +26,12 @@ class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
         Napier.Level.ASSERT to "💞 ASSERT"
     )
 
-    override fun performLog(priority: Napier.Level, tag: String?, throwable: Throwable?, message: String?) {
+    override fun performLog(
+        priority: Napier.Level,
+        tag: String?,
+        throwable: Throwable?,
+        message: String?
+    ) {
         if (priority == Napier.Level.ASSERT) {
             assert(crashAssert) { buildLog(priority, tag, message) }
         } else {
@@ -60,11 +68,11 @@ class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
         var tag = string
         tag = tag.substringBeforeLast('$')
         tag = tag.substringBeforeLast('(')
-        if(tag.contains("$")) {
+        if (tag.contains("$")) {
             // coroutines
             tag = tag.substring(tag.lastIndexOf(".", tag.lastIndexOf(".") - 1) + 1)
             tag = tag.replace("$", "")
-            tag = tag.replace("COROUTINE", "")
+            tag = tag.replace("COROUTINE", if (coroutinesSuffix) "[async]" else "")
         } else {
             // others
             tag = tag.substringAfterLast(".")
