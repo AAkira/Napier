@@ -14,7 +14,7 @@ kotlin {
     android {
         publishAllLibraryVariants()
     }
-    js {
+    js(BOTH) {
         browser()
         nodejs()
     }
@@ -25,7 +25,7 @@ kotlin {
             framework()
         }
     }
-    if(ideaActive.not()) {
+    if (ideaActive.not()) {
         // darwin
         ios {
             binaries {
@@ -59,6 +59,16 @@ kotlin {
                 staticLib()
             }
         }
+//        linuxMips32 {
+//            binaries {
+//                staticLib()
+//            }
+//        }
+//        linuxMipsel32 {
+//            binaries {
+//                staticLib()
+//            }
+//        }
     } else {
         // darwin
         iosX64 {
@@ -130,10 +140,10 @@ kotlin {
             }
         }
 
-        val appleMain by creating {
+        val darwinMain by creating {
             dependsOn(commonMain)
         }
-        val appleTest by creating {
+        val darwinTest by creating {
             dependsOn(commonTest)
         }
         val nativeMain by creating {
@@ -144,30 +154,30 @@ kotlin {
         }
 
         val macosX64Main by getting {
-            dependsOn(appleMain)
+            dependsOn(darwinMain)
         }
         val macosX64Test by getting {
-            dependsOn(appleTest)
+            dependsOn(darwinTest)
         }
-        if(ideaActive.not()) {
-            // darwin
+        if (ideaActive.not()) {
+            // apple
             val iosMain by getting {
-                dependsOn(appleMain)
+                dependsOn(darwinMain)
             }
             val iosTest by getting {
-                dependsOn(appleTest)
+                dependsOn(darwinTest)
             }
             val watchosMain by getting {
-                dependsOn(appleMain)
+                dependsOn(darwinMain)
             }
             val watchosTest by getting {
-                dependsOn(appleTest)
+                dependsOn(darwinTest)
             }
             val tvosMain by getting {
-                dependsOn(appleMain)
+                dependsOn(darwinMain)
             }
             val tvosTest by getting {
-                dependsOn(appleTest)
+                dependsOn(darwinTest)
             }
 
             // linux
@@ -189,25 +199,37 @@ kotlin {
             val linuxArm64Test by getting {
                 dependsOn(nativeTest)
             }
+//            val linuxMips32Main by getting {
+//                dependsOn(nativeMain)
+//            }
+//            val linuxMips32Test by getting {
+//                dependsOn(nativeTest)
+//            }
+//            val linuxMipsel32Main by getting {
+//                dependsOn(nativeMain)
+//            }
+//            val linuxMipsel32Test by getting {
+//                dependsOn(nativeTest)
+//            }
         } else {
-            // darwin
+            // apple
             val iosX64Main by getting {
-                dependsOn(appleMain)
+                dependsOn(darwinMain)
             }
             val iosX64Test by getting {
-                dependsOn(appleTest)
+                dependsOn(darwinTest)
             }
             val watchosX64Main by getting {
-                dependsOn(appleMain)
+                dependsOn(darwinMain)
             }
             val watchosX64Test by getting {
-                dependsOn(appleTest)
+                dependsOn(darwinTest)
             }
             val tvosX64Main by getting {
-                dependsOn(appleMain)
+                dependsOn(darwinMain)
             }
             val tvosX64Test by getting {
-                dependsOn(appleTest)
+                dependsOn(darwinTest)
             }
 
             // linux
@@ -218,7 +240,6 @@ kotlin {
                 dependsOn(nativeTest)
             }
         }
-
     }
 }
 

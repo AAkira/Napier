@@ -6,60 +6,38 @@ class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
 
     var crashAssert = false
 
-//    private val dateFormatter = NSDateFormatter().apply {
-//        dateFormat = "MM-dd HH:mm:ss.SSS"
-//    }
-
-    private val tagMap: HashMap<Napier.Level, String> = hashMapOf(
-        Napier.Level.VERBOSE to "💜 VERBOSE",
-        Napier.Level.DEBUG to "💚 DEBUG",
-        Napier.Level.INFO to "💙 INFO",
-        Napier.Level.WARNING to "💛 WARN",
-        Napier.Level.ERROR to "❤️ ERROR",
-        Napier.Level.ASSERT to "💞 ASSERT"
+    private val tagMap: HashMap<LogLevel, String> = hashMapOf(
+        LogLevel.VERBOSE to "💜 VERBOSE",
+        LogLevel.DEBUG to "💚 DEBUG",
+        LogLevel.INFO to "💙 INFO",
+        LogLevel.WARNING to "💛 WARN",
+        LogLevel.ERROR to "❤️ ERROR",
+        LogLevel.ASSERT to "💞 ASSERT"
     )
 
-    override fun performLog(priority: Napier.Level, tag: String?, throwable: Throwable?, message: String?) {
-        if (priority == Napier.Level.ASSERT) {
+    override fun performLog(
+        priority: LogLevel,
+        tag: String?,
+        throwable: Throwable?,
+        message: String?,
+    ) {
+        if (priority == LogLevel.ASSERT) {
             assert(crashAssert) { buildLog(priority, tag, message) }
         } else {
             println(buildLog(priority, tag, message))
         }
     }
 
-    fun setTag(level: Napier.Level, tag: String) {
+    fun setTag(level: LogLevel, tag: String) {
         tagMap[level] = tag
     }
 
-    fun setDateFormatterString(formatter: String) {
-//        dateFormatter.dateFormat = formatter
-    }
-
-//    private fun getCurrentTime() = dateFormatter.stringFromDate(NSDate())
-
-    private fun buildLog(priority: Napier.Level, tag: String?, message: String?): String {
+    private fun buildLog(priority: LogLevel, tag: String?, message: String?): String {
         return "todo time ${tagMap[priority]} ${tag ?: performTag(defaultTag)} - $message"
     }
 
     // find stack trace
     private fun performTag(tag: String): String {
-//        val thread = NSThread.callStackSymbols
-//
-//        return if (thread.size >= CALL_STACK_INDEX) {
-//            createStackElementTag(thread[CALL_STACK_INDEX] as String)
-//        } else {
-//            tag
-//        }
-        return "aaa"
+        return "todo"
     }
-
-//    internal fun createStackElementTag(string: String): String {
-//        var tag = string
-//        tag = tag.substringBeforeLast('$')
-//        tag = tag.substringBeforeLast('(')
-//        tag = tag.substring(tag.lastIndexOf(".", tag.lastIndexOf(".") - 1) + 1)
-//        tag = tag.replace("$", "")
-//        tag = tag.replace("COROUTINE", "")
-//        return tag
-//    }
 }

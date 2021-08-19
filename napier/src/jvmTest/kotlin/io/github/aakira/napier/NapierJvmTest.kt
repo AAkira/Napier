@@ -25,7 +25,7 @@ class NapierJvmTest {
     fun `Check buildLog`() {
         assertEquals(
             "[VERBOSE] defaultTag - message",
-            debugAntilog.buildLog(Napier.Level.VERBOSE, "defaultTag", "message")
+            debugAntilog.buildLog(LogLevel.VERBOSE, "defaultTag", "message")
         )
     }
 }

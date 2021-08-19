@@ -9,15 +9,26 @@ plugins {
 
 version = "1.0.0"
 
+val ideaActive = System.getProperty("idea.active") == "true"
+
 kotlin {
     android()
     js {
         browser()
     }
     jvm()
-    iosX64()
+
+    // darwin
     macosX64()
-    watchosX64()
+    if (ideaActive.not()) {
+        ios()
+        watchos()
+    } else {
+        iosX64()
+        watchosX64()
+    }
+
+    // linux
     linuxX64 {
         binaries {
             sharedLib {
@@ -50,24 +61,42 @@ kotlin {
                 implementation(Dep.Kotlin.jvm)
             }
         }
-        val appleMain by creating {
+
+        // apple
+        val darwinMain by creating {
             dependsOn(commonMain)
         }
-        val iosX64Main by getting {
-            dependsOn(appleMain)
-        }
         val macosX64Main by getting {
-            dependsOn(appleMain)
+            dependsOn(darwinMain)
         }
-        val watchosX64Main by getting {
-            dependsOn(appleMain)
-        }
-
+        // native
         val nativeMain by creating {
             dependsOn(commonMain)
         }
-        val linuxX64Main by getting {
-            dependsOn(nativeMain)
+
+        if (ideaActive.not()) {
+            // apple
+            val iosMain by getting {
+                dependsOn(darwinMain)
+            }
+            val watchosMain by getting {
+                dependsOn(darwinMain)
+            }
+
+            val linuxX64Main by getting {
+                dependsOn(nativeMain)
+            }
+        } else {
+            // apple
+            val iosX64Main by getting {
+                dependsOn(darwinMain)
+            }
+            val watchosX64Main by getting {
+                dependsOn(darwinMain)
+            }
+            val linuxX64Main by getting {
+                dependsOn(nativeMain)
+            }
         }
     }
 
