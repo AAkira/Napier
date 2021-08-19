@@ -101,51 +101,51 @@ kotlin {
             }
         }
 
-        val appleMain by creating {
+        val darwinMain by creating {
             dependsOn(commonMain)
         }
-        val appleTest by creating {
+        val darwinTest by creating {
             dependsOn(commonTest)
         }
         if (ideaActive) {
-            // darwin
+            // apple
             val iosMain by getting {
-                dependsOn(appleMain)
+                dependsOn(darwinMain)
             }
             val iosTest by getting {
-                dependsOn(appleTest)
+                dependsOn(darwinTest)
             }
             val watchosMain by getting {
-                dependsOn(appleMain)
+                dependsOn(darwinMain)
             }
             val watchosTest by getting {
-                dependsOn(appleTest)
+                dependsOn(darwinTest)
             }
             val tvosMain by getting {
-                dependsOn(appleMain)
+                dependsOn(darwinMain)
             }
             val tvosTest by getting {
-                dependsOn(appleTest)
+                dependsOn(darwinTest)
             }
         } else {
-            // darwin
+            // apple
             val iosX64Main by getting {
-                dependsOn(appleMain)
+                dependsOn(darwinMain)
             }
             val iosX64Test by getting {
-                dependsOn(appleTest)
+                dependsOn(darwinTest)
             }
             val watchosX64Main by getting {
-                dependsOn(appleMain)
+                dependsOn(darwinMain)
             }
             val watchosX64Test by getting {
-                dependsOn(appleTest)
+                dependsOn(darwinTest)
             }
             val tvosX64Main by getting {
-                dependsOn(appleMain)
+                dependsOn(darwinMain)
             }
             val tvosX64Test by getting {
-                dependsOn(appleTest)
+                dependsOn(darwinTest)
             }
         }
     }

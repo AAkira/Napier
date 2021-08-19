@@ -53,26 +53,26 @@ kotlin {
             }
         }
 
-        // darwin
-        val appleMain by creating {
+        // apple
+        val darwinMain by creating {
             dependsOn(commonMain)
         }
         val macosX64Main by getting {
-            dependsOn(appleMain)
+            dependsOn(darwinMain)
         }
         if (ideaActive) {
             val iosMain by getting {
-                dependsOn(appleMain)
+                dependsOn(darwinMain)
             }
             val watchosMain by getting {
-                dependsOn(appleMain)
+                dependsOn(darwinMain)
             }
         } else {
             val iosX64Main by getting {
-                dependsOn(appleMain)
+                dependsOn(darwinMain)
             }
             val watchosX64Main by getting {
-                dependsOn(appleMain)
+                dependsOn(darwinMain)
             }
         }
     }
