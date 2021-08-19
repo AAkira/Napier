@@ -14,7 +14,7 @@ kotlin {
     android {
         publishAllLibraryVariants()
     }
-    js {
+    js(BOTH) {
         browser()
         nodejs()
     }
