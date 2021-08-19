@@ -20,7 +20,7 @@ kotlin {
 
     // darwin
     macosX64()
-    if (ideaActive) {
+    if (ideaActive.not()) {
         ios()
         watchos()
     } else {
@@ -60,7 +60,7 @@ kotlin {
         val macosX64Main by getting {
             dependsOn(darwinMain)
         }
-        if (ideaActive) {
+        if (ideaActive.not()) {
             val iosMain by getting {
                 dependsOn(darwinMain)
             }

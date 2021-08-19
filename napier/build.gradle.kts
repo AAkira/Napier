@@ -20,7 +20,9 @@ kotlin {
     }
     jvm()
 
-    if (ideaActive) {
+    // darwin
+    macosX64()
+    if (ideaActive.not()) {
         // darwin
         ios {
             binaries {
@@ -107,7 +109,13 @@ kotlin {
         val darwinTest by creating {
             dependsOn(commonTest)
         }
-        if (ideaActive) {
+        val macosX64Main by getting {
+            dependsOn(darwinMain)
+        }
+        val macosX64Test by getting {
+            dependsOn(darwinMain)
+        }
+        if (ideaActive.not()) {
             // apple
             val iosMain by getting {
                 dependsOn(darwinMain)
