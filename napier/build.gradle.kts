@@ -20,24 +20,39 @@ kotlin {
     }
     jvm()
 
-    ios {
-        binaries {
-            framework()
+    if (ideaActive) {
+        // darwin
+        ios {
+            binaries {
+                framework()
+            }
         }
-    }
-    macosX64 {
-        binaries {
-            framework()
+        watchos {
+            binaries {
+                framework()
+            }
         }
-    }
-    watchos {
-        binaries {
-            framework()
+        tvos {
+            binaries {
+                framework()
+            }
         }
-    }
-    tvos {
-        binaries {
-            framework()
+    } else {
+        // darwin
+        iosX64 {
+            binaries {
+                framework()
+            }
+        }
+        watchosX64 {
+            binaries {
+                framework()
+            }
+        }
+        tvosX64 {
+            binaries {
+                framework()
+            }
         }
     }
 
@@ -92,29 +107,46 @@ kotlin {
         val appleTest by creating {
             dependsOn(commonTest)
         }
-        val iosMain by getting {
-            dependsOn(appleMain)
-        }
-        val iosTest by getting {
-            dependsOn(appleTest)
-        }
-        val macosX64Main by getting {
-            dependsOn(appleMain)
-        }
-        val macosX64Test by getting {
-            dependsOn(appleTest)
-        }
-        val watchosMain by getting {
-            dependsOn(appleMain)
-        }
-        val watchosTest by getting {
-            dependsOn(appleTest)
-        }
-        val tvosMain by getting {
-            dependsOn(appleMain)
-        }
-        val tvosTest by getting {
-            dependsOn(appleTest)
+        if (ideaActive) {
+            // darwin
+            val iosMain by getting {
+                dependsOn(appleMain)
+            }
+            val iosTest by getting {
+                dependsOn(appleTest)
+            }
+            val watchosMain by getting {
+                dependsOn(appleMain)
+            }
+            val watchosTest by getting {
+                dependsOn(appleTest)
+            }
+            val tvosMain by getting {
+                dependsOn(appleMain)
+            }
+            val tvosTest by getting {
+                dependsOn(appleTest)
+            }
+        } else {
+            // darwin
+            val iosX64Main by getting {
+                dependsOn(appleMain)
+            }
+            val iosX64Test by getting {
+                dependsOn(appleTest)
+            }
+            val watchosX64Main by getting {
+                dependsOn(appleMain)
+            }
+            val watchosX64Test by getting {
+                dependsOn(appleTest)
+            }
+            val tvosX64Main by getting {
+                dependsOn(appleMain)
+            }
+            val tvosX64Test by getting {
+                dependsOn(appleTest)
+            }
         }
     }
 }
