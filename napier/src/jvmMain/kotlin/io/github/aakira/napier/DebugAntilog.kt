@@ -9,10 +9,11 @@ import java.util.logging.Logger
 import java.util.logging.SimpleFormatter
 import java.util.regex.Pattern
 
-class DebugAntilog(
+actual class DebugAntilog(
     private val defaultTag: String = "app",
     private val handler: List<Handler> = listOf()
 ) : Antilog() {
+    actual constructor(defaultTag: String) : this(defaultTag, handler = listOf())
 
     companion object {
         private const val CALL_STACK_INDEX = 8
