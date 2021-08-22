@@ -6,10 +6,11 @@ import platform.Foundation.NSThread
 
 private const val CALL_STACK_INDEX = 8
 
-class DebugAntilog(
+actual class DebugAntilog(
     private val defaultTag: String = "app",
     private val coroutinesSuffix: Boolean = true,
 ) : Antilog() {
+    actual constructor(defaultTag: String) : this(defaultTag, coroutinesSuffix = true)
 
     var crashAssert = false
 

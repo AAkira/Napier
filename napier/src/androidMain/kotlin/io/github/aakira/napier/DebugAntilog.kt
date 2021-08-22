@@ -6,7 +6,7 @@ import java.io.PrintWriter
 import java.io.StringWriter
 import java.util.regex.Pattern
 
-class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
+actual class DebugAntilog actual constructor(private val defaultTag: String) : Antilog() {
 
     companion object {
         private const val MAX_LOG_LENGTH = 4000
@@ -16,7 +16,12 @@ class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
 
     private val anonymousClass = Pattern.compile("(\\$\\d+)+$")
 
-    override fun performLog(priority: LogLevel, tag: String?, throwable: Throwable?, message: String?) {
+    override fun performLog(
+        priority: LogLevel,
+        tag: String?,
+        throwable: Throwable?,
+        message: String?,
+    ) {
 
         val debugTag = tag ?: performTag(defaultTag)
 

@@ -1,11 +1,13 @@
 package io.github.aakira.napier
 
-import io.github.aakira.napier.Antilog
-import io.github.aakira.napier.Napier
+actual class DebugAntilog actual constructor(private val defaultTag: String) : Antilog() {
 
-class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
-
-    override fun performLog(priority: LogLevel, tag: String?, throwable: Throwable?, message: String?) {
+    override fun performLog(
+        priority: LogLevel,
+        tag: String?,
+        throwable: Throwable?,
+        message: String?,
+    ) {
         val logTag = tag ?: defaultTag
 
         val fullMessage = if (message != null) {
