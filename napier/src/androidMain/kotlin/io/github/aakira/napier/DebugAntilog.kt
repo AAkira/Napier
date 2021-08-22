@@ -6,7 +6,7 @@ import java.io.PrintWriter
 import java.io.StringWriter
 import java.util.regex.Pattern
 
-class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
+actual class DebugAntilog actual constructor(private val defaultTag: String) : Antilog() {
 
     companion object {
         private const val MAX_LOG_LENGTH = 4000
