@@ -6,7 +6,7 @@ import java.io.PrintWriter
 import java.io.StringWriter
 import java.util.regex.Pattern
 
-class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
+actual class DebugAntilog actual constructor(private val defaultTag: String) : Antilog() {
 
     companion object {
         private const val MAX_LOG_LENGTH = 4000
@@ -16,7 +16,12 @@ class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
 
     private val anonymousClass = Pattern.compile("(\\$\\d+)+$")
 
-    override fun performLog(priority: Napier.Level, tag: String?, throwable: Throwable?, message: String?) {
+    override fun performLog(
+        priority: LogLevel,
+        tag: String?,
+        throwable: Throwable?,
+        message: String?,
+    ) {
 
         val debugTag = tag ?: performTag(defaultTag)
 
@@ -31,7 +36,7 @@ class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
         val length = fullMessage.length
         if (length <= MAX_LOG_LENGTH) {
             // Fast path for small messages which can fit in a single call.
-            if (priority == Napier.Level.ASSERT) {
+            if (priority == LogLevel.ASSERT) {
                 Log.wtf(debugTag, fullMessage)
             } else {
                 Log.println(priority.toValue(), debugTag, fullMessage)
@@ -95,12 +100,12 @@ class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
             return sw.toString()
         }
 
-    private fun Napier.Level.toValue() = when (this) {
-        Napier.Level.VERBOSE -> Log.VERBOSE
-        Napier.Level.DEBUG -> Log.DEBUG
-        Napier.Level.INFO -> Log.INFO
-        Napier.Level.WARNING -> Log.WARN
-        Napier.Level.ERROR -> Log.ERROR
-        Napier.Level.ASSERT -> Log.ASSERT
+    private fun LogLevel.toValue() = when (this) {
+        LogLevel.VERBOSE -> Log.VERBOSE
+        LogLevel.DEBUG -> Log.DEBUG
+        LogLevel.INFO -> Log.INFO
+        LogLevel.WARNING -> Log.WARN
+        LogLevel.ERROR -> Log.ERROR
+        LogLevel.ASSERT -> Log.ASSERT
     }
 }

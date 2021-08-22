@@ -1,10 +1,12 @@
 ![logo][logo]
 
 Napier is a logger library for Kotlin Multiplatform.  
-It supports for the android, ios, jvm, js.  
+It supports for the Android, Darwin(iOS, macOS, watchOS, tvOS), JVM, JavaScript.  
 Logs written in common module are displayed on logger viewer of each platform.
 
-* Android
+## Preview
+
+### Android
 
 format: `[Class name]$[Method name]: [Your log]`
 
@@ -12,21 +14,23 @@ uses the `android.util.Log`(Logcat)
 
 ![preview-android][preview-android]
 
-* ios
+### Darwin(iOS, macOS, watchOS, tvOS)
 
 format: `[Date time][Symbol][Log level][Class name].[Method name] - [Your log]`
+
+Added `[async]` label at the end, if it is called from suspend functions.
 
 uses the `print`
 
 ![preview-ios][preview-ios]
 
-* js
+### JavaScript
 
 uses the `console.log`
 
 ![preview-js][preview-js]
 
-* jvm
+### JVM
 
 uses the `java.util.logging.Logger`
 
@@ -73,7 +77,7 @@ You can download this library from MavenCentral or jCenter repository.
 
 * Maven central
 
-You can download this from `1.4.1`.  
+You can download this from `2.0.0`.  
 Package name is `io.github.aakira`
 
 ```groovy
@@ -175,6 +179,10 @@ fun debugBuild() {
 }
 ```
 
+|argument|type|description|
+|-|-|
+|coroutinesSuffix|Boolean|Added `[async]` label at the end, if it is called from suspend functions|
+
 * Call initialize code from ios project.
 
 ```swift
@@ -197,6 +205,36 @@ Napier.takeLogarithm()
 | WARNING       | Napier.w()  |
 | ERROR         | Napier.e()  |
 | ASSERT        | Napier.wtf()|
+
+## Run background thread
+
+You can use this library on the background thread on iOS using [Kotlin.coroutines](https://github.com/Kotlin/kotlinx.coroutines) as native-mt.
+
+* Define scope 
+
+```kotlin
+internal val mainScope = SharedScope(Dispatchers.Main)
+
+internal val backgroundScope = SharedScope(Dispatchers.Default)
+
+internal class SharedScope(private val context: CoroutineContext) : CoroutineScope {
+    private val job = Job()
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        println("[Coroutine Exception] $throwable")
+    }
+
+    override val coroutineContext: CoroutineContext
+        get() = context + job + exceptionHandler
+}
+```
+
+* Usage
+
+```kotlin
+backgroundScope.launch {
+    suspendFunction()
+}
+```
 
 ## Advancement
 

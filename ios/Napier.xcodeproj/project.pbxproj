@@ -3,13 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3B3988B1264ADA500055407D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3988B0264ADA500055407D /* GoogleService-Info.plist */; };
-		3B3988B3264AE4F50055407D /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3988B2264AE4F40055407D /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		74AC91897E121EEADF59069F /* Pods_Napier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236CB35798B6FF37795E2A6A /* Pods_Napier.framework */; };
+		625D2A51333F356CAFD0D528 /* Pods_Napier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236CB35798B6FF37795E2A6A /* Pods_Napier.framework */; };
 		7CFB659A22013CF600BD05FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB659922013CF600BD05FC /* AppDelegate.swift */; };
 		7CFB659C22013CF600BD05FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB659B22013CF600BD05FC /* ViewController.swift */; };
 		7CFB659F22013CF600BD05FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CFB659D22013CF600BD05FC /* Main.storyboard */; };
@@ -17,25 +16,10 @@
 		7CFB65A422013CF900BD05FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CFB65A222013CF900BD05FC /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		7CFB65CA22013D5200BD05FC /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				3B3988B3264AE4F50055407D /* Common.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		14D73DDEDA418BBBD3C23B9B /* Pods-Napier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napier.release.xcconfig"; path = "Target Support Files/Pods-Napier/Pods-Napier.release.xcconfig"; sourceTree = "<group>"; };
 		236CB35798B6FF37795E2A6A /* Pods_Napier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Napier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3988B0264ADA500055407D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		3B3988B2264AE4F40055407D /* Common.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Common.framework; path = "../mpp-sample/build/xcode-frameworks/Common.framework"; sourceTree = "<group>"; };
 		6F88F8388EB37A3B9C7069DF /* Pods-Napier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napier.debug.xcconfig"; path = "Target Support Files/Pods-Napier/Pods-Napier.debug.xcconfig"; sourceTree = "<group>"; };
 		7CFB659622013CF500BD05FC /* Napier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Napier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CFB659922013CF600BD05FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,7 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74AC91897E121EEADF59069F /* Pods_Napier.framework in Frameworks */,
+				625D2A51333F356CAFD0D528 /* Pods_Napier.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,7 +62,6 @@
 		7CFB658D22013CF500BD05FC = {
 			isa = PBXGroup;
 			children = (
-				3B3988B2264AE4F40055407D /* Common.framework */,
 				7CFB659822013CF500BD05FC /* Napier */,
 				7CFB659722013CF500BD05FC /* Products */,
 				10E92F91406E001698737DB9 /* Pods */,
@@ -120,9 +103,8 @@
 				7CFB659222013CF500BD05FC /* Sources */,
 				7CFB659322013CF500BD05FC /* Frameworks */,
 				7CFB659422013CF500BD05FC /* Resources */,
-				7CFB65CA22013D5200BD05FC /* Embed Frameworks */,
 				7C44D7BC221548AD002EEF8F /* Crashlytics */,
-				9440D0487B4C902A85F73734 /* [CP] Embed Pods Frameworks */,
+				095E9721F85EF8B8A60C2E7E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -181,6 +163,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		095E9721F85EF8B8A60C2E7E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Napier/Pods-Napier-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Napier/Pods-Napier-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Napier/Pods-Napier-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		55963836C9E5F6516FE3DBE8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -238,24 +237,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd $SRCROOT/..\n./gradlew :mpp-sample:packForXcode -PXCODE_CONFIGURATION=${CONFIGURATION}\n";
-		};
-		9440D0487B4C902A85F73734 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Napier/Pods-Napier-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Napier/Pods-Napier-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Napier/Pods-Napier-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "cd $SRCROOT/..\n./gradlew :mpp-sample:compileKotlinIosX64\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

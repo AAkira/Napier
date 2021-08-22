@@ -1,25 +1,32 @@
 import dependencies.Dep
 import dependencies.Versions
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    kotlin("native.cocoapods")
 }
+
+version = "1.0.0"
+
+val ideaActive = System.getProperty("idea.active") == "true"
 
 kotlin {
     android()
-    ios {
-        binaries {
-            framework {
-                baseName = "Common"
-            }
-        }
-    }
     js {
         browser()
     }
     jvm()
+
+    // darwin
+    macosX64()
+    if (ideaActive.not()) {
+        ios()
+        watchos()
+    } else {
+        iosX64()
+        watchosX64()
+    }
 
     sourceSets {
         val commonMain by getting {
@@ -35,18 +42,44 @@ kotlin {
                 implementation(Dep.Kotlin.jvm)
             }
         }
-        val iosMain by getting
         val jsMain by getting {
             dependencies {
                 implementation(Dep.Kotlin.js)
             }
         }
-
         val jvmMain by getting {
             dependencies {
                 implementation(Dep.Kotlin.jvm)
             }
         }
+
+        // apple
+        val darwinMain by creating {
+            dependsOn(commonMain)
+        }
+        val macosX64Main by getting {
+            dependsOn(darwinMain)
+        }
+        if (ideaActive.not()) {
+            val iosMain by getting {
+                dependsOn(darwinMain)
+            }
+            val watchosMain by getting {
+                dependsOn(darwinMain)
+            }
+        } else {
+            val iosX64Main by getting {
+                dependsOn(darwinMain)
+            }
+            val watchosX64Main by getting {
+                dependsOn(darwinMain)
+            }
+        }
+    }
+
+    cocoapods {
+        summary = "CocoaPods library"
+        homepage = "https://github.com/AAkira/Napier"
     }
 }
 
@@ -67,19 +100,3 @@ android {
         }
     }
 }
-
-val packForXcode by tasks.creating(Sync::class) {
-    group = "build"
-    val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
-    val sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
-    val targetName = "ios" + if (sdkName.startsWith("iphoneos")) "Arm64" else "X64"
-    val framework =
-        kotlin.targets.getByName<KotlinNativeTarget>(targetName).binaries.getFramework(mode)
-    inputs.property("mode", mode)
-    dependsOn(framework.linkTask)
-    val targetDir = File(buildDir, "xcode-frameworks")
-    from({ framework.outputDirectory })
-    into(targetDir)
-}
-
-tasks.getByName("build").dependsOn(packForXcode)

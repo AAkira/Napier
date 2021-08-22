@@ -14,15 +14,15 @@ dependencies {
 }
 
 kotlin {
-    target {
+    js {
         browser {
             // execute :js:browserRun to launch dev server
             runTask {
                 devServer = KotlinWebpackConfig.DevServer(
-                    true, false, true, true, false,
-                    8080,
-                    null,
-                    listOf("${projectDir}/src/main/resources".toString())
+                    open = true,
+                    port = 8080,
+                    proxy = null,
+                    contentBase = mutableListOf("${projectDir}/src/main/resources")
                 )
                 outputFileName = "main.js"
             }

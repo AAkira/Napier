@@ -1,8 +1,7 @@
 package io.github.aakira.napier
 
-import kotlin.native.concurrent.ThreadLocal
+import io.github.aakira.napier.atomic.AtomicMutableList
 
-@ThreadLocal
 object Napier {
 
     enum class Level {
@@ -14,74 +13,84 @@ object Napier {
         ASSERT,
     }
 
-    private val baseArray = mutableListOf<Antilog>()
+    private val baseArray = AtomicMutableList<Antilog>()
 
     fun base(antilog: Antilog) {
         baseArray.add(antilog)
     }
 
-    fun isEnable(priority: Level, tag: String?) = baseArray.any { it.isEnable(priority, tag) }
+    fun isEnable(priority: LogLevel, tag: String?) = baseArray.any { it.isEnable(priority, tag) }
 
     @PublishedApi
-    internal fun rawLog(priority: Level, tag: String?, throwable: Throwable?, message: String?) {
+    internal fun rawLog(priority: LogLevel, tag: String?, throwable: Throwable?, message: String?) {
         baseArray.forEach { it.rawLog(priority, tag, throwable, message) }
     }
 
     fun v(message: String, throwable: Throwable? = null, tag: String? = null) {
-        log(Level.VERBOSE, tag, throwable, message)
+        log(LogLevel.VERBOSE, tag, throwable, message)
     }
 
     fun v(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
-        log(Level.VERBOSE, tag, throwable, message)
+        log(LogLevel.VERBOSE, tag, throwable, message)
     }
 
     fun i(message: String, throwable: Throwable? = null, tag: String? = null) {
-        log(Level.INFO, tag, throwable, message)
+        log(LogLevel.INFO, tag, throwable, message)
     }
 
     fun i(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
-        log(Level.INFO, tag, throwable, message)
+        log(LogLevel.INFO, tag, throwable, message)
     }
 
     fun d(message: String, throwable: Throwable? = null, tag: String? = null) {
-        log(Level.DEBUG, tag, throwable, message)
+        log(LogLevel.DEBUG, tag, throwable, message)
     }
 
     fun d(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
-        log(Level.DEBUG, tag, throwable, message)
+        log(LogLevel.DEBUG, tag, throwable, message)
     }
 
     fun w(message: String, throwable: Throwable? = null, tag: String? = null) {
-        log(Level.WARNING, tag, throwable, message)
+        log(LogLevel.WARNING, tag, throwable, message)
     }
 
     fun w(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
-        log(Level.WARNING, tag, throwable, message)
+        log(LogLevel.WARNING, tag, throwable, message)
     }
 
     fun e(message: String, throwable: Throwable? = null, tag: String? = null) {
-        log(Level.ERROR, tag, throwable, message)
+        log(LogLevel.ERROR, tag, throwable, message)
     }
 
     fun e(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
-        log(Level.ERROR, tag, throwable, message)
+        log(LogLevel.ERROR, tag, throwable, message)
     }
 
     fun wtf(message: String, throwable: Throwable? = null, tag: String? = null) {
-        log(Level.ASSERT, tag, throwable, message)
+        log(LogLevel.ASSERT, tag, throwable, message)
     }
 
     fun wtf(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
-        log(Level.ASSERT, tag, throwable, message)
+        log(LogLevel.ASSERT, tag, throwable, message)
     }
 
-    fun log(priority: Level, tag: String? = null, throwable: Throwable? = null, message: String) {
+    fun log(
+        priority: LogLevel,
+        tag: String? = null,
+        throwable: Throwable? = null,
+        message: String
+    ) {
         if (isEnable(priority, tag)) {
             rawLog(priority, tag, throwable, message)
         }
     }
 
-    fun log(priority: Level, tag: String? = null, throwable: Throwable? = null, message: () -> String) {
+    fun log(
+        priority: LogLevel,
+        tag: String? = null,
+        throwable: Throwable? = null,
+        message: () -> String,
+    ) {
         if (isEnable(priority, tag)) {
             rawLog(priority, tag, throwable, message())
         }
