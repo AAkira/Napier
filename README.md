@@ -77,7 +77,7 @@ You can download this library from MavenCentral or jCenter repository.
 
 * Maven central
 
-You can download this from `2.0.0`.  
+You can download this from `1.4.1`.  
 Package name is `io.github.aakira`
 
 ```groovy
