@@ -47,7 +47,12 @@ actual class DebugAntilog(
         LogLevel.ASSERT to "[ASSERT]"
     )
 
-    override fun performLog(priority: LogLevel, tag: String?, throwable: Throwable?, message: String?) {
+    override fun performLog(
+        priority: LogLevel,
+        tag: String?,
+        throwable: Throwable?,
+        message: String?,
+    ) {
 
         val debugTag = tag ?: performTag(defaultTag)
 

@@ -10,9 +10,19 @@ abstract class Antilog {
         }
     }
 
-    internal fun rawLog(priority: LogLevel, tag: String?, throwable: Throwable?, message: String?) {
+    internal fun rawLog(
+        priority: LogLevel,
+        tag: String?,
+        throwable: Throwable?,
+        message: String?,
+    ) {
         performLog(priority, tag, throwable, message)
     }
 
-    protected abstract fun performLog(priority: LogLevel, tag: String?, throwable: Throwable?, message: String?)
+    protected abstract fun performLog(
+        priority: LogLevel,
+        tag: String?,
+        throwable: Throwable?,
+        message: String?,
+    )
 }
