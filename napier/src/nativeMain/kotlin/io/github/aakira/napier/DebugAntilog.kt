@@ -1,8 +1,6 @@
 package io.github.aakira.napier
 
-private const val CALL_STACK_INDEX = 8
-
-class DebugAntilog(private val defaultTag: String = "app") : Antilog() {
+actual class DebugAntilog actual constructor(private val defaultTag: String) : Antilog() {
 
     var crashAssert = false
 
