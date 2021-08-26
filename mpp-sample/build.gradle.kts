@@ -54,11 +54,12 @@ kotlin {
             }
         }
 
-        // apple
+        // darwin
         val darwinMain by creating {
             dependsOn(commonMain)
         }
         if (isAppleSilicon) {
+            // apple silicon
             val macosArm64Main by getting {
                 dependsOn(darwinMain)
             }
@@ -69,6 +70,7 @@ kotlin {
                 dependsOn(darwinMain)
             }
         } else {
+            // intel
             val macosX64Main by getting {
                 dependsOn(darwinMain)
             }
