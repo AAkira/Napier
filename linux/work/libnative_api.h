@@ -80,6 +80,7 @@ typedef struct {
             struct {
               struct {
                 void (*debugBuild)();
+                void (*suspendHelloKt)(libnative_kref_io_github_aakira_napier_mppsample_Sample thiz);
                 struct {
                   libnative_KType* (*_type)(void);
                   libnative_kref_io_github_aakira_napier_mppsample_Sample (*Sample)();
