@@ -1,4 +1,4 @@
-package com.github.aakira.napier.mppsample
+package io.github.aakira.napier.mppsample
 
 import io.github.aakira.napier.Antilog
 import io.github.aakira.napier.LogLevel
