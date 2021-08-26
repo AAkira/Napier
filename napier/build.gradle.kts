@@ -8,8 +8,6 @@ plugins {
 
 apply(from = rootProject.file("./gradle/publish.gradle.kts"))
 
-val ideaActive = System.getProperty("idea.active") == "true"
-
 kotlin {
     android {
         publishAllLibraryVariants()

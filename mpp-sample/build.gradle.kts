@@ -9,8 +9,6 @@ plugins {
 
 version = "1.0.0"
 
-val ideaActive = System.getProperty("idea.active") == "true"
-
 kotlin {
     android()
     js {
