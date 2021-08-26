@@ -2,11 +2,7 @@ package io.github.aakira.napier
 
 import java.io.PrintWriter
 import java.io.StringWriter
-import java.util.logging.ConsoleHandler
-import java.util.logging.Handler
-import java.util.logging.Level
-import java.util.logging.Logger
-import java.util.logging.SimpleFormatter
+import java.util.logging.*
 import java.util.regex.Pattern
 
 actual class DebugAntilog(
@@ -19,7 +15,7 @@ actual class DebugAntilog(
         private const val CALL_STACK_INDEX = 8
     }
 
-    val consoleHandler: ConsoleHandler = ConsoleHandler().apply {
+    private val consoleHandler: ConsoleHandler = ConsoleHandler().apply {
         level = Level.ALL
         formatter = SimpleFormatter()
     }
@@ -81,7 +77,7 @@ actual class DebugAntilog(
     private fun performTag(defaultTag: String): String {
         val thread = Thread.currentThread().stackTrace
 
-        return if (thread != null && thread.size >= CALL_STACK_INDEX) {
+        return if (thread.size >= CALL_STACK_INDEX) {
             thread[CALL_STACK_INDEX].run {
                 "${createStackElementTag(className)}\$$methodName"
             }

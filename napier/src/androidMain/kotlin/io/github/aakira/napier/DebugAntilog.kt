@@ -5,6 +5,7 @@ import android.util.Log
 import java.io.PrintWriter
 import java.io.StringWriter
 import java.util.regex.Pattern
+import kotlin.math.min
 
 actual class DebugAntilog actual constructor(private val defaultTag: String) : Antilog() {
 
@@ -51,7 +52,7 @@ actual class DebugAntilog actual constructor(private val defaultTag: String) : A
             var newline = fullMessage.indexOf('\n', i)
             newline = if (newline != -1) newline else length
             do {
-                val end = Math.min(newline, i + MAX_LOG_LENGTH)
+                val end = min(newline, i + MAX_LOG_LENGTH)
                 val part = fullMessage.substring(i, end)
                 if (priority.toValue() == Log.ASSERT) {
                     Log.wtf(debugTag, part)
@@ -67,7 +68,7 @@ actual class DebugAntilog actual constructor(private val defaultTag: String) : A
     private fun performTag(tag: String): String {
         val thread = Thread.currentThread().stackTrace
 
-        return if (thread != null && thread.size >= CALL_STACK_INDEX) {
+        return if (thread.size >= CALL_STACK_INDEX) {
             thread[CALL_STACK_INDEX].run {
                 "${createStackElementTag(className)}\$$methodName"
             }
