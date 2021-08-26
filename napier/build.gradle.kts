@@ -8,8 +8,6 @@ plugins {
 
 apply(from = rootProject.file("./gradle/publish.gradle.kts"))
 
-val ideaActive = System.getProperty("idea.active") == "true"
-
 kotlin {
     android {
         publishAllLibraryVariants()
@@ -20,79 +18,43 @@ kotlin {
     }
     jvm()
 
-    macosX64 {
-        binaries {
-            framework()
-        }
-    }
+    // darwin
     if (ideaActive.not()) {
-        // darwin
-        ios {
-            binaries {
-                framework()
-            }
-        }
-        watchos {
-            binaries {
-                framework()
-            }
-        }
-        tvos {
-            binaries {
-                framework()
-            }
-        }
+        // intel
+        macosX64()
+        ios()
+        watchos()
+        tvos()
+
+        // apple silicon
+        macosArm64()
+        iosSimulatorArm64()
+        watchosSimulatorArm64()
+        tvosSimulatorArm64()
 
         // linux
-        linuxX64 {
-            binaries {
-                staticLib()
-            }
-        }
-        linuxArm32Hfp {
-            binaries {
-                staticLib()
-            }
-        }
-        linuxArm64 {
-            binaries {
-                staticLib()
-            }
-        }
-//        linuxMips32 {
-//            binaries {
-//                staticLib()
-//            }
-//        }
-//        linuxMipsel32 {
-//            binaries {
-//                staticLib()
-//            }
-//        }
+        linuxX64()
+        linuxArm32Hfp()
+        linuxArm64()
+        linuxMips32()
+        linuxMipsel32()
     } else {
-        // darwin
-        iosX64 {
-            binaries {
-                framework()
-            }
-        }
-        watchosX64 {
-            binaries {
-                framework()
-            }
-        }
-        tvosX64 {
-            binaries {
-                framework()
-            }
+        if (isAppleSilicon) {
+            // apple silicon
+            macosArm64()
+            iosSimulatorArm64()
+            watchosSimulatorArm64()
+            tvosSimulatorArm64()
+        } else {
+            // intel
+            macosX64()
+            iosX64()
+            watchosX64()
+            tvosX64()
         }
 
         // linux
-        linuxX64 {
-            binaries {
-                staticLib()
-            }
-        }
+        linuxX64()
     }
 
     sourceSets {
@@ -153,14 +115,15 @@ kotlin {
             dependsOn(commonTest)
         }
 
-        val macosX64Main by getting {
-            dependsOn(darwinMain)
-        }
-        val macosX64Test by getting {
-            dependsOn(darwinTest)
-        }
+        // native
         if (ideaActive.not()) {
-            // apple
+            // darwin(intel)
+            val macosX64Main by getting {
+                dependsOn(darwinMain)
+            }
+            val macosX64Test by getting {
+                dependsOn(darwinTest)
+            }
             val iosMain by getting {
                 dependsOn(darwinMain)
             }
@@ -177,6 +140,32 @@ kotlin {
                 dependsOn(darwinMain)
             }
             val tvosTest by getting {
+                dependsOn(darwinTest)
+            }
+
+            // darwin(apple silicon)
+            val macosArm64Main by getting {
+                dependsOn(darwinMain)
+            }
+            val macosArm64Test by getting {
+                dependsOn(darwinTest)
+            }
+            val iosSimulatorArm64Main by getting {
+                dependsOn(darwinMain)
+            }
+            val iosSimulatorArm64Test by getting {
+                dependsOn(darwinTest)
+            }
+            val watchosSimulatorArm64Main by getting {
+                dependsOn(darwinMain)
+            }
+            val watchosSimulatorArm64Test by getting {
+                dependsOn(darwinTest)
+            }
+            val tvosSimulatorArm64Main by getting {
+                dependsOn(darwinMain)
+            }
+            val tvosSimulatorArm64Test by getting {
                 dependsOn(darwinTest)
             }
 
@@ -199,37 +188,72 @@ kotlin {
             val linuxArm64Test by getting {
                 dependsOn(nativeTest)
             }
-//            val linuxMips32Main by getting {
-//                dependsOn(nativeMain)
-//            }
-//            val linuxMips32Test by getting {
-//                dependsOn(nativeTest)
-//            }
-//            val linuxMipsel32Main by getting {
-//                dependsOn(nativeMain)
-//            }
-//            val linuxMipsel32Test by getting {
-//                dependsOn(nativeTest)
-//            }
+            val linuxMips32Main by getting {
+                dependsOn(nativeMain)
+            }
+            val linuxMips32Test by getting {
+                dependsOn(nativeTest)
+            }
+            val linuxMipsel32Main by getting {
+                dependsOn(nativeMain)
+            }
+            val linuxMipsel32Test by getting {
+                dependsOn(nativeTest)
+            }
         } else {
-            // apple
-            val iosX64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val iosX64Test by getting {
-                dependsOn(darwinTest)
-            }
-            val watchosX64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val watchosX64Test by getting {
-                dependsOn(darwinTest)
-            }
-            val tvosX64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val tvosX64Test by getting {
-                dependsOn(darwinTest)
+            // darwin
+            if (isAppleSilicon) {
+                // darwin(apple silicon)
+                val macosArm64Main by getting {
+                    dependsOn(darwinMain)
+                }
+                val macosArm64Text by getting {
+                    dependsOn(darwinTest)
+                }
+                val iosSimulatorArm64Main by getting {
+                    dependsOn(darwinMain)
+                }
+                val iosSimulatorArm64Test by getting {
+                    dependsOn(darwinTest)
+                }
+                val watchosSimulatorArm64Main by getting {
+                    dependsOn(darwinMain)
+                }
+                val watchosSimulatorArm64Test by getting {
+                    dependsOn(darwinTest)
+                }
+                val tvosSimulatorArm64Main by getting {
+                    dependsOn(darwinMain)
+                }
+                val tvosSimulatorArm64Test by getting {
+                    dependsOn(darwinTest)
+                }
+            } else {
+                // darwin(intel)
+                val macosX64Main by getting {
+                    dependsOn(darwinMain)
+                }
+                val macosX64Test by getting {
+                    dependsOn(darwinTest)
+                }
+                val iosX64Main by getting {
+                    dependsOn(darwinMain)
+                }
+                val iosX64Test by getting {
+                    dependsOn(darwinTest)
+                }
+                val watchosX64Main by getting {
+                    dependsOn(darwinMain)
+                }
+                val watchosX64Test by getting {
+                    dependsOn(darwinTest)
+                }
+                val tvosX64Main by getting {
+                    dependsOn(darwinMain)
+                }
+                val tvosX64Test by getting {
+                    dependsOn(darwinTest)
+                }
             }
 
             // linux

@@ -14,7 +14,7 @@ uses the `android.util.Log`(Logcat)
 
 ![preview-android][preview-android]
 
-### Darwin(iOS, macOS, watchOS, tvOS)
+### Darwin(iOS, macOS, watchOS, tvOS)[Intel/Apple silicon]
 
 format: `[Date time][Symbol][Log level][Class name].[Method name] - [Your log]`
 

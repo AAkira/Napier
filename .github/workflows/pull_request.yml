@@ -24,16 +24,24 @@ jobs:
         run: ./gradlew :napier:test --stacktrace
       - name: Run android tests
         run: ./gradlew :napier:testReleaseUnitTest --stacktrace
-      - name: Run ios tests
-        run: ./gradlew :napier:iosX64Test --stacktrace
       - name: Run jvm tests
         run: ./gradlew :napier:jvmTest --stacktrace
-      - name: Run macos tests
+      - name: Run ios(intel) tests
+        run: ./gradlew :napier:iosX64Test --stacktrace
+      - name: Run ios(apple silicon) tests
+        run: ./gradlew :napier:iosSimulatorArm64Test --stacktrace
+      - name: Run macos(intel) tests
         run: ./gradlew :napier:macosX64Test --stacktrace
-      - name: Run watchos tests
+      - name: Run macos(apple silicon) tests
+        run: ./gradlew :napier:macosArm64Test --stacktrace
+      - name: Run watchos(intel) tests
         run: ./gradlew :napier:watchosX64Test --stacktrace
-      - name: Run tvos tests
+      - name: Run watchos(apple silicon) tests
+        run: ./gradlew :napier:watchosSimulatorArm64Test --stacktrace
+      - name: Run tvos(intel) tests
         run: ./gradlew :napier:tvosX64Test --stacktrace
+      - name: Run tvos(apple silicon) tests
+        run: ./gradlew :napier:tvosSimulatorArm64Test --stacktrace
 
       - name: Bundle the build report
         if: failure()
