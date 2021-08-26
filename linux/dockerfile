@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM amd64/ubuntu:latest
 
 RUN apt-get update && \
     apt-get -y install gcc mono-mcs && \
