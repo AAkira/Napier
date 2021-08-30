@@ -1,7 +1,7 @@
 FROM amd64/ubuntu:latest
 
 RUN apt-get update && \
-    apt-get -y install gcc mono-mcs && \
+    apt-get -y install gcc && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir work
 
