@@ -1,5 +1,7 @@
 import dependencies.Dep
 import dependencies.Versions
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 
 plugins {
     kotlin("multiplatform")
@@ -40,8 +42,11 @@ kotlin {
             watchosX64()
         }
     }
+    targets.withType<KotlinNativeTarget> {
+        binaries.withType<Framework> {
+            export(project(":napier"))
+        }
     }
-
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -49,6 +54,7 @@ kotlin {
                 implementation(Dep.Coroutines.core)
 
                 implementation(project(":napier"))
+                api(project(":napier"))
             }
         }
         val androidMain by getting {
