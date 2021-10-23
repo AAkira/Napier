@@ -30,6 +30,7 @@ class NapierTest {
                 tag: String?,
                 throwable: Throwable?,
                 message: String?,
+                callerInfo: CallerInfo,
             ) {
                 output.add(Expected(priority, tag, throwable, message))
             }

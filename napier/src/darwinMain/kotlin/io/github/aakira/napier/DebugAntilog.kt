@@ -32,11 +32,12 @@ actual class DebugAntilog(
         tag: String?,
         throwable: Throwable?,
         message: String?,
+        callerInfo: CallerInfo,
     ) {
         if (priority == LogLevel.ASSERT) {
-            assert(crashAssert) { buildLog(priority, tag, message) }
+            assert(crashAssert) { buildLog(priority, tag, message, callerInfo) }
         } else {
-            println(buildLog(priority, tag, message))
+            println(buildLog(priority, tag, message, callerInfo))
         }
     }
 
@@ -50,18 +51,25 @@ actual class DebugAntilog(
 
     private fun getCurrentTime() = dateFormatter.stringFromDate(NSDate())
 
-    private fun buildLog(priority: LogLevel, tag: String?, message: String?): String {
-        return "${getCurrentTime()} ${tagMap[priority]} ${tag ?: performTag(defaultTag)} - $message"
+    private fun buildLog(priority: LogLevel, tag: String?, message: String?, callerInfo: CallerInfo): String {
+        return "${getCurrentTime()} ${tagMap[priority]} ${tag ?: performTag(defaultTag, callerInfo)} - $message"
     }
 
     // find stack trace
-    private fun performTag(tag: String): String {
-        val thread = NSThread.callStackSymbols
+    private fun performTag(tag: String, callerInfo: CallerInfo): String {
+        return when (callerInfo) {
+            is CallerInfo.DetectByStackTrace -> {
+                val thread = NSThread.callStackSymbols
 
-        return if (thread.size >= CALL_STACK_INDEX) {
-            createStackElementTag(thread[CALL_STACK_INDEX] as String)
-        } else {
-            tag
+                if (thread.size >= CALL_STACK_INDEX) {
+                    createStackElementTag(thread[CALL_STACK_INDEX] as String)
+                } else {
+                    tag
+                }
+            }
+            is CallerInfo.Exact -> {
+                callerInfo.toString()
+            }
         }
     }
 

@@ -4,9 +4,15 @@ abstract class Antilog {
 
     open fun isEnable(priority: LogLevel, tag: String?) = true
 
-    fun log(priority: LogLevel, tag: String?, throwable: Throwable?, message: String?) {
+    fun log(
+        priority: LogLevel,
+        tag: String?,
+        throwable: Throwable?,
+        message: String?,
+        callerInfo: CallerInfo,
+    ) {
         if (isEnable(priority, tag)) {
-            performLog(priority, tag, throwable, message)
+            performLog(priority, tag, throwable, message, callerInfo)
         }
     }
 
@@ -15,8 +21,9 @@ abstract class Antilog {
         tag: String?,
         throwable: Throwable?,
         message: String?,
+        callerInfo: CallerInfo,
     ) {
-        performLog(priority, tag, throwable, message)
+        performLog(priority, tag, throwable, message, callerInfo)
     }
 
     protected abstract fun performLog(
@@ -24,5 +31,6 @@ abstract class Antilog {
         tag: String?,
         throwable: Throwable?,
         message: String?,
+        callerInfo: CallerInfo,
     )
 }

@@ -48,9 +48,10 @@ actual class DebugAntilog(
         tag: String?,
         throwable: Throwable?,
         message: String?,
+        callerInfo: CallerInfo,
     ) {
 
-        val debugTag = tag ?: performTag(defaultTag)
+        val debugTag = tag ?: performTag(defaultTag, callerInfo)
 
         val fullMessage = if (message != null) {
             if (throwable != null) {
@@ -61,28 +62,35 @@ actual class DebugAntilog(
         } else throwable?.stackTraceString ?: return
 
         when (priority) {
-            LogLevel.VERBOSE -> logger.finest(buildLog(priority, debugTag, fullMessage))
-            LogLevel.DEBUG -> logger.fine(buildLog(priority, debugTag, fullMessage))
-            LogLevel.INFO -> logger.info(buildLog(priority, debugTag, fullMessage))
-            LogLevel.WARNING -> logger.warning(buildLog(priority, debugTag, fullMessage))
-            LogLevel.ERROR -> logger.severe(buildLog(priority, debugTag, fullMessage))
-            LogLevel.ASSERT -> logger.severe(buildLog(priority, debugTag, fullMessage))
+            LogLevel.VERBOSE -> logger.finest(buildLog(priority, debugTag, fullMessage, callerInfo))
+            LogLevel.DEBUG -> logger.fine(buildLog(priority, debugTag, fullMessage, callerInfo))
+            LogLevel.INFO -> logger.info(buildLog(priority, debugTag, fullMessage, callerInfo))
+            LogLevel.WARNING -> logger.warning(buildLog(priority, debugTag, fullMessage, callerInfo))
+            LogLevel.ERROR -> logger.severe(buildLog(priority, debugTag, fullMessage, callerInfo))
+            LogLevel.ASSERT -> logger.severe(buildLog(priority, debugTag, fullMessage, callerInfo))
         }
     }
 
-    internal fun buildLog(priority: LogLevel, tag: String?, message: String?): String {
-        return "${tagMap[priority]} ${tag ?: performTag(defaultTag)} - $message"
+    internal fun buildLog(priority: LogLevel, tag: String?, message: String?, callerInfo: CallerInfo): String {
+        return "${tagMap[priority]} ${tag ?: performTag(defaultTag, callerInfo)} - $message"
     }
 
-    private fun performTag(defaultTag: String): String {
-        val thread = Thread.currentThread().stackTrace
+    private fun performTag(defaultTag: String, callerInfo: CallerInfo): String {
+        return when (callerInfo) {
+            is CallerInfo.DetectByStackTrace -> {
+                val thread = Thread.currentThread().stackTrace
 
-        return if (thread.size >= CALL_STACK_INDEX) {
-            thread[CALL_STACK_INDEX].run {
-                "${createStackElementTag(className)}\$$methodName"
+                return if (thread.size >= CALL_STACK_INDEX) {
+                    thread[CALL_STACK_INDEX].run {
+                        "${createStackElementTag(className)}\$$methodName"
+                    }
+                } else {
+                    defaultTag
+                }
             }
-        } else {
-            defaultTag
+            is CallerInfo.Exact -> {
+                callerInfo.toString()
+            }
         }
     }
 

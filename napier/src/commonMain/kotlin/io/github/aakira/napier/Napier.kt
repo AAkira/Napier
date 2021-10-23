@@ -1,5 +1,6 @@
 package io.github.aakira.napier
 
+import io.github.aakira.napier.Napier.isEnable
 import io.github.aakira.napier.atomic.AtomicMutableList
 
 object Napier {
@@ -22,66 +23,133 @@ object Napier {
     fun isEnable(priority: LogLevel, tag: String?) = baseArray.any { it.isEnable(priority, tag) }
 
     @PublishedApi
-    internal fun rawLog(priority: LogLevel, tag: String?, throwable: Throwable?, message: String?) {
-        baseArray.forEach { it.rawLog(priority, tag, throwable, message) }
+    internal fun rawLog(
+        priority: LogLevel,
+        tag: String?,
+        throwable: Throwable?,
+        message: String?,
+        callerInfo: CallerInfo,
+    ) {
+        baseArray.forEach { it.rawLog(priority, tag, throwable, message, callerInfo) }
     }
 
-    fun v(message: String, throwable: Throwable? = null, tag: String? = null) {
-        log(LogLevel.VERBOSE, tag, throwable, message)
+    fun v(
+        message: String,
+        throwable: Throwable? = null,
+        tag: String? = null,
+        callerInfo: CallerInfo = CallerInfo.DetectByStackTrace,
+    ) {
+        log(LogLevel.VERBOSE, tag, throwable, message, callerInfo)
     }
 
-    fun v(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
-        log(LogLevel.VERBOSE, tag, throwable, message)
+    fun v(
+        message: () -> String,
+        throwable: Throwable? = null,
+        tag: String? = null,
+        callerInfo: CallerInfo = CallerInfo.DetectByStackTrace,
+    ) {
+        log(LogLevel.VERBOSE, tag, throwable, message, callerInfo)
     }
 
-    fun i(message: String, throwable: Throwable? = null, tag: String? = null) {
-        log(LogLevel.INFO, tag, throwable, message)
+    fun i(
+        message: String,
+        throwable: Throwable? = null,
+        tag: String? = null,
+        callerInfo: CallerInfo = CallerInfo.DetectByStackTrace,
+    ) {
+        log(LogLevel.INFO, tag, throwable, message, callerInfo)
     }
 
-    fun i(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
-        log(LogLevel.INFO, tag, throwable, message)
+    fun i(
+        message: () -> String,
+        throwable: Throwable? = null,
+        tag: String? = null,
+        callerInfo: CallerInfo = CallerInfo.DetectByStackTrace,
+    ) {
+        log(LogLevel.INFO, tag, throwable, message, callerInfo)
     }
 
-    fun d(message: String, throwable: Throwable? = null, tag: String? = null) {
-        log(LogLevel.DEBUG, tag, throwable, message)
+    fun d(
+        message: String,
+        throwable: Throwable? = null,
+        tag: String? = null,
+        callerInfo: CallerInfo = CallerInfo.DetectByStackTrace,
+    ) {
+        log(LogLevel.DEBUG, tag, throwable, message, callerInfo)
     }
 
-    fun d(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
-        log(LogLevel.DEBUG, tag, throwable, message)
+    fun d(
+        message: () -> String,
+        throwable: Throwable? = null,
+        tag: String? = null,
+        callerInfo: CallerInfo = CallerInfo.DetectByStackTrace,
+    ) {
+        log(LogLevel.DEBUG, tag, throwable, message, callerInfo)
     }
 
-    fun w(message: String, throwable: Throwable? = null, tag: String? = null) {
-        log(LogLevel.WARNING, tag, throwable, message)
+    fun w(
+        message: String,
+        throwable: Throwable? = null,
+        tag: String? = null,
+        callerInfo: CallerInfo = CallerInfo.DetectByStackTrace,
+    ) {
+        log(LogLevel.WARNING, tag, throwable, message, callerInfo)
     }
 
-    fun w(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
-        log(LogLevel.WARNING, tag, throwable, message)
+    fun w(
+        message: () -> String,
+        throwable: Throwable? = null,
+        tag: String? = null,
+        callerInfo: CallerInfo = CallerInfo.DetectByStackTrace,
+    ) {
+        log(LogLevel.WARNING, tag, throwable, message, callerInfo)
     }
 
-    fun e(message: String, throwable: Throwable? = null, tag: String? = null) {
-        log(LogLevel.ERROR, tag, throwable, message)
+    fun e(
+        message: String,
+        throwable: Throwable? = null,
+        tag: String? = null,
+        callerInfo: CallerInfo = CallerInfo.DetectByStackTrace,
+    ) {
+        log(LogLevel.ERROR, tag, throwable, message, callerInfo)
     }
 
-    fun e(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
-        log(LogLevel.ERROR, tag, throwable, message)
+    fun e(
+        message: () -> String,
+        throwable: Throwable? = null,
+        tag: String? = null,
+        callerInfo: CallerInfo = CallerInfo.DetectByStackTrace,
+    ) {
+        log(LogLevel.ERROR, tag, throwable, message, callerInfo)
     }
 
-    fun wtf(message: String, throwable: Throwable? = null, tag: String? = null) {
-        log(LogLevel.ASSERT, tag, throwable, message)
+    fun wtf(
+        message: String,
+        throwable: Throwable? = null,
+        tag: String? = null,
+        callerInfo: CallerInfo = CallerInfo.DetectByStackTrace,
+    ) {
+        log(LogLevel.ASSERT, tag, throwable, message, callerInfo)
     }
 
-    fun wtf(message: () -> String, throwable: Throwable? = null, tag: String? = null) {
-        log(LogLevel.ASSERT, tag, throwable, message)
+    fun wtf(
+        message: () -> String,
+        throwable: Throwable? = null,
+        tag: String? = null,
+        callerInfo: CallerInfo = CallerInfo.DetectByStackTrace,
+    ) {
+        log(LogLevel.ASSERT, tag, throwable, message, callerInfo)
     }
 
     fun log(
         priority: LogLevel,
         tag: String? = null,
         throwable: Throwable? = null,
-        message: String
+        message: String,
+        callerInfo: CallerInfo = CallerInfo.DetectByStackTrace,
     ) {
         if (isEnable(priority, tag)) {
-            rawLog(priority, tag, throwable, message)
+            rawLog(priority, tag, throwable, message, callerInfo)
         }
     }
 
@@ -90,9 +158,10 @@ object Napier {
         tag: String? = null,
         throwable: Throwable? = null,
         message: () -> String,
+        callerInfo: CallerInfo = CallerInfo.DetectByStackTrace,
     ) {
         if (isEnable(priority, tag)) {
-            rawLog(priority, tag, throwable, message())
+            rawLog(priority, tag, throwable, message(), callerInfo)
         }
     }
 

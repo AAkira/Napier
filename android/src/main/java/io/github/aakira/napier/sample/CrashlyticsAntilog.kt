@@ -11,7 +11,8 @@ class CrashlyticsAntilog(private val context: Context) : Antilog() {
         priority: LogLevel,
         tag: String?,
         throwable: Throwable?,
-        message: String?
+        message: String?,
+        callerInfo: CallerInfo,
     ) {
         // send only error log
         if (priority < LogLevel.ERROR) return

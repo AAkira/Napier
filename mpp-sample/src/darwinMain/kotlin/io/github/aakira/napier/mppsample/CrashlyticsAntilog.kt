@@ -1,6 +1,7 @@
 package io.github.aakira.napier.mppsample
 
 import io.github.aakira.napier.Antilog
+import io.github.aakira.napier.CallerInfo
 import io.github.aakira.napier.LogLevel
 
 class CrashlyticsAntilog(
@@ -8,7 +9,13 @@ class CrashlyticsAntilog(
     private val crashlyticsSendLog: (throwable: Throwable) -> Unit
 ) : Antilog() {
 
-    override fun performLog(priority: LogLevel, tag: String?, throwable: Throwable?, message: String?) {
+    override fun performLog(
+        priority: LogLevel,
+        tag: String?,
+        throwable: Throwable?,
+        message: String?,
+        callerInfo: CallerInfo,
+    ) {
         // send only error log
         if (priority < LogLevel.ERROR) return
 

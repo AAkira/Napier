@@ -22,6 +22,7 @@ actual class DebugAntilog actual constructor(private val defaultTag: String) : A
         tag: String?,
         throwable: Throwable?,
         message: String?,
+        callerInfo: CallerInfo,
     ) {
 
         val debugTag = tag ?: performTag(defaultTag)
