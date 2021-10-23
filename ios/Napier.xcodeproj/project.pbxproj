@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3B3988B1264ADA500055407D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3988B0264ADA500055407D /* GoogleService-Info.plist */; };
+		4AC26414272411EF002BE68B /* Napier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC26413272411EF002BE68B /* Napier.swift */; };
 		625D2A51333F356CAFD0D528 /* Pods_Napier.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 236CB35798B6FF37795E2A6A /* Pods_Napier.framework */; };
 		7CFB659A22013CF600BD05FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB659922013CF600BD05FC /* AppDelegate.swift */; };
 		7CFB659C22013CF600BD05FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFB659B22013CF600BD05FC /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 		14D73DDEDA418BBBD3C23B9B /* Pods-Napier.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napier.release.xcconfig"; path = "Target Support Files/Pods-Napier/Pods-Napier.release.xcconfig"; sourceTree = "<group>"; };
 		236CB35798B6FF37795E2A6A /* Pods_Napier.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Napier.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3988B0264ADA500055407D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4AC26413272411EF002BE68B /* Napier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Napier.swift; sourceTree = "<group>"; };
 		6F88F8388EB37A3B9C7069DF /* Pods-Napier.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Napier.debug.xcconfig"; path = "Target Support Files/Pods-Napier/Pods-Napier.debug.xcconfig"; sourceTree = "<group>"; };
 		7CFB659622013CF500BD05FC /* Napier.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Napier.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CFB659922013CF600BD05FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				3B3988B0264ADA500055407D /* GoogleService-Info.plist */,
 				7CFB659922013CF600BD05FC /* AppDelegate.swift */,
 				7CFB659B22013CF600BD05FC /* ViewController.swift */,
+				4AC26413272411EF002BE68B /* Napier.swift */,
 				7CFB659D22013CF600BD05FC /* Main.storyboard */,
 				7CFB65A022013CF900BD05FC /* Assets.xcassets */,
 				7CFB65A222013CF900BD05FC /* LaunchScreen.storyboard */,
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CFB659C22013CF600BD05FC /* ViewController.swift in Sources */,
+				4AC26414272411EF002BE68B /* Napier.swift in Sources */,
 				7CFB659A22013CF600BD05FC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

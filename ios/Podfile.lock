@@ -70,10 +70,10 @@ SPEC CHECKSUMS:
   FirebaseInstallations: bf2ec8dbf36ff4c91af6b9a003d15855757680c1
   GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
   GoogleUtilities: e1d9ed4e544fc32a93e00e721400cbc3f377200d
-  mpp_sample: 07fdbc60934b60a9bbfb833df6298899fe345026
+  mpp_sample: 51c0c7ab2611374de5e22427ddc57ca52ea125a0
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 
 PODFILE CHECKSUM: 441ae05d1695723ea9a68d3223ef8b6460bbec0f
 
-COCOAPODS: 1.10.2
+COCOAPODS: 1.11.2

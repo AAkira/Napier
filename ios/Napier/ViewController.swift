@@ -23,5 +23,12 @@ private extension ViewController {
         sample.suspendHelloKt()
         
         sample.handleError()
+        
+        Napier.d("Hello Napier from iOS part")
+        funcWithArgs(1, p: 2)
+    }
+    
+    func funcWithArgs(_ i: Int, p: Int) {
+        Napier.d("funcWithArgs", i, p)
     }
 }
