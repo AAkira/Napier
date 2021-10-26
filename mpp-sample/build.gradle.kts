@@ -1,5 +1,7 @@
 import dependencies.Dep
 import dependencies.Versions
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 
 plugins {
     kotlin("multiplatform")
@@ -17,18 +19,34 @@ kotlin {
     jvm()
 
     // darwin
-    if (isAppleSilicon) {
+    if (ideaActive.not()) {
+        // intel
+        macosX64()
+        ios()
+        watchos()
+
         // apple silicon
         macosArm64()
         iosSimulatorArm64()
         watchosSimulatorArm64()
     } else {
-        // intel
-        macosX64()
-        iosX64()
-        watchosX64()
+        if (isAppleSilicon) {
+            // apple silicon
+            macosArm64()
+            iosSimulatorArm64()
+            watchosSimulatorArm64()
+        } else {
+            // intel
+            macosX64()
+            iosX64()
+            watchosX64()
+        }
     }
-
+    targets.withType<KotlinNativeTarget> {
+        binaries.withType<Framework> {
+            export(project(":napier"))
+        }
+    }
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -36,6 +54,7 @@ kotlin {
                 implementation(Dep.Coroutines.core)
 
                 implementation(project(":napier"))
+                api(project(":napier"))
             }
         }
         val androidMain by getting {
@@ -58,7 +77,19 @@ kotlin {
         val darwinMain by creating {
             dependsOn(commonMain)
         }
-        if (isAppleSilicon) {
+        // darwin
+        if (ideaActive.not()) {
+            // intel
+            val macosX64Main by getting {
+                dependsOn(darwinMain)
+            }
+            val iosMain by getting {
+                dependsOn(darwinMain)
+            }
+            val watchosMain by getting {
+                dependsOn(darwinMain)
+            }
+
             // apple silicon
             val macosArm64Main by getting {
                 dependsOn(darwinMain)
@@ -70,15 +101,28 @@ kotlin {
                 dependsOn(darwinMain)
             }
         } else {
-            // intel
-            val macosX64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val iosX64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val watchosX64Main by getting {
-                dependsOn(darwinMain)
+            if (isAppleSilicon) {
+                // apple silicon
+                val macosArm64Main by getting {
+                    dependsOn(darwinMain)
+                }
+                val iosSimulatorArm64Main by getting {
+                    dependsOn(darwinMain)
+                }
+                val watchosSimulatorArm64Main by getting {
+                    dependsOn(darwinMain)
+                }
+            } else {
+                // intel
+                val macosX64Main by getting {
+                    dependsOn(darwinMain)
+                }
+                val iosX64Main by getting {
+                    dependsOn(darwinMain)
+                }
+                val watchosX64Main by getting {
+                    dependsOn(darwinMain)
+                }
             }
         }
     }

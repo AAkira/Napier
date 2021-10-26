@@ -23,5 +23,7 @@ private extension ViewController {
         sample.suspendHelloKt()
         
         sample.handleError()
+        
+        Napier.d("Hello from Napier", 123)
     }
 }
