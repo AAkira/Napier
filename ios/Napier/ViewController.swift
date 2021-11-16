@@ -24,6 +24,6 @@ private extension ViewController {
         
         sample.handleError()
         
-        Napier.d("Hello from Napier", 123)
+        Napier.d("Hello", "from Swift")
     }
 }
