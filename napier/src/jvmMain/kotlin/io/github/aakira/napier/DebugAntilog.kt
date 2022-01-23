@@ -30,7 +30,7 @@ actual class DebugAntilog(
         handler.forEach {
             addHandler(it)
         }
-    }
+    }.also { it.useParentHandlers = false }
 
     private val anonymousClass = Pattern.compile("(\\$\\d+)+$")
 
