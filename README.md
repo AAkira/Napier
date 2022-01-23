@@ -1,7 +1,7 @@
 ![logo][logo]
 
 Napier is a logger library for Kotlin Multiplatform.  
-It supports for the Android, Darwin(iOS, macOS, watchOS, tvOS), JVM, JavaScript.  
+It supports Android, Darwin(iOS, macOS, watchOS, tvOS), JVM, JavaScript.  
 Logs written in common module are displayed on logger viewer of each platform.
 
 ## Preview
@@ -62,7 +62,7 @@ class Sample {
     fun handleError() {
         try {
             throw Exception("throw error")
-        } catch(e: Exception) {
+        } catch (e: Exception) {
             Napier.e("Napier Error", e)
         }
     }
@@ -82,7 +82,7 @@ Package name is `io.github.aakira`
 
 ```groovy
 repositories {
-    mavenCentral() 
+    mavenCentral()
 }
 ```
 
@@ -96,7 +96,6 @@ repositories {
     jCenter()
 }
 ```
-
 
 ### Version
 
@@ -135,7 +134,6 @@ sourceSets {
 }
 ```
 
-
 ## Usage
 
 ### How to use
@@ -146,16 +144,23 @@ sourceSets {
 
 // verbose log
 Napier.v("Hello napier")
+Napier.v { "Hello napier" }
 
 // you can set a tag for each log
 Napier.d("optional tag", tag = "your tag")
+Napier.d(tag = "your tag") { "optional tag" }
 
 try {
     ...
-} catch(e: Exception) {
+} catch (e: Exception) {
     // you can set the throwable
     Napier.e("Napier Error", e)
+    Napier.e(e) { "Napier Error" }
 }
+
+// you can also use top-level function
+log { "top-level" }
+log(tag = "your tag") { "top-level" }
 
 ```
 
@@ -179,9 +184,8 @@ fun debugBuild() {
 }
 ```
 
-|argument|type|description|
-|-|-|
-|coroutinesSuffix|Boolean|Added `[async]` label at the end, if it is called from suspend functions|
+|argument|type|description| |-|-| |coroutinesSuffix|Boolean|Added `[async]` label at the end, if it is called from
+suspend functions|
 
 * Call initialize code from ios project.
 
@@ -197,20 +201,21 @@ Napier.takeLogarithm()
 
 ## Log level
 
-| Platform      | Sample      |
-|:--------------|:------------|
-| VERBOSE       | Napier.v()  |
-| DEBUG         | Napier.d()  |
-| INFO          | Napier.i()  |
-| WARNING       | Napier.w()  |
-| ERROR         | Napier.e()  |
-| ASSERT        | Napier.wtf()|
+| Platform | Sample       |
+|:---------|:-------------|
+| VERBOSE  | Napier.v()   |
+| DEBUG    | Napier.d()   |
+| INFO     | Napier.i()   |
+| WARNING  | Napier.w()   |
+| ERROR    | Napier.e()   |
+| ASSERT   | Napier.wtf() |
 
 ## Run background thread
 
-You can use this library on the background thread on iOS using [Kotlin.coroutines](https://github.com/Kotlin/kotlinx.coroutines) as native-mt.
+You can use this library on the background thread on iOS
+using [Kotlin.coroutines](https://github.com/Kotlin/kotlinx.coroutines) as native-mt.
 
-* Define scope 
+* Define scope
 
 ```kotlin
 internal val mainScope = SharedScope(Dispatchers.Main)
@@ -310,7 +315,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-http://www.apache.org/licenses/LICENSE-2.0
+https://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -322,14 +327,18 @@ limitations under the License.
 ## Credit
 
 This library is inspired by [Timber](https://github.com/JakeWharton/timber).  
-I recommend use it if it supports kotlin multiplatform project.😜
+I recommend using it if it supports kotlin multiplatform project.😜
 
 Thanks for advice.  
-[@horita-yuya](https://github.com/horita-yuya), 
+[@horita-yuya](https://github.com/horita-yuya),
 [@terachanple](https://github.com/terachanple)
 
-[logo]: /arts/logo.jpg
-[preview-android]: /arts/screenshot-android.jpg
-[preview-ios]: /arts/screenshot-ios.jpg
-[preview-js]: /arts/screenshot-js.jpg
-[preview-jvm]: /arts/screenshot-jvm.jpg
+[logo]: arts/logo.jpg
+
+[preview-android]: arts/screenshot-android.jpg
+
+[preview-ios]: arts/screenshot-ios.jpg
+
+[preview-js]: arts/screenshot-js.jpg
+
+[preview-jvm]: arts/screenshot-jvm.jpg
