@@ -48,7 +48,7 @@ extension Napier {
                 return "\(fileName):\(functionName)"
             }(),
             throwable: nil,
-            message_: message
+            message: message
         )
     }
 }
