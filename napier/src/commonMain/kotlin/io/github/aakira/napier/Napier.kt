@@ -9,7 +9,7 @@ import io.github.aakira.napier.atomic.AtomicMutableList
  * It supports for the Android, Darwin(iOS, macOS, watchOS, tvOS), JVM, JavaScript.
  * Logs written in common module are displayed on logger viewer of each platform.
  *
- * Generally, you should use the [ Napier.v() ], [Napier.d()], [Napier.i()], [Napier.w()], and
+ * Generally, you should use the [Napier.v()], [Napier.d()], [Napier.i()], [Napier.w()], and
  * [Napier.e()] or [log()] methods to write logs. You can then view the logs in logcat.
  *
  * **Usage :**
@@ -81,7 +81,7 @@ object Napier {
      * @param throwable Throwable: An exception to log This value may be null.
      * @param message Lambda: The message you would like logged. This value cannot be null.
      */
-    inline fun v(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
+    fun v(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
         log(LogLevel.VERBOSE, tag, throwable, message())
     }
 
@@ -103,7 +103,7 @@ object Napier {
      * @param throwable Throwable: An exception to log This value may be null.
      * @param message Lambda: The message you would like logged. This value cannot be null.
      */
-    inline fun i(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
+    fun i(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
         log(LogLevel.INFO, tag, throwable, message())
     }
 
@@ -125,7 +125,7 @@ object Napier {
      * @param throwable Throwable: An exception to log This value may be null.
      * @param message Lambda: The message you would like logged. This value cannot be null.
      */
-    inline fun d(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
+    fun d(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
         log(LogLevel.DEBUG, tag, throwable, message())
     }
 
@@ -147,7 +147,7 @@ object Napier {
      * @param throwable Throwable: An exception to log This value may be null.
      * @param message Lambda: The message you would like logged. This value cannot be null.
      */
-    inline fun w(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
+    fun w(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
         log(LogLevel.WARNING, tag, throwable, message())
     }
 
@@ -169,7 +169,7 @@ object Napier {
      * @param throwable Throwable: An exception to log This value may be null.
      * @param message Lambda: The message you would like logged. This value cannot be null.
      */
-    inline fun e(throwable: Throwable? = null, tag: String? = null, message: () -> String) {
+    fun e(throwable: Throwable? = null, tag: String? = null, message: () -> String) {
         log(LogLevel.ERROR, tag, throwable, message())
     }
 
@@ -191,7 +191,7 @@ object Napier {
      * @param throwable Throwable: An exception to log This value may be null.
      * @param message Lambda: The message you would like logged. This value cannot be null.
      */
-    inline fun wtf(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
+    fun wtf(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
         log(LogLevel.ASSERT, tag, throwable, message())
     }
 
@@ -242,7 +242,7 @@ object Napier {
  * @see Napier
  * @author Ghasem Shirdel
  */
-inline fun log(
+fun log(
     tag: String? = null,
     throwable: Throwable? = null,
     priority: LogLevel = LogLevel.DEBUG,
