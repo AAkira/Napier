@@ -158,7 +158,7 @@ object Napier {
      * @param throwable Throwable: An exception to log This value may be null.
      * @param message String: The message you would like logged. This value cannot be null.
      */
-    fun e(message: String, throwable: Throwable? = null, tag: String? = null) {
+    fun e(message: String, tag: String? = null, throwable: Throwable? = null) {
         log(LogLevel.ERROR, tag, throwable, message)
     }
 
@@ -169,7 +169,7 @@ object Napier {
      * @param throwable Throwable: An exception to log This value may be null.
      * @param message Lambda: The message you would like logged. This value cannot be null.
      */
-    fun e(throwable: Throwable? = null, tag: String? = null, message: () -> String) {
+    fun e(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
         log(LogLevel.ERROR, tag, throwable, message())
     }
 
