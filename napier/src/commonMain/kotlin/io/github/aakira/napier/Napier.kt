@@ -9,8 +9,8 @@ import io.github.aakira.napier.atomic.AtomicMutableList
  * It supports for the Android, Darwin(iOS, macOS, watchOS, tvOS), JVM, JavaScript.
  * Logs written in common module are displayed on logger viewer of each platform.
  *
- * Generally, you should use the [Napier.v()], [Napier.d()], [Napier.i()], [Napier.w()], and
- * [Napier.e()] or [log()] methods to write logs. You can then view the logs in logcat.
+ * Generally, you should use the [Napier.v], [Napier.d], [Napier.i], [Napier.w], and
+ * [Napier.e] or [log] methods to write logs. You can then view the logs in logcat.
  *
  * **Usage :**
  *
@@ -65,133 +65,133 @@ object Napier {
 
     /** Send a VERBOSE log message and log the exception.
      *
+     * @param message String: The message you would like logged. This value cannot be null.
+     * @param throwable Throwable: An exception to log This value may be null.
      * @param tag String: Used to identify the source of a log message. It usually
      * identifies the class or activity where the log call occurs. This value may be null.
-     * @param throwable Throwable: An exception to log This value may be null.
-     * @param message String: The message you would like logged. This value cannot be null.
      */
-    fun v(message: String, tag: String? = null, throwable: Throwable? = null) {
+    fun v(message: String, throwable: Throwable? = null, tag: String? = null) {
         log(LogLevel.VERBOSE, tag, throwable, message)
     }
 
     /** Send a VERBOSE log message and log the exception.
      *
+     * @param throwable Throwable: An exception to log This value may be null.
      * @param tag String: Used to identify the source of a log message. It usually
      * identifies the class or activity where the log call occurs. This value may be null.
-     * @param throwable Throwable: An exception to log This value may be null.
      * @param message Lambda: The message you would like logged. This value cannot be null.
      */
-    fun v(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
+    fun v(throwable: Throwable? = null, tag: String? = null, message: () -> String) {
         log(LogLevel.VERBOSE, tag, throwable, message())
     }
 
     /** Send a INFO log message and log the exception.
      *
+     * @param message String: The message you would like logged. This value cannot be null.
+     * @param throwable Throwable: An exception to log This value may be null.
      * @param tag String: Used to identify the source of a log message. It usually
      * identifies the class or activity where the log call occurs. This value may be null.
-     * @param throwable Throwable: An exception to log This value may be null.
-     * @param message String: The message you would like logged. This value cannot be null.
      */
-    fun i(message: String, tag: String? = null, throwable: Throwable? = null) {
+    fun i(message: String, throwable: Throwable? = null, tag: String? = null) {
         log(LogLevel.INFO, tag, throwable, message)
     }
 
     /** Send a INFO log message and log the exception.
      *
+     * @param throwable Throwable: An exception to log This value may be null.
      * @param tag String: Used to identify the source of a log message. It usually
      * identifies the class or activity where the log call occurs. This value may be null.
-     * @param throwable Throwable: An exception to log This value may be null.
      * @param message Lambda: The message you would like logged. This value cannot be null.
      */
-    fun i(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
+    fun i(throwable: Throwable? = null, tag: String? = null, message: () -> String) {
         log(LogLevel.INFO, tag, throwable, message())
     }
 
     /** Send a DEBUG log message and log the exception.
      *
+     * @param message String: The message you would like logged. This value cannot be null.
+     * @param throwable Throwable: An exception to log This value may be null.
      * @param tag String: Used to identify the source of a log message. It usually
      * identifies the class or activity where the log call occurs. This value may be null.
-     * @param throwable Throwable: An exception to log This value may be null.
-     * @param message String: The message you would like logged. This value cannot be null.
      */
-    fun d(message: String, tag: String? = null, throwable: Throwable? = null) {
+    fun d(message: String, throwable: Throwable? = null, tag: String? = null) {
         log(LogLevel.DEBUG, tag, throwable, message)
     }
 
     /** Send a DEBUG log message and log the exception.
      *
+     * @param throwable Throwable: An exception to log This value may be null.
      * @param tag String: Used to identify the source of a log message. It usually
      * identifies the class or activity where the log call occurs. This value may be null.
-     * @param throwable Throwable: An exception to log This value may be null.
      * @param message Lambda: The message you would like logged. This value cannot be null.
      */
-    fun d(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
+    fun d(throwable: Throwable? = null, tag: String? = null, message: () -> String) {
         log(LogLevel.DEBUG, tag, throwable, message())
     }
 
     /** Send a WARN log message and log the exception.
      *
+     * @param message String: The message you would like logged. This value cannot be null.
+     * @param throwable Throwable: An exception to log This value may be null.
      * @param tag String: Used to identify the source of a log message. It usually
      * identifies the class or activity where the log call occurs. This value may be null.
-     * @param throwable Throwable: An exception to log This value may be null.
-     * @param message String: The message you would like logged. This value cannot be null.
      */
-    fun w(message: String, tag: String? = null, throwable: Throwable? = null) {
+    fun w(message: String, throwable: Throwable? = null, tag: String? = null) {
         log(LogLevel.WARNING, tag, throwable, message)
     }
 
     /** Send a WARN log message and log the exception.
      *
+     * @param throwable Throwable: An exception to log This value may be null.
      * @param tag String: Used to identify the source of a log message. It usually
      * identifies the class or activity where the log call occurs. This value may be null.
-     * @param throwable Throwable: An exception to log This value may be null.
      * @param message Lambda: The message you would like logged. This value cannot be null.
      */
-    fun w(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
+    fun w(throwable: Throwable? = null, tag: String? = null, message: () -> String) {
         log(LogLevel.WARNING, tag, throwable, message())
     }
 
     /** Send a ERROR log message and log the exception.
      *
+     * @param message String: The message you would like logged. This value cannot be null.
+     * @param throwable Throwable: An exception to log This value may be null.
      * @param tag String: Used to identify the source of a log message. It usually
      * identifies the class or activity where the log call occurs. This value may be null.
-     * @param throwable Throwable: An exception to log This value may be null.
-     * @param message String: The message you would like logged. This value cannot be null.
      */
-    fun e(message: String, tag: String? = null, throwable: Throwable? = null) {
+    fun e(message: String, throwable: Throwable? = null, tag: String? = null) {
         log(LogLevel.ERROR, tag, throwable, message)
     }
 
     /** Send a ERROR log message and log the exception.
      *
+     * @param throwable Throwable: An exception to log This value may be null.
      * @param tag String: Used to identify the source of a log message. It usually
      * identifies the class or activity where the log call occurs. This value may be null.
-     * @param throwable Throwable: An exception to log This value may be null.
      * @param message Lambda: The message you would like logged. This value cannot be null.
      */
-    fun e(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
+    fun e(throwable: Throwable? = null, tag: String? = null, message: () -> String) {
         log(LogLevel.ERROR, tag, throwable, message())
     }
 
     /** What a Terrible Failure: Report an exception that should never happen.
      *
+     * @param message String: The message you would like logged. This value cannot be null.
+     * @param throwable Throwable: An exception to log This value may be null.
      * @param tag String: Used to identify the source of a log message. It usually
      * identifies the class or activity where the log call occurs. This value may be null.
-     * @param throwable Throwable: An exception to log This value may be null.
-     * @param message String: The message you would like logged. This value cannot be null.
      */
-    fun wtf(message: String, tag: String? = null, throwable: Throwable? = null) {
+    fun wtf(message: String, throwable: Throwable? = null, tag: String? = null) {
         log(LogLevel.ASSERT, tag, throwable, message)
     }
 
     /** What a Terrible Failure: Report an exception that should never happen.
      *
+     * @param throwable Throwable: An exception to log This value may be null.
      * @param tag String: Used to identify the source of a log message. It usually
      * identifies the class or activity where the log call occurs. This value may be null.
-     * @param throwable Throwable: An exception to log This value may be null.
      * @param message Lambda: The message you would like logged. This value cannot be null.
      */
-    fun wtf(tag: String? = null, throwable: Throwable? = null, message: () -> String) {
+    fun wtf(throwable: Throwable? = null, tag: String? = null, message: () -> String) {
         log(LogLevel.ASSERT, tag, throwable, message())
     }
 
@@ -210,8 +210,8 @@ object Napier {
         throwable: Throwable? = null,
         message: String
     ) {
-        if (Napier.isEnable(priority, tag)) {
-            Napier.rawLog(priority, tag, throwable, message)
+        if (isEnable(priority, tag)) {
+            rawLog(priority, tag, throwable, message)
         }
     }
 
@@ -235,17 +235,17 @@ object Napier {
  *
  * @param priority enum: The priority/type of this log message Value is ASSERT,
  * ERROR, WARN, INFO, DEBUG, or VERBOSE
+ * @param throwable Throwable: An exception to log This value may be null.
  * @param tag String: Used to identify the source of a log message. It usually
  * identifies the class or activity where the log call occurs. This value may be null.
- * @param throwable Throwable: An exception to log This value may be null.
  * @param message Lambda: The message you would like logged. This value cannot be null.
  * @see Napier
  * @author Ghasem Shirdel
  */
 fun log(
-    tag: String? = null,
-    throwable: Throwable? = null,
     priority: LogLevel = LogLevel.DEBUG,
+    throwable: Throwable? = null,
+    tag: String? = null,
     message: () -> String,
 ) {
     Napier.log(priority, tag, throwable, message())
