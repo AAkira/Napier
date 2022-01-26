@@ -2,6 +2,7 @@ import dependencies.Dep
 import dependencies.Versions
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
+import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 
 plugins {
     kotlin("multiplatform")
@@ -10,6 +11,8 @@ plugins {
 }
 
 version = "1.0.0"
+
+yarn.lockFileDirectory = file("kotlin-js-store")
 
 kotlin {
     android()
