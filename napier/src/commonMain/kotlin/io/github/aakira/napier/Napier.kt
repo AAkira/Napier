@@ -41,15 +41,6 @@ import io.github.aakira.napier.atomic.AtomicMutableList
  */
 object Napier {
 
-    enum class Level {
-        VERBOSE,
-        DEBUG,
-        INFO,
-        WARNING,
-        ERROR,
-        ASSERT,
-    }
-
     private val baseArray = AtomicMutableList<Antilog>()
 
     fun base(antilog: Antilog) {
