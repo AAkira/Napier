@@ -158,7 +158,7 @@ kotlin {
                 val macosArm64Main by getting {
                     dependsOn(darwinMain)
                 }
-                val macosArm64Text by getting {
+                val macosArm64Test by getting {
                     dependsOn(darwinTest)
                 }
                 val iosSimulatorArm64Main by getting {
