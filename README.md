@@ -86,17 +86,6 @@ repositories {
 }
 ```
 
-* jCenter
-
-You can download this until `1.4.1`.  
-Package name is `com.github.aakira`
-
-```groovy
-repositories {
-    jCenter()
-}
-```
-
 ### Version
 
 Set the version name in your build.gradle
