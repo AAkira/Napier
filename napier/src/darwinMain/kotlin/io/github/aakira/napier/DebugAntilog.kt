@@ -59,10 +59,9 @@ actual class DebugAntilog(
         val symbols = NSThread.callStackSymbols
         if (symbols.size <= CALL_STACK_INDEX) return tag
 
-        val target = symbols[CALL_STACK_INDEX] as? String
-
-        return if (target != null) createStackElementTag(target)
-        else tag
+        return (symbols[CALL_STACK_INDEX] as? String)?.let {
+            createStackElementTag(it)
+        } ?: tag
     }
 
     internal fun createStackElementTag(string: String): String {
