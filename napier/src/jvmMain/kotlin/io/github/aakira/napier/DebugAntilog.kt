@@ -7,9 +7,17 @@ import java.util.regex.Pattern
 
 actual class DebugAntilog(
     private val defaultTag: String = "app",
-    private val handler: List<Handler> = listOf()
+    private val handler: List<Handler> = listOf(),
+    private val logLevelChecker: (LogLevel, String?) -> Boolean = { _, _ -> true }
 ) : Antilog() {
-    actual constructor(defaultTag: String) : this(defaultTag, handler = listOf())
+    actual constructor(
+        defaultTag: String,
+        logLevelChecker: (LogLevel, String?) -> Boolean
+    ) : this(
+        defaultTag,
+        handler = listOf(),
+        logLevelChecker = logLevelChecker
+    )
 
     companion object {
         private const val CALL_STACK_INDEX = 8
@@ -42,6 +50,8 @@ actual class DebugAntilog(
         LogLevel.ERROR to "[ERROR]",
         LogLevel.ASSERT to "[ASSERT]"
     )
+
+    override fun isEnable(priority: LogLevel, tag: String?): Boolean = logLevelChecker(priority, tag)
 
     override fun performLog(
         priority: LogLevel,

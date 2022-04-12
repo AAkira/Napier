@@ -9,8 +9,16 @@ private const val CALL_STACK_INDEX = 8
 actual class DebugAntilog(
     private val defaultTag: String = "app",
     private val coroutinesSuffix: Boolean = true,
+    private val logLevelChecker: (LogLevel, String?) -> Boolean = { _, _ -> true },
 ) : Antilog() {
-    actual constructor(defaultTag: String) : this(defaultTag, coroutinesSuffix = true)
+    actual constructor(
+        defaultTag: String,
+        logLevelChecker: (LogLevel, String?) -> Boolean
+    ) : this(
+        defaultTag,
+        coroutinesSuffix = true,
+        logLevelChecker = logLevelChecker
+    )
 
     var crashAssert = false
 
@@ -26,6 +34,8 @@ actual class DebugAntilog(
         LogLevel.ERROR to "❤️ ERROR",
         LogLevel.ASSERT to "💞 ASSERT"
     )
+
+    override fun isEnable(priority: LogLevel, tag: String?): Boolean = logLevelChecker(priority, tag)
 
     override fun performLog(
         priority: LogLevel,
