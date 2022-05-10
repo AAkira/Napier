@@ -34,9 +34,9 @@ actual class DebugAntilog(
         message: String?,
     ) {
         if (priority == LogLevel.ASSERT) {
-            assert(crashAssert) { buildLog(priority, tag, message) }
+            assert(crashAssert) { buildLog(priority, tag, throwable, message) }
         } else {
-            println(buildLog(priority, tag, message))
+            println(buildLog(priority, tag, throwable, message))
         }
     }
 
@@ -50,8 +50,13 @@ actual class DebugAntilog(
 
     private fun getCurrentTime() = dateFormatter.stringFromDate(NSDate())
 
-    private fun buildLog(priority: LogLevel, tag: String?, message: String?): String {
-        return "${getCurrentTime()} ${tagMap[priority]} ${tag ?: performTag(defaultTag)} - $message"
+    private fun buildLog(priority: LogLevel, tag: String?, throwable: Throwable?, message: String?): String {
+        val baseLogString = "${getCurrentTime()} ${tagMap[priority]} ${tag ?: performTag(defaultTag)} - $message"
+        return if (throwable != null) {
+            "$baseLogString\n${throwable.stackTraceToString()}"
+        } else {
+            baseLogString
+        }
     }
 
     // find stack trace
