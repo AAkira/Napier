@@ -7,7 +7,10 @@ import java.io.StringWriter
 import java.util.regex.Pattern
 import kotlin.math.min
 
-actual class DebugAntilog actual constructor(private val defaultTag: String) : Antilog() {
+actual class DebugAntilog actual constructor(
+    private val defaultTag: String,
+    private val logLevelChecker: (LogLevel, String?) -> Boolean
+) : Antilog() {
 
     companion object {
         private const val MAX_LOG_LENGTH = 4000
@@ -16,6 +19,8 @@ actual class DebugAntilog actual constructor(private val defaultTag: String) : A
     }
 
     private val anonymousClass = Pattern.compile("(\\$\\d+)+$")
+
+    override fun isEnable(priority: LogLevel, tag: String?): Boolean = logLevelChecker(priority, tag)
 
     override fun performLog(
         priority: LogLevel,

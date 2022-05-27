@@ -1,6 +1,11 @@
 package io.github.aakira.napier
 
-actual class DebugAntilog actual constructor(private val defaultTag: String) : Antilog() {
+actual class DebugAntilog actual constructor(
+    private val defaultTag: String,
+    private val logLevelChecker: (LogLevel, String?) -> Boolean
+) : Antilog() {
+
+    override fun isEnable(priority: LogLevel, tag: String?): Boolean = logLevelChecker(priority, tag)
 
     override fun performLog(
         priority: LogLevel,
