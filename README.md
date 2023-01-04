@@ -185,8 +185,13 @@ fun debugBuild() {
 }
 ```
 
-|argument|type|description| |-|-| |coroutinesSuffix|Boolean|Added `[async]` label at the end, if it is called from
-suspend functions|
+* Option) Pass `coroutinesSuffix = false` argument if you don't want `[async]` label.
+
+```kotlin
+fun debugBuild() {
+    Napier.base(DebugAntilog(coroutinesSuffix = false))
+}
+```
 
 * Call initialize code from ios project.
 
