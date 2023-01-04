@@ -176,9 +176,10 @@ Napier.base(DebugAntilog())
 
 #### iOS
 
-* Write initialize code in your kotlin mpp project.
+* Write initialize code in your Darwin source set of kotlin mpp project.
 
 ```kotlin
+// NapierProxy.kt
 fun debugBuild() {
     Napier.base(DebugAntilog())
 }
