@@ -77,7 +77,7 @@ actual class DebugAntilog(
     private fun performTag(defaultTag: String): String {
         val thread = Thread.currentThread().stackTrace
 
-        return if (thread.size >= CALL_STACK_INDEX) {
+        return if (thread.size > CALL_STACK_INDEX) {
             thread[CALL_STACK_INDEX].run {
                 "${createStackElementTag(className)}\$$methodName"
             }
