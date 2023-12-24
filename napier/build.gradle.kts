@@ -1,5 +1,6 @@
 import dependencies.Dep
 import dependencies.Versions
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
     kotlin("multiplatform")
@@ -12,10 +13,12 @@ kotlin {
     android {
         publishAllLibraryVariants()
     }
-    js(BOTH) {
+    js(IR) {
         browser()
         nodejs()
     }
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs()
     jvm()
 
     // darwin
@@ -64,7 +67,7 @@ kotlin {
             dependencies {
             }
         }
-        val androidTest by getting {
+        val androidUnitTest by getting {
             dependencies {
                 implementation(Dep.Test.jvm)
             }
@@ -211,19 +214,22 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(Versions.compileSdkVersion)
-    buildToolsVersion(Versions.buildToolsVersion)
+    compileSdk = Versions.compileSdkVersion
+    buildToolsVersion = Versions.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion(Versions.minSdkVersion)
-        targetSdkVersion(Versions.targetSdkVersion)
-        versionCode(Versions.androidVersionCode)
-        versionName(Versions.androidVersionName)
+        namespace = "io.github.aakira.napier"
+        minSdk = Versions.minSdkVersion
     }
 
     sourceSets {
         getByName("main") {
             manifest.srcFile("src/androidMain/AndroidManifest.xml")
         }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }

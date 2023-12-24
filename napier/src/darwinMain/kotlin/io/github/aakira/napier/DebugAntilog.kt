@@ -3,6 +3,7 @@ package io.github.aakira.napier
 import platform.Foundation.NSDate
 import platform.Foundation.NSDateFormatter
 import platform.Foundation.NSThread
+import kotlin.experimental.ExperimentalNativeApi
 
 private const val CALL_STACK_INDEX = 8
 
@@ -27,6 +28,7 @@ actual class DebugAntilog(
         LogLevel.ASSERT to "💞 ASSERT"
     )
 
+    @OptIn(ExperimentalNativeApi::class)
     override fun performLog(
         priority: LogLevel,
         tag: String?,

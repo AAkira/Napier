@@ -14,10 +14,11 @@ android {
     buildToolsVersion(Versions.buildToolsVersion)
 
     defaultConfig {
+        namespace = "io.github.aakira.napier.sample"
         minSdkVersion(Versions.minSdkVersion)
         targetSdkVersion(Versions.targetSdkVersion)
-        versionCode(Versions.androidVersionCode)
-        versionName(Versions.androidVersionName)
+        versionCode = Versions.androidVersionCode
+        versionName = Versions.androidVersionName
     }
 
     buildTypes {
@@ -36,11 +37,12 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     compileOptions {
-        sourceCompatibility(JavaVersion.VERSION_1_8)
-        targetCompatibility(JavaVersion.VERSION_1_8)
+        sourceCompatibility(JavaVersion.VERSION_17)
+        targetCompatibility(JavaVersion.VERSION_17)
     }
 }
 
