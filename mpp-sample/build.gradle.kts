@@ -15,7 +15,7 @@ version = "1.0.0"
 yarn.lockFileDirectory = file("kotlin-js-store")
 
 kotlin {
-    android()
+    androidTarget()
     js {
         browser()
     }
@@ -25,8 +25,8 @@ kotlin {
     if (ideaActive.not()) {
         // intel
         macosX64()
-        ios()
-        watchos()
+        iosX64()
+        watchosX64()
 
         // apple silicon
         macosArm64()
@@ -86,10 +86,10 @@ kotlin {
             val macosX64Main by getting {
                 dependsOn(darwinMain)
             }
-            val iosMain by getting {
+            val iosX64Main by getting {
                 dependsOn(darwinMain)
             }
-            val watchosMain by getting {
+            val watchosX64Main by getting {
                 dependsOn(darwinMain)
             }
 
@@ -137,15 +137,16 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(Versions.compileSdkVersion)
-    buildToolsVersion(Versions.buildToolsVersion)
+    compileSdk = Versions.compileSdkVersion
+    buildToolsVersion = Versions.buildToolsVersion
 
     defaultConfig {
         namespace = "io.github.aakira.napier.mppsample"
-        minSdkVersion(Versions.minSdkVersion)
-        targetSdkVersion(Versions.targetSdkVersion)
-//        versionCode(Versions.androidVersionCode)
-//        versionName(Versions.androidVersionName)
+        minSdk = Versions.minSdkVersion
+    }
+
+    lint {
+        targetSdk = Versions.targetSdkVersion
     }
 
     sourceSets {
