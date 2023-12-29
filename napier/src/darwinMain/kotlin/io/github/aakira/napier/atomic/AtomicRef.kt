@@ -1,6 +1,6 @@
 package io.github.aakira.napier.atomic
 
-import kotlin.native.concurrent.AtomicReference
+import kotlin.concurrent.AtomicReference
 import kotlin.native.concurrent.freeze
 
 internal actual class AtomicRef<T> actual constructor(value: T) {

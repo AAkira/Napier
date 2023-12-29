@@ -141,15 +141,21 @@ android {
     buildToolsVersion(Versions.buildToolsVersion)
 
     defaultConfig {
+        namespace = "io.github.aakira.napier.mppsample"
         minSdkVersion(Versions.minSdkVersion)
         targetSdkVersion(Versions.targetSdkVersion)
-        versionCode(Versions.androidVersionCode)
-        versionName(Versions.androidVersionName)
+//        versionCode(Versions.androidVersionCode)
+//        versionName(Versions.androidVersionName)
     }
 
     sourceSets {
         getByName("main") {
             manifest.srcFile("src/androidMain/AndroidManifest.xml")
         }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }

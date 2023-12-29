@@ -2,12 +2,12 @@ package dependencies
 
 object Dep {
 
-    private const val kotlin = "1.6.21"
+    private const val kotlin = "1.9.21"
 
     object GradlePlugin {
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Dep.kotlin}"
 
-        const val android = "com.android.tools.build:gradle:4.2.1"
+        const val android = "com.android.tools.build:gradle:8.2.0"
 
         const val crashlytics = "com.google.firebase:firebase-crashlytics-gradle:2.5.2"
         const val googleService = "com.google.gms:google-services:4.3.5"
@@ -20,7 +20,7 @@ object Dep {
     }
 
     object Coroutines {
-        private const val version = "1.6.0-native-mt"
+        private const val version = "1.8.0-RC2"
 
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
     }

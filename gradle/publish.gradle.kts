@@ -68,6 +68,12 @@ publishing {
         }
     }
 
+    // FIXME - workaround for https://github.com/gradle/gradle/issues/26091
+    val signingTasks = tasks.withType<Sign>()
+    tasks.withType<AbstractPublishToMaven>().configureEach {
+        mustRunAfter(signingTasks)
+    }
+
     repositories {
         maven {
             name = "Sonatype"
