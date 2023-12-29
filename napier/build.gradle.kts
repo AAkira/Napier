@@ -10,7 +10,7 @@ plugins {
 apply(from = rootProject.file("./gradle/publish.gradle.kts"))
 
 kotlin {
-    android {
+    androidTarget {
         publishAllLibraryVariants()
     }
     js(IR) {
@@ -25,9 +25,9 @@ kotlin {
     if (ideaActive.not()) {
         // intel
         macosX64()
-        ios()
-        watchos()
-        tvos()
+        iosX64()
+        watchosX64()
+        tvosX64()
 
         // apple silicon
         macosArm64()
@@ -60,7 +60,6 @@ kotlin {
             dependencies {
                 implementation(Dep.Test.common)
                 implementation(Dep.Test.annotation)
-                implementation(Dep.Coroutines.core)
             }
         }
         val androidMain by getting {
@@ -83,16 +82,8 @@ kotlin {
                 implementation(Dep.Test.js)
             }
         }
-        val wasmJsMain by getting {
-            dependencies {
-                implementation(Dep.Kotlin.js)
-            }
-        }
-        val wasmJsTest by getting {
-            dependencies {
-                implementation(Dep.Test.js)
-            }
-        }
+        val wasmJsMain by getting
+        val wasmJsTest by getting
         val jvmMain by getting {
             dependencies {
                 implementation(Dep.Kotlin.jvm)
@@ -100,7 +91,6 @@ kotlin {
         }
         val jvmTest by getting {
             dependencies {
-                implementation(Dep.Coroutines.core)
                 implementation(Dep.Test.jvm)
             }
         }
@@ -121,22 +111,22 @@ kotlin {
             val macosX64Test by getting {
                 dependsOn(darwinTest)
             }
-            val iosMain by getting {
+            val iosX64Main by getting {
                 dependsOn(darwinMain)
             }
-            val iosTest by getting {
+            val iosX64Test by getting {
                 dependsOn(darwinTest)
             }
-            val watchosMain by getting {
+            val watchosX64Main by getting {
                 dependsOn(darwinMain)
             }
-            val watchosTest by getting {
+            val watchosX64Test by getting {
                 dependsOn(darwinTest)
             }
-            val tvosMain by getting {
+            val tvosX64Main by getting {
                 dependsOn(darwinMain)
             }
-            val tvosTest by getting {
+            val tvosX64Test by getting {
                 dependsOn(darwinTest)
             }
 
