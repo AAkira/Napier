@@ -18,7 +18,7 @@ jobs:
       - name: "Setup Java"
         uses: actions/setup-java@v1
         with:
-          java-version: 11
+          java-version: 17
          
       - name: Run common tests
         run: ./gradlew :napier:test --stacktrace
@@ -42,6 +42,8 @@ jobs:
         run: ./gradlew :napier:tvosX64Test --stacktrace
       - name: Run tvos(apple silicon) tests
         run: ./gradlew :napier:tvosSimulatorArm64Test --stacktrace
+      - name: Run wasmJs tests
+        run: ./gradlew :napier:wasmJsTest --stacktrace
 
       - name: Bundle the build report
         if: failure()

@@ -83,6 +83,16 @@ kotlin {
                 implementation(Dep.Test.js)
             }
         }
+        val wasmJsMain by getting {
+            dependencies {
+                implementation(Dep.Kotlin.js)
+            }
+        }
+        val wasmJsTest by getting {
+            dependencies {
+                implementation(Dep.Test.js)
+            }
+        }
         val jvmMain by getting {
             dependencies {
                 implementation(Dep.Kotlin.jvm)
