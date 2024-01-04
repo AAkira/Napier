@@ -31,6 +31,9 @@ kotlin {
 
         // apple silicon
         macosArm64()
+        iosArm64()
+        watchosArm64()
+        tvosArm64()
         iosSimulatorArm64()
         watchosSimulatorArm64()
         tvosSimulatorArm64()
@@ -38,6 +41,9 @@ kotlin {
         if (isAppleSilicon) {
             // apple silicon
             macosArm64()
+            iosArm64()
+            watchosArm64()
+            tvosArm64()
             iosSimulatorArm64()
             watchosSimulatorArm64()
             tvosSimulatorArm64()
@@ -137,6 +143,24 @@ kotlin {
             val macosArm64Test by getting {
                 dependsOn(darwinTest)
             }
+            val iosArm64Main by getting {
+                dependsOn(darwinMain)
+            }
+            val iosArm64Test by getting {
+                dependsOn(darwinTest)
+            }
+            val watchosArm64Main by getting {
+                dependsOn(darwinMain)
+            }
+            val watchosArm64Test by getting {
+                dependsOn(darwinTest)
+            }
+            val tvosArm64Main by getting {
+                dependsOn(darwinMain)
+            }
+            val tvosArm64Test by getting {
+                dependsOn(darwinTest)
+            }
             val iosSimulatorArm64Main by getting {
                 dependsOn(darwinMain)
             }
@@ -162,6 +186,24 @@ kotlin {
                     dependsOn(darwinMain)
                 }
                 val macosArm64Test by getting {
+                    dependsOn(darwinTest)
+                }
+                val iosArm64Main by getting {
+                    dependsOn(darwinMain)
+                }
+                val iosArm64Test by getting {
+                    dependsOn(darwinTest)
+                }
+                val watchosArm64Main by getting {
+                    dependsOn(darwinMain)
+                }
+                val watchosArm64Test by getting {
+                    dependsOn(darwinTest)
+                }
+                val tvosArm64Main by getting {
+                    dependsOn(darwinMain)
+                }
+                val tvosArm64Test by getting {
                     dependsOn(darwinTest)
                 }
                 val iosSimulatorArm64Main by getting {
