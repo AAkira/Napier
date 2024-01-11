@@ -176,16 +176,22 @@ Napier.base(DebugAntilog())
 
 #### iOS
 
-* Write initialize code in your kotlin mpp project.
+* Write initialize code in your Darwin source set of kotlin mpp project.
 
 ```kotlin
+// NapierProxy.kt
 fun debugBuild() {
     Napier.base(DebugAntilog())
 }
 ```
 
-|argument|type|description| |-|-| |coroutinesSuffix|Boolean|Added `[async]` label at the end, if it is called from
-suspend functions|
+* Option) Pass `coroutinesSuffix = false` argument if you don't want `[async]` label.
+
+```kotlin
+fun debugBuild() {
+    Napier.base(DebugAntilog(coroutinesSuffix = false))
+}
+```
 
 * Call initialize code from ios project.
 
