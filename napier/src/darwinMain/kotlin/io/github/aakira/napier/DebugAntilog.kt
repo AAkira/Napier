@@ -64,7 +64,7 @@ actual class DebugAntilog(
     // find stack trace
     private fun performTag(tag: String): String {
         val symbols = NSThread.callStackSymbols
-        if (symbols.size <= CALL_STACK_INDEX) return tag
+        if (symbols.lastIndex <= CALL_STACK_INDEX) return tag
 
         return (symbols[CALL_STACK_INDEX] as? String)?.let {
             createStackElementTag(it)
