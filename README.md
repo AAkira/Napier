@@ -256,7 +256,7 @@ You must set authentication files to `android/google-services.json` and `ios/Nap
 Check the firebase document. [[Android](https://firebase.google.com/docs/android/setup),
 [iOS](https://firebase.google.com/docs/ios/setup)]
 
-* [Android](https://github.com/AAkira/Napier/blob/master/android/src/main/java/com/github/aakira/napier/sample/CrashlyticsAntilog.kt)
+* [Android](https://github.com/AAkira/Napier/blob/master/android/src/main/java/io/github/aakira/napier/sample/CrashlyticsAntilog.kt)
 
 Write this in your application class.
 
@@ -278,7 +278,7 @@ if (BuildConfig.DEBUG) {
 }
 ```
 
-* [iOS](https://github.com/AAkira/Napier/blob/master/mpp-sample/src/iosMain/kotlin/com/github/aakira/napier/CrashlyticsAntilog.kt)
+* [iOS](https://github.com/AAkira/Napier/blob/master/mpp-sample/src/darwinMain/kotlin/io/github/aakira/napier/mppsample/CrashlyticsAntilog.kt)
 
 Write this in your AppDelegate.
 
