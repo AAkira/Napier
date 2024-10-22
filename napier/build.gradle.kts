@@ -33,6 +33,7 @@ kotlin {
         macosArm64()
         iosArm64()
         watchosArm64()
+        watchosDeviceArm64()
         tvosArm64()
         iosSimulatorArm64()
         watchosSimulatorArm64()
@@ -43,6 +44,7 @@ kotlin {
             macosArm64()
             iosArm64()
             watchosArm64()
+            watchosDeviceArm64()
             tvosArm64()
             iosSimulatorArm64()
             watchosSimulatorArm64()
@@ -155,6 +157,12 @@ kotlin {
             val watchosArm64Test by getting {
                 dependsOn(darwinTest)
             }
+            val watchosDeviceArm64Main by getting {
+                dependsOn(darwinMain)
+            }
+            val watchosDeviceArm64Test by getting {
+                dependsOn(darwinTest)
+            }
             val tvosArm64Main by getting {
                 dependsOn(darwinMain)
             }
@@ -198,6 +206,12 @@ kotlin {
                     dependsOn(darwinMain)
                 }
                 val watchosArm64Test by getting {
+                    dependsOn(darwinTest)
+                }
+                val watchosDeviceArm64Main by getting {
+                    dependsOn(darwinMain)
+                }
+                val watchosDeviceArm64Test by getting {
                     dependsOn(darwinTest)
                 }
                 val tvosArm64Main by getting {
