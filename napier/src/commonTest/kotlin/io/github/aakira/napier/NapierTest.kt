@@ -1,6 +1,5 @@
 package io.github.aakira.napier
 
-import io.github.aakira.napier.atomic.AtomicMutableList
 import kotlin.test.AfterTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -24,7 +23,7 @@ class NapierTest {
 
     private data class CustomThrowable(override val message: String) : Throwable(message)
 
-    private fun recordOutput(output: AtomicMutableList<Expected>): Antilog = object : Antilog() {
+    private fun recordOutput(output: CopyOnWriteList<Expected>): Antilog = object : Antilog() {
         override fun performLog(
             priority: LogLevel,
             tag: String?,
@@ -42,7 +41,7 @@ class NapierTest {
 
     @Test
     fun `Check output log`() {
-        val output = AtomicMutableList<Expected>()
+        val output = CopyOnWriteList<Expected>()
         Napier.base(recordOutput(output))
 
         val testCase = listOf(
@@ -243,7 +242,7 @@ class NapierTest {
 
     @Test
     fun `Check lambda log output`() {
-        val output = AtomicMutableList<Expected>()
+        val output = CopyOnWriteList<Expected>()
         Napier.base(recordOutput(output))
 
         val throwable = CustomThrowable("error")
@@ -268,7 +267,7 @@ class NapierTest {
 
     @Test
     fun `Check top-level log output`() {
-        val output = AtomicMutableList<Expected>()
+        val output = CopyOnWriteList<Expected>()
         Napier.base(recordOutput(output))
 
         log { "hello" }
@@ -281,8 +280,8 @@ class NapierTest {
 
     @Test
     fun `Check multiple antilogs receive log`() {
-        val output1 = AtomicMutableList<Expected>()
-        val output2 = AtomicMutableList<Expected>()
+        val output1 = CopyOnWriteList<Expected>()
+        val output2 = CopyOnWriteList<Expected>()
         Napier.base(recordOutput(output1))
         Napier.base(recordOutput(output2))
 
@@ -294,7 +293,7 @@ class NapierTest {
 
     @Test
     fun `Check takeLogarithm removes antilog`() {
-        val output = AtomicMutableList<Expected>()
+        val output = CopyOnWriteList<Expected>()
         val antilog = recordOutput(output)
         Napier.base(antilog)
 
@@ -308,7 +307,7 @@ class NapierTest {
 
     @Test
     fun `Check takeLogarithm removes all antilogs`() {
-        val output = AtomicMutableList<Expected>()
+        val output = CopyOnWriteList<Expected>()
         Napier.base(recordOutput(output))
         Napier.base(recordOutput(output))
 
@@ -320,7 +319,7 @@ class NapierTest {
 
     @Test
     fun `Check isEnable filtering`() {
-        val output = AtomicMutableList<Expected>()
+        val output = CopyOnWriteList<Expected>()
         Napier.base(object : Antilog() {
             override fun isEnable(priority: LogLevel, tag: String?) =
                 priority >= LogLevel.WARNING

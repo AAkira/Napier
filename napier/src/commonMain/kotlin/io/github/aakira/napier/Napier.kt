@@ -1,7 +1,5 @@
 package io.github.aakira.napier
 
-import io.github.aakira.napier.atomic.AtomicMutableList
-
 /**
  * ## Logging library for Kotlin Multiplatform
  *
@@ -41,7 +39,7 @@ import io.github.aakira.napier.atomic.AtomicMutableList
  */
 object Napier {
 
-    private val baseArray = AtomicMutableList<Antilog>()
+    private val baseArray = CopyOnWriteList<Antilog>()
 
     fun base(antilog: Antilog) {
         baseArray.add(antilog)
