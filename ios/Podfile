@@ -1,8 +1,8 @@
-platform :ios, '11.0'
+platform :ios, '15.0'
 
 target 'Napier' do
   use_frameworks!
 
-  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Crashlytics', '~> 10.29.0'
   pod 'mpp_sample', :path => '../mpp-sample'
 end

@@ -1,24 +1,19 @@
-import dependencies.Dep
-import dependencies.Versions
-
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    alias(libs.plugins.androidApplication)
 
-    id("com.google.gms.google-services")
-    id("com.google.firebase.crashlytics")
+    alias(libs.plugins.googleServices)
+    alias(libs.plugins.crashlytics)
 }
 
 android {
-    compileSdk = Versions.compileSdkVersion
-    buildToolsVersion = Versions.buildToolsVersion
+    namespace = "io.github.aakira.napier.sample"
+    compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        namespace = "io.github.aakira.napier.sample"
-        minSdk = Versions.minSdkVersion
-        targetSdk = Versions.targetSdkVersion
-        versionCode = Versions.androidVersionCode
-        versionName = Versions.androidVersionName
+        minSdk = libs.versions.android.appMinSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        versionCode = 1
+        versionName = "1.0.0"
     }
 
     buildTypes {
@@ -29,10 +24,6 @@ android {
                 "proguard-rules.pro"
             )
         }
-    }
-
-    packagingOptions {
-        exclude("META-INF/kotlinx-coroutines-core.kotlin_module")
     }
 
     buildFeatures {
@@ -52,13 +43,12 @@ dependencies {
     // write the below in your project, instead of above
     // implementation "io.github.aakira:napier:[version name]"
 
-    implementation(Dep.Kotlin.jvm)
-    implementation(Dep.Coroutines.core)
+    implementation(libs.kotlinx.coroutines.core)
 
-    implementation(Dep.Android.appCompat)
-    implementation(Dep.Android.constraintLayout)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
 
     // for crashlytics sample
-    implementation(platform(Dep.Firebase.platform))
-    implementation(Dep.Firebase.crashlytics)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.crashlytics)
 }

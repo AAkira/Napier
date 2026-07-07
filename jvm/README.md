@@ -11,8 +11,8 @@ java -jar jvm/build/libs/jvm.jar
 
 * java.lang.NoClassDefFoundError
 
-Downgrade the gradle to 4.x if it doesn't work.
-And change the dependencies of gradle.
+Downgrade Gradle to 4.x if it doesn't work,
+and change the Gradle dependencies.
 
 ```groovy
 compile project(":napier") 

@@ -17,7 +17,7 @@ actual class DebugAntilog actual constructor(private val defaultTag: String) : A
 
     private val anonymousClass = Pattern.compile("(\\$\\d+)+$")
 
-    override fun performLog(
+    actual override fun performLog(
         priority: LogLevel,
         tag: String?,
         throwable: Throwable?,

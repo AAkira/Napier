@@ -4,3 +4,12 @@
 /.idea
 /build
 .DS_Store
+
+.kotlin/metadata
+gradle/*
+!gradle/wrapper/*
+!gradle/libs.versions.toml
+
+macOS/build
+**/xcuserdata/
+

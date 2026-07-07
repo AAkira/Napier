@@ -26,7 +26,7 @@ private fun error(message: String): Unit = js(
 
 actual class DebugAntilog actual constructor(private val defaultTag: String) : Antilog() {
 
-    override fun performLog(
+    actual override fun performLog(
         priority: LogLevel,
         tag: String?,
         throwable: Throwable?,

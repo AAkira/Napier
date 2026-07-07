@@ -1,5 +1,3 @@
-import dependencies.Versions
-
 apply(plugin = "maven-publish")
 apply(plugin = "signing")
 
@@ -17,6 +15,7 @@ val javadocJar by tasks.registering(Jar::class) {
 }
 
 // read values from gradle.properties
+val versionName: String by project
 val mavenGroup: String by project
 val projectName: String by project
 val pomDescription: String by project
@@ -37,7 +36,7 @@ val sonatypeUsernameEnv: String? = System.getenv()["SONATYPE_USERNAME"]
 publishing {
     publications.all {
         group = mavenGroup
-        version = Versions.versionName
+        version = versionName
     }
 
     publications.withType<MavenPublication>().all {

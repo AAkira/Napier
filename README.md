@@ -1,8 +1,8 @@
 ![logo][logo]
 
 Napier is a logger library for Kotlin Multiplatform.  
-It supports Android, Darwin(iOS, macOS, watchOS, tvOS), JVM, JavaScript.  
-Logs written in common module are displayed on logger viewer of each platform.
+It supports Android, Darwin (iOS, macOS, watchOS, tvOS), JVM, and JavaScript.  
+Logs written in the common module are displayed in the log viewer of each platform.
 
 ## Preview
 
@@ -10,7 +10,7 @@ Logs written in common module are displayed on logger viewer of each platform.
 
 format: `[Class name]$[Method name]: [Your log]`
 
-uses the `android.util.Log`(Logcat)
+It uses `android.util.Log` (Logcat).
 
 ![preview-android][preview-android]
 
@@ -18,21 +18,21 @@ uses the `android.util.Log`(Logcat)
 
 format: `[Date time][Symbol][Log level][Class name].[Method name] - [Your log]`
 
-Added `[async]` label at the end, if it is called from suspend functions.
+The `[async]` label is added at the end if it is called from a suspend function.
 
-uses the `print`
+It uses `print`.
 
 ![preview-ios][preview-ios]
 
 ### JavaScript
 
-uses the `console.log`
+It uses `console.log`.
 
 ![preview-js][preview-js]
 
 ### JVM
 
-uses the `java.util.logging.Logger`
+It uses `java.util.logging.Logger`.
 
 ![preview-jvm][preview-jvm]
 
@@ -73,12 +73,12 @@ class Sample {
 
 ### Repository
 
-You can download this library from MavenCentral or jCenter repository.
+You can download this library from the Maven Central or jCenter repository.
 
-* Maven central
+* Maven Central
 
-You can download this from `1.4.1`.  
-Package name is `io.github.aakira`
+Versions `1.4.1` and later are available here.  
+The package name is `io.github.aakira`.
 
 ```groovy
 repositories {
@@ -88,8 +88,8 @@ repositories {
 
 * jCenter
 
-You can download this until `1.4.1`.  
-Package name is `com.github.aakira`
+Versions up to `1.4.1` are available here.  
+The package name is `com.github.aakira`.
 
 ```groovy
 repositories {
@@ -158,7 +158,7 @@ try {
     Napier.e(e) { "Napier Error" }
 }
 
-// you can also use top-level function
+// you can also use the top-level functions
 log { "top-level" }
 log(tag = "your tag") { "top-level" }
 
@@ -166,7 +166,7 @@ log(tag = "your tag") { "top-level" }
 
 ### Initialize
 
-You must initialize the Napier in your module.
+You must initialize Napier in your module.
 
 #### Android
 
@@ -176,7 +176,7 @@ Napier.base(DebugAntilog())
 
 #### iOS
 
-* Write initialize code in your kotlin mpp project.
+* Write the initialization code in your Kotlin Multiplatform project.
 
 ```kotlin
 fun debugBuild() {
@@ -184,10 +184,11 @@ fun debugBuild() {
 }
 ```
 
-|argument|type|description| |-|-| |coroutinesSuffix|Boolean|Added `[async]` label at the end, if it is called from
-suspend functions|
+| argument         | type    | description                                                                    |
+|:-----------------|:--------|:-------------------------------------------------------------------------------|
+| coroutinesSuffix | Boolean | The `[async]` label is added at the end if it is called from a suspend function |
 
-* Call initialize code from ios project.
+* Call the initialization code from your iOS project.
 
 ```swift
 NapierProxyKt.debugBuild()
@@ -210,9 +211,9 @@ Napier.takeLogarithm()
 | ERROR    | Napier.e()   |
 | ASSERT   | Napier.wtf() |
 
-## Run background thread
+## Run on a background thread
 
-You can use this library on the background thread on iOS
+You can use this library on a background thread on iOS
 using [Kotlin.coroutines](https://github.com/Kotlin/kotlinx.coroutines) as native-mt.
 
 * Define scope
@@ -241,19 +242,131 @@ backgroundScope.launch {
 }
 ```
 
+## Testing
+
+Run the unit tests of the `napier` module on all available targets.
+
+```shell
+./gradlew :napier:allTests
+```
+
+You can also run the tests for a specific target.
+
+```shell
+# JVM
+./gradlew :napier:jvmTest
+
+# Android (host unit tests)
+./gradlew :napier:testAndroidHostTest
+
+# JavaScript (Node.js / browser)
+./gradlew :napier:jsNodeTest :napier:jsBrowserTest
+
+# wasmJs (Node.js / browser)
+./gradlew :napier:wasmJsNodeTest :napier:wasmJsBrowserTest
+
+# iOS simulator
+./gradlew :napier:iosSimulatorArm64Test
+
+# macOS
+./gradlew :napier:macosArm64Test
+```
+
+Targets that cannot run on the current host are skipped automatically.
+For example, `macosX64Test` is skipped on Apple Silicon and the Apple targets are skipped on Linux.
+
+## Samples
+
+This repository contains sample projects for each platform.
+All samples call the common module code in [mpp-sample](https://github.com/AAkira/Napier/tree/master/mpp-sample).
+
+### Android
+
+Open this repository in Android Studio and run the `android` module,
+or build the apk on the command line.
+
+```shell
+./gradlew :android:assembleDebug
+```
+
+The sample uses Firebase Crashlytics, so `android/google-services.json` is required.
+See the [Crashlytics](#crashlytics) section below.
+
+### JVM
+
+Build the executable jar and run it.
+
+```shell
+./gradlew :jvm:build
+java -jar jvm/build/libs/jvm.jar
+
+# or
+sh jvm/run.sh
+```
+
+### JavaScript (Browser)
+
+Start the webpack dev server.
+It opens http://localhost:8080/ in your browser and the logs are displayed on the developer console.
+
+```shell
+./gradlew :js:jsBrowserDevelopmentRun
+
+# or
+sh js/run.sh
+```
+
+### iOS
+
+The sample app depends on the `mpp-sample` framework via CocoaPods.
+
+```shell
+# generate the podspec and the dummy framework (only needed for a fresh checkout)
+./gradlew :mpp-sample:generateDummyFramework
+
+cd ios
+pod install
+```
+
+Open `ios/Napier.xcworkspace` in Xcode and run the `Napier` scheme,
+or build it on the command line.
+
+```shell
+xcodebuild -workspace Napier.xcworkspace -scheme Napier \
+  -destination 'platform=iOS Simulator,name=iPhone 16' build
+```
+
+### macOS
+
+Same as iOS.
+
+```shell
+./gradlew :mpp-sample:generateDummyFramework
+
+cd macOS
+pod install
+```
+
+Open `macOS/macOS.xcworkspace` in Xcode and run the `macOS (macOS)` scheme,
+or build it on the command line.
+
+```shell
+xcodebuild -workspace macOS.xcworkspace -scheme "macOS (macOS)" build
+```
+
 ## Advancement
 
-You can inject custom `Antilog`.  
-So, you should change Antilogs in debug build or release build.
+You can inject a custom `Antilog`,  
+so you can switch Antilogs between debug and release builds.
 
 ### Crashlytics
 
-Crashlytics AntiLog samples
+Crashlytics Antilog samples
 
-Sample projects use the Firebase Crashlytics.  
-You must set authentication files to `android/google-services.json` and `ios/Napier/GoogleService-Info.plist`.
+The sample projects use Firebase Crashlytics.  
+You must put the authentication files at `android/google-services.json` and `ios/Napier/GoogleService-Info.plist`.
 
-Check the firebase document. [[Android](https://firebase.google.com/docs/android/setup),
+Check the Firebase documentation. [[Android](https://firebase.google.com/docs/android/setup),
 [iOS](https://firebase.google.com/docs/ios/setup)]
 
 * [Android](https://github.com/AAkira/Napier/blob/master/android/src/main/java/com/github/aakira/napier/sample/CrashlyticsAntilog.kt)
@@ -327,9 +440,9 @@ limitations under the License.
 ## Credit
 
 This library is inspired by [Timber](https://github.com/JakeWharton/timber).  
-I recommend using it if it supports kotlin multiplatform project.😜
+I would recommend using it if it supported Kotlin Multiplatform projects.😜
 
-Thanks for advice.  
+Thanks for the advice.  
 [@horita-yuya](https://github.com/horita-yuya),
 [@terachanple](https://github.com/terachanple)
 

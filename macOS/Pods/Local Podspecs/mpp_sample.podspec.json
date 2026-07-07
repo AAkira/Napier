@@ -3,37 +3,31 @@
   "version": "1.0.0",
   "homepage": "https://github.com/AAkira/Napier",
   "source": {
-    "git": "Not Published",
-    "tag": "Cocoapods/mpp_sample/1.0.0"
+    "http": ""
   },
   "authors": "",
   "license": "",
   "summary": "CocoaPods library",
-  "static_framework": true,
   "vendored_frameworks": "build/cocoapods/framework/mpp_sample.framework",
   "libraries": "c++",
-  "module_name": "mpp_sample_umbrella",
+  "platforms": {
+    "ios": "15.0",
+    "osx": "11.0",
+    "watchos": "8.0"
+  },
+  "xcconfig": {
+    "ENABLE_USER_SCRIPT_SANDBOXING": "NO"
+  },
   "pod_target_xcconfig": {
-    "KOTLIN_TARGET[sdk=iphonesimulator*]": "ios_x64",
-    "KOTLIN_TARGET[sdk=iphoneos*]": "ios_arm",
-    "KOTLIN_TARGET[sdk=watchsimulator*]": "watchos_x64",
-    "KOTLIN_TARGET[sdk=watchos*]": "watchos_arm",
-    "KOTLIN_TARGET[sdk=appletvsimulator*]": "tvos_x64",
-    "KOTLIN_TARGET[sdk=appletvos*]": "tvos_arm64",
-    "KOTLIN_TARGET[sdk=macosx*]": "macos_x64"
+    "KOTLIN_PROJECT_PATH": ":mpp-sample",
+    "PRODUCT_MODULE_NAME": "mpp_sample"
   },
   "script_phases": [
     {
       "name": "Build mpp_sample",
       "execution_position": "before_compile",
       "shell_path": "/bin/sh",
-      "script": "                set -ev\n                REPO_ROOT=\"$PODS_TARGET_SRCROOT\"\n                \"$REPO_ROOT/../gradlew\" -p \"$REPO_ROOT\" :mpp-sample:syncFramework                     -Pkotlin.native.cocoapods.target=$KOTLIN_TARGET                     -Pkotlin.native.cocoapods.configuration=$CONFIGURATION                     -Pkotlin.native.cocoapods.cflags=\"$OTHER_CFLAGS\"                     -Pkotlin.native.cocoapods.paths.headers=\"$HEADER_SEARCH_PATHS\"                     -Pkotlin.native.cocoapods.paths.frameworks=\"$FRAMEWORK_SEARCH_PATHS\"\n"
+      "script": "                if [ \"YES\" = \"$OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED\" ]; then\n                    echo \"Skipping Gradle build task invocation due to OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED environment variable set to \"YES\"\"\n                    exit 0\n                fi\n                set -ev\n                REPO_ROOT=\"$PODS_TARGET_SRCROOT\"\n                \"$REPO_ROOT/../gradlew\" -p \"$REPO_ROOT\" $KOTLIN_PROJECT_PATH:syncFramework                     -Pkotlin.native.cocoapods.platform=$PLATFORM_NAME                     -Pkotlin.native.cocoapods.archs=\"$ARCHS\"                     -Pkotlin.native.cocoapods.configuration=\"$CONFIGURATION\"\n"
     }
-  ],
-  "platforms": {
-    "osx": null,
-    "ios": null,
-    "tvos": null,
-    "watchos": null
-  }
+  ]
 }

@@ -1,18 +1,21 @@
-import dependencies.Dep
-
 plugins {
-    kotlin("jvm")
+    alias(libs.plugins.kotlinJvm)
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 dependencies {
     implementation(project(":napier"))
     implementation(project(":mpp-sample"))
 
-    implementation(Dep.Kotlin.jvm)
-    implementation(Dep.Coroutines.core)
+    implementation(libs.kotlinx.coroutines.core)
 }
 
 val jar by tasks.getting(Jar::class) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
     manifest {
         attributes["Main-Class"] = "io.github.aakira.napier.sample.MainKt"
     }

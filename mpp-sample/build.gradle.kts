@@ -1,13 +1,11 @@
-import dependencies.Dep
-import dependencies.Versions
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import org.jetbrains.kotlin.gradle.targets.js.yarn.yarn
 
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
-    kotlin("native.cocoapods")
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.androidKotlinMultiplatformLibrary)
+    alias(libs.plugins.kotlinCocoapods)
 }
 
 version = "1.0.0"
@@ -15,148 +13,46 @@ version = "1.0.0"
 yarn.lockFileDirectory = file("kotlin-js-store")
 
 kotlin {
-    androidTarget()
+    jvmToolchain(17)
+
+    androidLibrary {
+        namespace = "io.github.aakira.napier.mppsample"
+        compileSdk = libs.versions.android.compileSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
+    }
     js {
         browser()
     }
     jvm()
 
     // darwin
-    if (ideaActive.not()) {
-        // intel
-        macosX64()
-        iosX64()
-        watchosX64()
+    macosX64()
+    macosArm64()
+    iosX64()
+    iosSimulatorArm64()
+    watchosX64()
+    watchosSimulatorArm64()
 
-        // apple silicon
-        macosArm64()
-        iosSimulatorArm64()
-        watchosSimulatorArm64()
-    } else {
-        if (isAppleSilicon) {
-            // apple silicon
-            macosArm64()
-            iosSimulatorArm64()
-            watchosSimulatorArm64()
-        } else {
-            // intel
-            macosX64()
-            iosX64()
-            watchosX64()
-        }
-    }
     targets.withType<KotlinNativeTarget> {
         binaries.withType<Framework> {
             export(project(":napier"))
         }
     }
+
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation(Dep.Kotlin.common)
-                implementation(Dep.Coroutines.core)
+        commonMain.dependencies {
+            implementation(libs.kotlinx.coroutines.core)
 
-                implementation(project(":napier"))
-                api(project(":napier"))
-            }
-        }
-        val androidMain by getting {
-            dependencies {
-                implementation(Dep.Kotlin.jvm)
-            }
-        }
-        val jsMain by getting {
-            dependencies {
-                implementation(Dep.Kotlin.js)
-            }
-        }
-        val jvmMain by getting {
-            dependencies {
-                implementation(Dep.Kotlin.jvm)
-            }
-        }
-
-        // darwin
-        val darwinMain by creating {
-            dependsOn(commonMain)
-        }
-        // darwin
-        if (ideaActive.not()) {
-            // intel
-            val macosX64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val iosX64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val watchosX64Main by getting {
-                dependsOn(darwinMain)
-            }
-
-            // apple silicon
-            val macosArm64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val iosSimulatorArm64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val watchosSimulatorArm64Main by getting {
-                dependsOn(darwinMain)
-            }
-        } else {
-            if (isAppleSilicon) {
-                // apple silicon
-                val macosArm64Main by getting {
-                    dependsOn(darwinMain)
-                }
-                val iosSimulatorArm64Main by getting {
-                    dependsOn(darwinMain)
-                }
-                val watchosSimulatorArm64Main by getting {
-                    dependsOn(darwinMain)
-                }
-            } else {
-                // intel
-                val macosX64Main by getting {
-                    dependsOn(darwinMain)
-                }
-                val iosX64Main by getting {
-                    dependsOn(darwinMain)
-                }
-                val watchosX64Main by getting {
-                    dependsOn(darwinMain)
-                }
-            }
+            api(project(":napier"))
         }
     }
 
     cocoapods {
         summary = "CocoaPods library"
         homepage = "https://github.com/AAkira/Napier"
-    }
-}
 
-android {
-    compileSdk = Versions.compileSdkVersion
-    buildToolsVersion = Versions.buildToolsVersion
-
-    defaultConfig {
-        namespace = "io.github.aakira.napier.mppsample"
-        minSdk = Versions.minSdkVersion
-    }
-
-    lint {
-        targetSdk = Versions.targetSdkVersion
-    }
-
-    sourceSets {
-        getByName("main") {
-            manifest.srcFile("src/androidMain/AndroidManifest.xml")
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        ios.deploymentTarget = "15.0"
+        osx.deploymentTarget = "11.0"
+        watchos.deploymentTarget = "8.0"
     }
 }

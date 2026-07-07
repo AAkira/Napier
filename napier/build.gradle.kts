@@ -1,277 +1,57 @@
-import dependencies.Dep
-import dependencies.Versions
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
-    kotlin("multiplatform")
-    id("com.android.library")
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.androidKotlinMultiplatformLibrary)
 }
 
 apply(from = rootProject.file("./gradle/publish.gradle.kts"))
 
 kotlin {
-    androidTarget {
-        publishAllLibraryVariants()
+    jvmToolchain(17)
+
+    androidLibrary {
+        namespace = "io.github.aakira.napier"
+        compileSdk = libs.versions.android.compileSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
+
+        withHostTestBuilder {
+            sourceSetTreeName = "test"
+        }
     }
-    js(IR) {
+    js {
         browser()
         nodejs()
     }
     @OptIn(ExperimentalWasmDsl::class)
-    wasmJs()
+    wasmJs {
+        browser()
+        nodejs()
+    }
     jvm()
 
     // darwin
-    if (ideaActive.not()) {
-        // intel
-        macosX64()
-        iosX64()
-        watchosX64()
-        tvosX64()
-
-        // apple silicon
-        macosArm64()
-        iosArm64()
-        watchosArm64()
-        tvosArm64()
-        iosSimulatorArm64()
-        watchosSimulatorArm64()
-        tvosSimulatorArm64()
-    } else {
-        if (isAppleSilicon) {
-            // apple silicon
-            macosArm64()
-            iosArm64()
-            watchosArm64()
-            tvosArm64()
-            iosSimulatorArm64()
-            watchosSimulatorArm64()
-            tvosSimulatorArm64()
-        } else {
-            // intel
-            macosX64()
-            iosX64()
-            watchosX64()
-            tvosX64()
-        }
-    }
+    macosX64()
+    macosArm64()
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
+    watchosX64()
+    watchosArm64()
+    watchosSimulatorArm64()
+    tvosX64()
+    tvosArm64()
+    tvosSimulatorArm64()
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation(Dep.Kotlin.common)
-            }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
         }
-        val commonTest by getting {
-            dependencies {
-                implementation(Dep.Test.common)
-                implementation(Dep.Test.annotation)
-            }
+        getByName("androidHostTest").dependencies {
+            implementation(kotlin("test-junit"))
         }
-        val androidMain by getting {
-            dependencies {
-            }
+        jvmTest.dependencies {
+            implementation(kotlin("test-junit"))
         }
-        val androidUnitTest by getting {
-            dependencies {
-                implementation(Dep.Test.jvm)
-            }
-        }
-
-        val jsMain by getting {
-            dependencies {
-                implementation(Dep.Kotlin.js)
-            }
-        }
-        val jsTest by getting {
-            dependencies {
-                implementation(Dep.Test.js)
-            }
-        }
-        val wasmJsMain by getting
-        val wasmJsTest by getting
-        val jvmMain by getting {
-            dependencies {
-                implementation(Dep.Kotlin.jvm)
-            }
-        }
-        val jvmTest by getting {
-            dependencies {
-                implementation(Dep.Test.jvm)
-            }
-        }
-
-        val darwinMain by creating {
-            dependsOn(commonMain)
-        }
-        val darwinTest by creating {
-            dependsOn(commonTest)
-        }
-
-        // darwin
-        if (ideaActive.not()) {
-            // intel
-            val macosX64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val macosX64Test by getting {
-                dependsOn(darwinTest)
-            }
-            val iosX64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val iosX64Test by getting {
-                dependsOn(darwinTest)
-            }
-            val watchosX64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val watchosX64Test by getting {
-                dependsOn(darwinTest)
-            }
-            val tvosX64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val tvosX64Test by getting {
-                dependsOn(darwinTest)
-            }
-
-            // apple silicon
-            val macosArm64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val macosArm64Test by getting {
-                dependsOn(darwinTest)
-            }
-            val iosArm64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val iosArm64Test by getting {
-                dependsOn(darwinTest)
-            }
-            val watchosArm64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val watchosArm64Test by getting {
-                dependsOn(darwinTest)
-            }
-            val tvosArm64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val tvosArm64Test by getting {
-                dependsOn(darwinTest)
-            }
-            val iosSimulatorArm64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val iosSimulatorArm64Test by getting {
-                dependsOn(darwinTest)
-            }
-            val watchosSimulatorArm64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val watchosSimulatorArm64Test by getting {
-                dependsOn(darwinTest)
-            }
-            val tvosSimulatorArm64Main by getting {
-                dependsOn(darwinMain)
-            }
-            val tvosSimulatorArm64Test by getting {
-                dependsOn(darwinTest)
-            }
-        } else {
-            if (isAppleSilicon) {
-                // apple silicon
-                val macosArm64Main by getting {
-                    dependsOn(darwinMain)
-                }
-                val macosArm64Test by getting {
-                    dependsOn(darwinTest)
-                }
-                val iosArm64Main by getting {
-                    dependsOn(darwinMain)
-                }
-                val iosArm64Test by getting {
-                    dependsOn(darwinTest)
-                }
-                val watchosArm64Main by getting {
-                    dependsOn(darwinMain)
-                }
-                val watchosArm64Test by getting {
-                    dependsOn(darwinTest)
-                }
-                val tvosArm64Main by getting {
-                    dependsOn(darwinMain)
-                }
-                val tvosArm64Test by getting {
-                    dependsOn(darwinTest)
-                }
-                val iosSimulatorArm64Main by getting {
-                    dependsOn(darwinMain)
-                }
-                val iosSimulatorArm64Test by getting {
-                    dependsOn(darwinTest)
-                }
-                val watchosSimulatorArm64Main by getting {
-                    dependsOn(darwinMain)
-                }
-                val watchosSimulatorArm64Test by getting {
-                    dependsOn(darwinTest)
-                }
-                val tvosSimulatorArm64Main by getting {
-                    dependsOn(darwinMain)
-                }
-                val tvosSimulatorArm64Test by getting {
-                    dependsOn(darwinTest)
-                }
-            } else {
-                // intel
-                val macosX64Main by getting {
-                    dependsOn(darwinMain)
-                }
-                val macosX64Test by getting {
-                    dependsOn(darwinTest)
-                }
-                val iosX64Main by getting {
-                    dependsOn(darwinMain)
-                }
-                val iosX64Test by getting {
-                    dependsOn(darwinTest)
-                }
-                val watchosX64Main by getting {
-                    dependsOn(darwinMain)
-                }
-                val watchosX64Test by getting {
-                    dependsOn(darwinTest)
-                }
-                val tvosX64Main by getting {
-                    dependsOn(darwinMain)
-                }
-                val tvosX64Test by getting {
-                    dependsOn(darwinTest)
-                }
-            }
-        }
-    }
-}
-
-android {
-    compileSdk = Versions.compileSdkVersion
-    buildToolsVersion = Versions.buildToolsVersion
-
-    defaultConfig {
-        namespace = "io.github.aakira.napier"
-        minSdk = Versions.minSdkVersion
-    }
-
-    sourceSets {
-        getByName("main") {
-            manifest.srcFile("src/androidMain/AndroidManifest.xml")
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
     }
 }

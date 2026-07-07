@@ -43,7 +43,7 @@ actual class DebugAntilog(
         LogLevel.ASSERT to "[ASSERT]"
     )
 
-    override fun performLog(
+    actual override fun performLog(
         priority: LogLevel,
         tag: String?,
         throwable: Throwable?,
