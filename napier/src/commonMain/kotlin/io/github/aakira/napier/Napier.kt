@@ -51,7 +51,7 @@ object Napier {
 
     @PublishedApi
     internal fun rawLog(priority: LogLevel, tag: String?, throwable: Throwable?, message: String?) {
-        baseArray.forEach { it.rawLog(priority, tag, throwable, message) }
+        baseArray.forEach { it.log(priority, tag, throwable, message) }
     }
 
     /** Send a VERBOSE log message and log the exception.
