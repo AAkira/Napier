@@ -22,6 +22,48 @@ class NapierTest {
     private data class CustomThrowable(override val message: String) : Throwable(message)
 
     @Test
+    fun `Respects each antilog filter`() {
+        Napier.takeLogarithm()
+
+        val filteredMessages = mutableListOf<String?>()
+        val acceptedMessages = mutableListOf<String?>()
+
+        try {
+            Napier.base(object : Antilog() {
+                override fun isEnable(priority: LogLevel, tag: String?) = false
+
+                override fun performLog(
+                    priority: LogLevel,
+                    tag: String?,
+                    throwable: Throwable?,
+                    message: String?,
+                ) {
+                    filteredMessages.add(message)
+                }
+            })
+            Napier.base(object : Antilog() {
+                override fun isEnable(priority: LogLevel, tag: String?) = true
+
+                override fun performLog(
+                    priority: LogLevel,
+                    tag: String?,
+                    throwable: Throwable?,
+                    message: String?,
+                ) {
+                    acceptedMessages.add(message)
+                }
+            })
+
+            Napier.d("synthetic message")
+
+            assertEquals(emptyList<String?>(), filteredMessages)
+            assertEquals(listOf("synthetic message"), acceptedMessages)
+        } finally {
+            Napier.takeLogarithm()
+        }
+    }
+
+    @Test
     fun `Check output log`() {
         val output = AtomicMutableList<Expected>()
         Napier.base(object : Antilog() {
